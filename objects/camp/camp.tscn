@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://b6pqca004itdl"]
+
+[ext_resource type="Texture2D" uid="uid://cvd7tn4lv3a5w" path="res://player/camping_place.png" id="1_lyshe"]
+[ext_resource type="Script" path="res://objects/camp/camp.gd" id="1_mq6j5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uliv3"]
+atlas = ExtResource("1_lyshe")
+region = Rect2(0, 0, 40, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kiuur"]
+atlas = ExtResource("1_lyshe")
+region = Rect2(40, 0, 40, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1p0s"]
+atlas = ExtResource("1_lyshe")
+region = Rect2(80, 0, 40, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63dlg"]
+atlas = ExtResource("1_lyshe")
+region = Rect2(120, 0, 40, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00uc1"]
+atlas = ExtResource("1_lyshe")
+region = Rect2(160, 0, 40, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arfx5"]
+atlas = ExtResource("1_lyshe")
+region = Rect2(200, 0, 40, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pshik"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uliv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kiuur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1p0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63dlg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00uc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arfx5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pxx3r"]
+radius = 3.0
+height = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1d88s"]
+radius = 3.0
+
+[node name="Camp" type="StaticBody2D"]
+script = ExtResource("1_mq6j5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pshik")
+frame_progress = 0.138702
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12, 9)
+rotation = 1.45037
+shape = SubResource("CapsuleShape2D_pxx3r")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 11)
+shape = SubResource("CircleShape2D_1d88s")

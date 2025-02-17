@@ -1,3 +1,25 @@
-[gd_scene format=3 uid="uid://dxdhvyb7fwrkp"]
+[gd_scene load_steps=4 format=3 uid="uid://dxdhvyb7fwrkp"]
+
+[ext_resource type="PackedScene" uid="uid://timxvbh6c5qq" path="res://player/player.tscn" id="1_3t1ma"]
+[ext_resource type="PackedScene" uid="uid://cdyc8xy6rb65g" path="res://objects/tree/tree.tscn" id="2_0skud"]
+[ext_resource type="PackedScene" uid="uid://b6pqca004itdl" path="res://objects/camp/camp.tscn" id="3_r7eh1"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_3t1ma")]
+position = Vector2(430, 206)
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Tree" parent="Objects" instance=ExtResource("2_0skud")]
+position = Vector2(317, 157)
+
+[node name="Tree2" parent="Objects" instance=ExtResource("2_0skud")]
+position = Vector2(608, 296)
+
+[node name="Tree3" parent="Objects" instance=ExtResource("2_0skud")]
+position = Vector2(192, 269)
+
+[node name="Camp" parent="Objects" instance=ExtResource("3_r7eh1")]
+position = Vector2(372, 317)
+scale = Vector2(4, 4)
