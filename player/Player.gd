@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var speed: int = 1000
 
 var animation_component: AnimatedSprite2D
-e
+
 func _ready():
 	animation_component = $AnimatedSprite2D
 
