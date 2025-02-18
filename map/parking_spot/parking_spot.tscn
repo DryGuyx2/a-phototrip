@@ -17,3 +17,7 @@ polygon = PackedVector2Array(438, 145, 417, 162, 388, 139, 377, 183, 377, 236, 3
 [node name="Bird" parent="." instance=ExtResource("2_5ghpr")]
 position = Vector2(294, -90)
 scale = Vector2(1.5, 1.5)
+
+[node name="Bird2" parent="." instance=ExtResource("2_5ghpr")]
+position = Vector2(-241, -33)
+scale = Vector2(1.5, 1.5)

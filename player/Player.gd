@@ -19,11 +19,18 @@ func _ready() -> void:
 	photo_area.set_collision_mask_value(GlobalData.layers["photo_detection"], true)
 
 func _process(delta: float) -> void:
+	handle_input()
 	handle_animations()
 	
 	if not photographing:
 		position += direction * speed * delta
 	move_and_slide()
+
+func handle_input():
+	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	if Input.is_action_just_pressed("equip"):
+		equipped_camera = not equipped_camera
 
 func handle_direction(event) -> void:
 	if event.is_action_pressed("move_right"):
@@ -43,12 +50,7 @@ func handle_direction(event) -> void:
 	elif event.is_action_released("move_down"):
 		direction.y += -1
 
-func _unhandled_key_input(event) -> void:
-	handle_direction(event)
-	
-	if event.is_action_pressed("equip"):
-		equipped_camera = not equipped_camera
-	
+func _unhandled_input(event) -> void:
 	if event.is_action_pressed("interact"):
 		photograph()
 
