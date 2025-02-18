@@ -15,4 +15,4 @@ func _process(delta: float):
 	await $AnimatedSprite2D.animation_finished
 	
 	$AnimatedSprite2D.play("default")
-	idle_time_left = randf_range(3.0, 6.0)
+	idle_time_left = randf_range(3.0, 10.0)
