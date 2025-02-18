@@ -32,6 +32,7 @@ position = Vector2(372, 317)
 scale = Vector2(4, 4)
 
 [node name="Bird" parent="Campsite/Objects" instance=ExtResource("4_4s842")]
+detection_layer = 2
 
 [node name="Exit" type="Area2D" parent="Campsite" node_paths=PackedStringArray("entrance", "entrance_camera_position", "camera")]
 collision_layer = 0

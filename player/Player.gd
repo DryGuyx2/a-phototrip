@@ -11,6 +11,10 @@ var photographing: bool = false
 var viewing: bool = false
 var direction: Vector2 = Vector2.ZERO
 
+func _ready() -> void:
+	set_collision_layer_value(Collisions.layers["player_physics"], true)
+	set_collision_mask_value(Collisions.layers["player_physics"], true)
+
 func _process(delta: float) -> void:
 	handle_input()
 	handle_animations()
@@ -31,6 +35,8 @@ func handle_input() -> void:
 		photograph()
 
 func handle_animations() -> void:
+	if viewing:
+		return
 	if direction.x == 1:
 		animation_component.flip_h = false
 	elif direction.x == -1:
