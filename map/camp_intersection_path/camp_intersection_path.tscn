@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0lain6cj8oku"]
+
+[ext_resource type="Texture2D" uid="uid://dgc5raahgwybv" path="res://map/camp_intersection_path/camp_intersection_path.png" id="1_upo7l"]
+
+[node name="CampIntersectionPath" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(440, 352)
+scale = Vector2(7, 7)
+texture = ExtResource("1_upo7l")
+
+[node name="Border" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border"]
+polygon = PackedVector2Array(871, 291, 889, 306, 888, 480, 860, 477, 845, 474, 830, 522, 752, 469, 700, 470, 679, 432, 660, 431, 635, 454, 602, 451, 579, 391, 559, 397, 549, 477, 500, 430, 477, 461, 445, 460, 425, 421, 381, 421, 359, 384, 344, 396, 335, 439, 301, 412, 278, 437, 280, 471, 235, 459, 217, 398, 197, 376, 179, 384, 176, 428, 137, 430, 89, 480, 51, 412, 3, 437, -21, 437, -21, 247, -4, 186, 39, 225, 88, 209, 113, 208, 115, 245, 147, 252, 175, 249, 178, 229, 213, 229, 214, 197, 237, 197, 240, 230, 294, 227, 299, 195, 321, 198, 320, 230, 357, 230, 362, 283, 415, 286, 414, 249, 462, 250, 466, 229, 518, 228, 523, 269, 564, 265, 571, 281, 631, 275, 646, 301, 659, 311, 740, 324, 768, 308, 792, 307, 821, 293, 871, 290, 946, 281, 963, -47, -153, -29, -112, 673, 954, 665, 911, 297)

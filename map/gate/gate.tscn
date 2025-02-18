@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://dxqq7kots11ch"]
 
-[ext_resource type="Script" path="res://objects/exit/exit.gd" id="1_8ck7g"]
+[ext_resource type="Script" path="res://map/gate/gate.gd" id="1_8ck7g"]
 
-[node name="Exit" type="Area2D"]
+[node name="Gate" type="Area2D"]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_8ck7g")

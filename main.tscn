@@ -1,14 +1,57 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxdhvyb7fwrkp"]
+[gd_scene load_steps=7 format=3 uid="uid://dxdhvyb7fwrkp"]
 
 [ext_resource type="PackedScene" uid="uid://timxvbh6c5qq" path="res://player/player.tscn" id="1_3t1ma"]
 [ext_resource type="PackedScene" uid="uid://jpaba8nxu84q" path="res://map/campsite/campsite.tscn" id="2_qcwwe"]
+[ext_resource type="PackedScene" uid="uid://dxqq7kots11ch" path="res://map/gate/gate.tscn" id="2_sr1yt"]
+[ext_resource type="PackedScene" uid="uid://c0lain6cj8oku" path="res://map/camp_intersection_path/camp_intersection_path.tscn" id="3_s4768"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdgny"]
+size = Vector2(36, 228)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1mvor"]
+size = Vector2(74, 179)
 
 [node name="Main" type="Node2D"]
+
+[node name="CampIntersectionPath" parent="." instance=ExtResource("3_s4768")]
+position = Vector2(1211, 28)
+
+[node name="Gate" parent="CampIntersectionPath" node_paths=PackedStringArray("exit_point", "camera_position", "camera") instance=ExtResource("2_sr1yt")]
+position = Vector2(-1211, -28)
+detection_mask = 1
+exit_point = NodePath("../../Campsite/GateLeft/ExitPoint")
+camera_position = NodePath("../CameraPosition")
+camera = NodePath("../../Camera2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CampIntersectionPath/Gate"]
+position = Vector2(1210, 348)
+shape = SubResource("RectangleShape2D_cdgny")
+
+[node name="ExitPoint" type="Node2D" parent="CampIntersectionPath/Gate"]
+position = Vector2(1254, 348)
+
+[node name="CameraPosition" type="Node2D" parent="CampIntersectionPath"]
+position = Vector2(440, 352)
 
 [node name="Campsite" parent="." instance=ExtResource("2_qcwwe")]
 
 [node name="CameraPosition2" type="Node2D" parent="Campsite"]
 position = Vector2(436, 349)
+
+[node name="GateLeft" parent="Campsite" node_paths=PackedStringArray("exit_point", "camera_position", "camera") instance=ExtResource("2_sr1yt")]
+detection_mask = 1
+exit_point = NodePath("../../CampIntersectionPath/Gate/ExitPoint")
+camera_position = NodePath("../CameraPosition2")
+camera = NodePath("../../Camera2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Campsite/GateLeft"]
+position = Vector2(854.5, 503.5)
+rotation = 3.14159
+scale = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_1mvor")
+
+[node name="ExitPoint" type="Node2D" parent="Campsite/GateLeft"]
+position = Vector2(792, 506)
 
 [node name="Player" parent="." instance=ExtResource("1_3t1ma")]
 position = Vector2(430, 396)
