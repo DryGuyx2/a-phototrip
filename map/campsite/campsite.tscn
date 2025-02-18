@@ -1,12 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://jpaba8nxu84q"]
+[gd_scene load_steps=4 format=3 uid="uid://jpaba8nxu84q"]
 
-[ext_resource type="Script" path="res://map/campsite/campsite.gd" id="1_uow4e"]
 [ext_resource type="PackedScene" uid="uid://b6pqca004itdl" path="res://objects/camp/camp.tscn" id="2_4gio2"]
 [ext_resource type="PackedScene" uid="uid://bbfwjx1f5i5os" path="res://objects/photo_subjects/bird/bird.tscn" id="3_p0apm"]
 [ext_resource type="Texture2D" uid="uid://bgr5rk1oige2o" path="res://map/campsite/campsite.png" id="5_j8085"]
 
 [node name="Campsite" type="Node2D"]
-script = ExtResource("1_uow4e")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(436, 349)
@@ -20,7 +18,6 @@ position = Vector2(372, 317)
 scale = Vector2(4, 4)
 
 [node name="Bird" parent="Objects" instance=ExtResource("3_p0apm")]
-detection_layer = 2
 
 [node name="Border" type="StaticBody2D" parent="."]
 

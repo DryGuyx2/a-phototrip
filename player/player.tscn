@@ -98,7 +98,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"moving",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -115,7 +115,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"moving_camera",
-"speed": 5.0
+"speed": 75.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -149,7 +149,7 @@ shape = SubResource("CapsuleShape2D_l5rrp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3igo5")
-animation = &"photographing"
+animation = &"moving"
 
 [node name="PhotoArea" type="Area2D" parent="."]
 collision_layer = 0

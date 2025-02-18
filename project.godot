@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Collisions="*res://globals/collisions.gd"
+GlobalData="*res://global_data.gd"
 
 [display]
 

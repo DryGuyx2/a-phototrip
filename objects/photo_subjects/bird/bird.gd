@@ -4,7 +4,7 @@ class_name Bird
 var idle_time_left: float = randf_range(3.0, 6.0)
 
 func _ready():
-	set_collision_layer_value(Collisions.layers["photo_detection"], true)
+	set_collision_layer_value(GlobalData.layers["photo_detection"], true)
 
 func _process(delta: float):
 	if idle_time_left > 0:

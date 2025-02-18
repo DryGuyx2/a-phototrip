@@ -10,11 +10,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mvor"]
 size = Vector2(74, 179)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps0c5"]
-size = Vector2(20, 168)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6hhxy"]
 size = Vector2(20, 201)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps0c5"]
+size = Vector2(20, 168)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qi85f"]
 size = Vector2(27, 174)
@@ -36,6 +36,7 @@ size = Vector2(337, 20)
 position = Vector2(436, 349)
 
 [node name="GateLeft" parent="Campsite" node_paths=PackedStringArray("exit_point", "camera_position", "camera") instance=ExtResource("2_sr1yt")]
+detection_mask = 1
 exit_point = NodePath("../../CampIntersectionPath/GateLeft/ExitPoint")
 camera_position = NodePath("../../CampIntersectionPath/CameraPosition")
 camera = NodePath("../../Camera2D")
@@ -52,23 +53,9 @@ position = Vector2(793, 503)
 [node name="CampIntersectionPath" parent="." instance=ExtResource("3_s4768")]
 position = Vector2(1697, 365)
 
-[node name="GateRight" type="Area2D" parent="CampIntersectionPath" node_paths=PackedStringArray("exit_point", "camera_position", "camera")]
-collision_layer = 0
-collision_mask = 0
-script = ExtResource("4_qqvtk")
-exit_point = NodePath("../../Intersection/GateLeft/ExitPoint")
-camera_position = NodePath("../../Intersection/CameraPosition")
-camera = NodePath("../../Camera2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CampIntersectionPath/GateRight"]
-position = Vector2(431, 37)
-shape = SubResource("RectangleShape2D_ps0c5")
-
-[node name="ExitPoint" type="Node2D" parent="CampIntersectionPath/GateRight"]
-position = Vector2(399, 39)
-
 [node name="GateLeft" parent="CampIntersectionPath" node_paths=PackedStringArray("exit_point", "camera_position", "camera") instance=ExtResource("2_sr1yt")]
 position = Vector2(-2078, -736)
+detection_mask = 1
 exit_point = NodePath("../../Campsite/GateLeft/ExitPoint")
 camera_position = NodePath("../../Campsite/CameraPosition2")
 camera = NodePath("../../Camera2D")
@@ -82,15 +69,21 @@ position = Vector2(1686, 708)
 
 [node name="CameraPosition" type="Node2D" parent="CampIntersectionPath"]
 
+[node name="GateRight" type="Area2D" parent="CampIntersectionPath"]
+script = ExtResource("4_qqvtk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CampIntersectionPath/GateRight"]
+position = Vector2(436, 38)
+shape = SubResource("RectangleShape2D_ps0c5")
+
+[node name="ExitPoint" type="Node2D" parent="CampIntersectionPath/GateRight"]
+position = Vector2(399, 39)
+
 [node name="Intersection" parent="." instance=ExtResource("5_dl3kp")]
 position = Vector2(3034, 357)
 
-[node name="GateLeft" type="Area2D" parent="Intersection" node_paths=PackedStringArray("exit_point", "camera_position", "camera")]
-collision_layer = 0
-collision_mask = 0
+[node name="GateLeft" type="Area2D" parent="Intersection" node_paths=PackedStringArray("camera")]
 script = ExtResource("4_qqvtk")
-exit_point = NodePath("../../CampIntersectionPath/GateRight/ExitPoint")
-camera_position = NodePath("../../CampIntersectionPath/CameraPosition")
 camera = NodePath("../../Camera2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Intersection/GateLeft"]
@@ -98,13 +91,11 @@ position = Vector2(-431, 118)
 shape = SubResource("RectangleShape2D_qi85f")
 
 [node name="ExitPoint" type="Node2D" parent="Intersection/GateLeft"]
-position = Vector2(-379, 118)
+position = Vector2(-398, 118)
 
 [node name="CameraPosition" type="Node2D" parent="Intersection"]
 
 [node name="GateRight" type="Area2D" parent="Intersection"]
-collision_layer = 0
-collision_mask = 0
 script = ExtResource("4_qqvtk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Intersection/GateRight"]
@@ -115,8 +106,6 @@ shape = SubResource("RectangleShape2D_2rqno")
 position = Vector2(403, 46)
 
 [node name="GateDown" type="Area2D" parent="Intersection"]
-collision_layer = 0
-collision_mask = 0
 script = ExtResource("4_qqvtk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Intersection/GateDown"]
@@ -127,8 +116,6 @@ shape = SubResource("RectangleShape2D_pifi8")
 position = Vector2(188, 315)
 
 [node name="GateUp" type="Area2D" parent="Intersection"]
-collision_layer = 0
-collision_mask = 0
 script = ExtResource("4_qqvtk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Intersection/GateUp"]
@@ -144,9 +131,3 @@ speed = 300
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(436, 349)
-
-[connection signal="body_entered" from="CampIntersectionPath/GateRight" to="CampIntersectionPath/GateRight" method="_on_body_entered"]
-[connection signal="body_entered" from="Intersection/GateLeft" to="Intersection/GateLeft" method="_on_body_entered"]
-[connection signal="body_entered" from="Intersection/GateRight" to="Intersection/GateRight" method="_on_body_entered"]
-[connection signal="body_entered" from="Intersection/GateDown" to="Intersection/GateDown" method="_on_body_entered"]
-[connection signal="body_entered" from="Intersection/GateUp" to="Intersection/GateUp" method="_on_body_entered"]

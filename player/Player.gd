@@ -12,8 +12,10 @@ var viewing: bool = false
 var direction: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
-	set_collision_layer_value(Collisions.layers["player_physics"], true)
-	set_collision_mask_value(Collisions.layers["player_physics"], true)
+	set_collision_layer_value(GlobalData.layers["player_physics"], true)
+	set_collision_layer_value(GlobalData.layers["gate"], true)
+	
+	set_collision_mask_value(GlobalData.layers["player_physics"], true)
 
 func _process(delta: float) -> void:
 	handle_input()
