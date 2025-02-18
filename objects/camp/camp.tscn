@@ -65,7 +65,7 @@ script = ExtResource("1_mq6j5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pshik")
-frame_progress = 0.277985
+frame_progress = 0.208675
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(12, 9)

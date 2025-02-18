@@ -9,17 +9,19 @@
 [node name="Player" parent="." instance=ExtResource("1_3t1ma")]
 position = Vector2(430, 206)
 
-[node name="Objects" type="Node2D" parent="."]
+[node name="Campsite" type="Node2D" parent="."]
 
-[node name="Tree" parent="Objects" instance=ExtResource("2_0skud")]
+[node name="Objects" type="Node2D" parent="Campsite"]
+
+[node name="Tree" parent="Campsite/Objects" instance=ExtResource("2_0skud")]
 position = Vector2(317, 157)
 
-[node name="Tree2" parent="Objects" instance=ExtResource("2_0skud")]
+[node name="Tree2" parent="Campsite/Objects" instance=ExtResource("2_0skud")]
 position = Vector2(608, 296)
 
-[node name="Tree3" parent="Objects" instance=ExtResource("2_0skud")]
+[node name="Tree3" parent="Campsite/Objects" instance=ExtResource("2_0skud")]
 position = Vector2(192, 269)
 
-[node name="Camp" parent="Objects" instance=ExtResource("3_r7eh1")]
+[node name="Camp" parent="Campsite/Objects" instance=ExtResource("3_r7eh1")]
 position = Vector2(372, 317)
 scale = Vector2(4, 4)

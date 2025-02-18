@@ -3,20 +3,24 @@ extends CharacterBody2D
 @export var speed: int = 1000
 
 @onready var animation_component: AnimatedSprite2D = $AnimatedSprite2D
+@onready var photo_area: Area2D = $Area2D
 
 var equipped_camera: bool = false
 var photographing: bool = false
+var viewing: bool = false
 var direction: Vector2 = Vector2.ZERO
 
-func _process(delta: float):
+func _process(delta: float) -> void:
 	handle_input()
 	handle_animations()
 	
-	if not photographing:
+	if not photographing and not viewing:
 		position += direction * speed * delta
 	move_and_slide()
 
-func handle_input():
+func handle_input() -> void:
+	if viewing:
+		return
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	if Input.is_action_just_pressed("equip"):
@@ -25,7 +29,7 @@ func handle_input():
 	if Input.is_action_just_pressed("interact"):
 		photograph()
 
-func handle_animations():
+func handle_animations() -> void:
 	if direction.x == 1:
 		animation_component.flip_h = false
 	elif direction.x == -1:
@@ -42,8 +46,10 @@ func handle_animations():
 			return
 		animation_component.play("moving")
 
-func photograph():
-	if equipped_camera:
-		photographing = true
-		print("Photographing...")
-		photographing = false
+func photograph() -> void:
+	if equipped_camera and not viewing:
+		if photo_area.get_overlapping_areas().is_empty():
+			return
+		var photo_subject = photo_area.get_overlapping_areas()[0]
+		viewing = true
+		animation_component.play("idle_camera")
