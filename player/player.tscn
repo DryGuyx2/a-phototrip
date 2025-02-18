@@ -151,10 +151,10 @@ shape = SubResource("CapsuleShape2D_l5rrp")
 sprite_frames = SubResource("SpriteFrames_3igo5")
 animation = &"photographing"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="PhotoArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhotoArea"]
 position = Vector2(0.2, 4)
 shape = SubResource("CircleShape2D_xfi74")

@@ -1,9 +1,10 @@
 extends CharacterBody2D
+class_name Player
 
 @export var speed: int = 1000
 
 @onready var animation_component: AnimatedSprite2D = $AnimatedSprite2D
-@onready var photo_area: Area2D = $Area2D
+@onready var photo_area: Area2D = $PhotoArea
 
 var equipped_camera: bool = false
 var photographing: bool = false

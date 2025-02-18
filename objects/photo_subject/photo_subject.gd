@@ -1,13 +1,12 @@
-extends StaticBody2D
+extends Area2D
 class_name PhotoSubject
 
-# IMPORTANT: Set player photo area to be same mask as subject layer
-
-@export var image_path: String
 @export var sprite: CanvasItem
-@export var detection_point: Area2D
+@export var image_path: String
+@export var detection_layer: int
 
 func _ready() -> void:
+	set_collision_layer_value(detection_layer, true)
 	if sprite is AnimatedSprite2D:
 		sprite.play("default")
 
