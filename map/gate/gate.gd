@@ -13,5 +13,5 @@ func _ready() -> void:
 	set_collision_mask_value(detection_mask, true)
 
 func _on_body_entered(body) -> void:
-	body.global_position = exit_point.position
-	camera.global_position = camera_position.position
+	body.global_position = exit_point.global_position
+	camera.global_position = camera_position.global_position
