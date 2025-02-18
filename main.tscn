@@ -1,14 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxdhvyb7fwrkp"]
+[gd_scene load_steps=7 format=3 uid="uid://dxdhvyb7fwrkp"]
 
 [ext_resource type="PackedScene" uid="uid://timxvbh6c5qq" path="res://player/player.tscn" id="1_3t1ma"]
 [ext_resource type="PackedScene" uid="uid://cdyc8xy6rb65g" path="res://objects/tree/tree.tscn" id="2_0skud"]
 [ext_resource type="PackedScene" uid="uid://b6pqca004itdl" path="res://objects/camp/camp.tscn" id="3_r7eh1"]
-[ext_resource type="Script" path="res://objects/photo_subject/photo_subject.gd" id="4_dl0j7"]
+[ext_resource type="PackedScene" uid="uid://bbfwjx1f5i5os" path="res://objects/photo_subjects/bird/bird.tscn" id="4_4s842"]
 [ext_resource type="Script" path="res://objects/exit/exit.gd" id="5_tmhye"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_heofq"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hifl7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4m2y"]
 size = Vector2(12, 105)
@@ -35,20 +31,7 @@ position = Vector2(192, 269)
 position = Vector2(372, 317)
 scale = Vector2(4, 4)
 
-[node name="PhotoSubject" type="Area2D" parent="Campsite/Objects" node_paths=PackedStringArray("sprite")]
-position = Vector2(764, 199)
-script = ExtResource("4_dl0j7")
-sprite = NodePath("Sprite2D")
-detection_layer = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="Campsite/Objects/PhotoSubject"]
-position = Vector2(13.25, 13.75)
-scale = Vector2(27.5, 28.5)
-texture = SubResource("PlaceholderTexture2D_heofq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Campsite/Objects/PhotoSubject"]
-position = Vector2(13, 13)
-shape = SubResource("RectangleShape2D_hifl7")
+[node name="Bird" parent="Campsite/Objects" instance=ExtResource("4_4s842")]
 
 [node name="Exit" type="Area2D" parent="Campsite" node_paths=PackedStringArray("entrance", "entrance_camera_position", "camera")]
 collision_layer = 0
