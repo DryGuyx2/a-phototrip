@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dxdhvyb7fwrkp"]
+[gd_scene load_steps=17 format=3 uid="uid://dxdhvyb7fwrkp"]
 
 [ext_resource type="PackedScene" uid="uid://timxvbh6c5qq" path="res://player/player.tscn" id="1_3t1ma"]
 [ext_resource type="PackedScene" uid="uid://jpaba8nxu84q" path="res://map/campsite/campsite.tscn" id="2_qcwwe"]
@@ -6,9 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://c0lain6cj8oku" path="res://map/camp_intersection_path/camp_intersection_path.tscn" id="3_s4768"]
 [ext_resource type="Script" path="res://map/gate/gate.gd" id="4_qqvtk"]
 [ext_resource type="PackedScene" uid="uid://b7b22y3s1dtaj" path="res://map/intersection/intersection.tscn" id="5_dl3kp"]
+[ext_resource type="PackedScene" uid="uid://bg6u7sqdxw0fu" path="res://map/parking_spot/parking_spot.tscn" id="7_3mtq8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mvor"]
 size = Vector2(74, 179)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mnwx0"]
+size = Vector2(20, 174)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ps0c5"]
 size = Vector2(20, 168)
@@ -28,26 +32,42 @@ size = Vector2(294, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nui3w"]
 size = Vector2(337, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1sqg"]
+size = Vector2(21, 220)
+
 [node name="Main" type="Node2D"]
 
 [node name="Campsite" parent="." instance=ExtResource("2_qcwwe")]
 
-[node name="CameraPosition2" type="Node2D" parent="Campsite"]
+[node name="CameraPosition" type="Node2D" parent="Campsite"]
 position = Vector2(436, 349)
 
-[node name="GateLeft" parent="Campsite" node_paths=PackedStringArray("exit_point", "camera_position", "camera") instance=ExtResource("2_sr1yt")]
+[node name="GateRight" parent="Campsite" node_paths=PackedStringArray("exit_point", "camera_position", "camera") instance=ExtResource("2_sr1yt")]
 exit_point = NodePath("../../CampIntersectionPath/GateLeft/ExitPoint")
 camera_position = NodePath("../../CampIntersectionPath/CameraPosition")
 camera = NodePath("../../Camera2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Campsite/GateLeft"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Campsite/GateRight"]
 position = Vector2(854.5, 503.5)
 rotation = 3.14159
 scale = Vector2(0.5, -1)
 shape = SubResource("RectangleShape2D_1mvor")
 
-[node name="ExitPoint" type="Node2D" parent="Campsite/GateLeft"]
+[node name="ExitPoint" type="Node2D" parent="Campsite/GateRight"]
 position = Vector2(793, 503)
+
+[node name="GateLeft" type="Area2D" parent="Campsite" node_paths=PackedStringArray("exit_point", "camera_position", "camera")]
+script = ExtResource("4_qqvtk")
+exit_point = NodePath("../../ParkingSpot/GateRight/ExitPoint")
+camera_position = NodePath("../../ParkingSpot/CameraPosition")
+camera = NodePath("../../Camera2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Campsite/GateLeft"]
+position = Vector2(13, 508)
+shape = SubResource("RectangleShape2D_mnwx0")
+
+[node name="ExitPoint" type="Node2D" parent="Campsite/GateLeft"]
+position = Vector2(47, 508)
 
 [node name="CampIntersectionPath" parent="." instance=ExtResource("3_s4768")]
 position = Vector2(1697, 365)
@@ -69,8 +89,8 @@ position = Vector2(399, 39)
 
 [node name="GateLeft" parent="CampIntersectionPath" node_paths=PackedStringArray("exit_point", "camera_position", "camera") instance=ExtResource("2_sr1yt")]
 position = Vector2(-2078, -736)
-exit_point = NodePath("../../Campsite/GateLeft/ExitPoint")
-camera_position = NodePath("../../Campsite/CameraPosition2")
+exit_point = NodePath("../../Campsite/GateRight/ExitPoint")
+camera_position = NodePath("../../Campsite/CameraPosition")
 camera = NodePath("../../Camera2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CampIntersectionPath/GateLeft"]
@@ -138,15 +158,37 @@ shape = SubResource("RectangleShape2D_nui3w")
 [node name="ExitPoint" type="Node2D" parent="Intersection/GateUp"]
 position = Vector2(88, -313)
 
+[node name="ParkingSpot" parent="." instance=ExtResource("7_3mtq8")]
+position = Vector2(4240, 352)
+
+[node name="GateRight" type="Area2D" parent="ParkingSpot" node_paths=PackedStringArray("exit_point", "camera_position", "camera")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("4_qqvtk")
+exit_point = NodePath("../../Campsite/GateLeft/ExitPoint")
+camera_position = NodePath("../../Campsite/CameraPosition")
+camera = NodePath("../../Camera2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParkingSpot/GateRight"]
+position = Vector2(429.5, 33)
+shape = SubResource("RectangleShape2D_n1sqg")
+
+[node name="ExitPoint" type="Node2D" parent="ParkingSpot/GateRight"]
+position = Vector2(377, 34)
+
+[node name="CameraPosition" type="Node2D" parent="ParkingSpot"]
+
 [node name="Player" parent="." instance=ExtResource("1_3t1ma")]
-position = Vector2(430, 396)
+position = Vector2(4249, 398)
 speed = 300
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(436, 349)
+position = Vector2(4240, 352)
 
+[connection signal="body_entered" from="Campsite/GateLeft" to="Campsite/GateLeft" method="_on_body_entered"]
 [connection signal="body_entered" from="CampIntersectionPath/GateRight" to="CampIntersectionPath/GateRight" method="_on_body_entered"]
 [connection signal="body_entered" from="Intersection/GateLeft" to="Intersection/GateLeft" method="_on_body_entered"]
 [connection signal="body_entered" from="Intersection/GateRight" to="Intersection/GateRight" method="_on_body_entered"]
 [connection signal="body_entered" from="Intersection/GateDown" to="Intersection/GateDown" method="_on_body_entered"]
 [connection signal="body_entered" from="Intersection/GateUp" to="Intersection/GateUp" method="_on_body_entered"]
+[connection signal="body_entered" from="ParkingSpot/GateRight" to="ParkingSpot/GateRight" method="_on_body_entered"]
