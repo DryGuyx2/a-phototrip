@@ -4,6 +4,7 @@ class_name Player
 @export var speed: int = 1000
 
 @onready var animation_component: AnimatedSprite2D = $AnimatedSprite2D
+@onready var  audio_player: AudioStreamPlayer = $Step
 @onready var photo_area: Area2D = $Pivot/PhotoArea
 @onready var pivot: Node2D = $Pivot
 
@@ -21,10 +22,16 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	handle_input()
 	handle_animations()
+	handle_sound()
 	
 	if not photographing:
 		position += direction * speed * delta
 	move_and_slide()
+
+func handle_sound():
+	if animation_component.animation == "moving" or animation_component.animation =="moving_camera":
+		if animation_component.frame == 1:
+			audio_player.play()
 
 func handle_input():
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
