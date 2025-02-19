@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsxef6d44rppb"]
+
+[ext_resource type="Texture2D" uid="uid://b37wgunwjuj0j" path="res://map/cliff_path/cliff_path.png" id="1_wm7rv"]
+
+[node name="CliffPath" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(7, 7)
+texture = ExtResource("1_wm7rv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-439, 178, -409, 180, -386, 260, -361, 173, -325, 251, -297, 124, -268, 180, -254, 125, -201, 250, -177, 149, -114, 284, -112, 386, 260, 387, 260, 299, 271, 281, 264, 257, 271, 242, 277, 175, 309, 270, 331, 119, 346, 104, 334, 79, 362, -131, 339, -138, 338, -152, 337, -189, 288, -178, 270, -165, 221, -163, 213, -155, 161, -171, 106, -170, 81, -154, 23, -180, -21, -163, -78, -172, -139, -166, -188, -129, -252, -130, -291, -97, -359, -129, -374, -123, -379, -102, -418, -102, -418, -65, -403, -45, -437, -24, -489, -21, -486, -360, 479, -346, 464, 411, -440, 406)
