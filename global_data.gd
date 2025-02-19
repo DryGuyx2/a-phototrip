@@ -6,4 +6,3 @@ var layers: Dictionary = {
 	"gate": 3,
 }
 
-var camera: Camera2D

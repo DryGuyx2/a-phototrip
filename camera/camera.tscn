@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://j8784ry2jjss"]
+
+[ext_resource type="Script" path="res://camera/camera.gd" id="1_fxby6"]
+[ext_resource type="Texture2D" uid="uid://bcx4l8xfq5mek" path="res://camera/white_square.jpg" id="2_r418a"]
+[ext_resource type="AudioStream" uid="uid://brno8k38qu53k" path="res://camera/camera_shot.wav" id="3_qff30"]
+
+[node name="Camera" type="Camera2D"]
+position = Vector2(4240, 352)
+script = ExtResource("1_fxby6")
+flash_speed = 0.4
+
+[node name="Flash" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(7, 7)
+texture = ExtResource("2_r418a")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qff30")
+bus = &"SFX"

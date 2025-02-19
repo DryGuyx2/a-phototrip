@@ -165,7 +165,7 @@ polygon = PackedVector2Array(4, -1.2, 4, 7.8, 49.2, 27.6, 49.0124, -18.9405)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3igo5")
-animation = &"moving_camera"
+animation = &"photographing"
 
 [node name="Step" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ikkvf")

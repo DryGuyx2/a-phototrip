@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyfkhtlrnx55w"]
+[gd_scene load_steps=4 format=3 uid="uid://cyfkhtlrnx55w"]
 
+[ext_resource type="PackedScene" uid="uid://bbfwjx1f5i5os" path="res://objects/photo_subjects/bird/bird.tscn" id="1_f51vt"]
 [ext_resource type="Texture2D" uid="uid://y24oywg71pl4" path="res://map/stub/stub.png" id="1_yxgha"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jejp8"]
@@ -10,6 +11,11 @@ radius = 34.1321
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(7, 7)
 texture = ExtResource("1_yxgha")
+
+[node name="Bird" parent="." instance=ExtResource("1_f51vt")]
+position = Vector2(-73, -35)
+scale = Vector2(1.25, 1.25)
+type = "yellow"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

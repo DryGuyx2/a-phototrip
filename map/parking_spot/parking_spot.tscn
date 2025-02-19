@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bg6u7sqdxw0fu"]
+[gd_scene load_steps=2 format=3 uid="uid://bg6u7sqdxw0fu"]
 
 [ext_resource type="Texture2D" uid="uid://bre7j25kntrrv" path="res://map/parking_spot/parking_spot.png" id="1_qmuab"]
-[ext_resource type="PackedScene" uid="uid://bbfwjx1f5i5os" path="res://objects/photo_subjects/bird/bird.tscn" id="2_5ghpr"]
 
 [node name="ParkingSpot" type="Node2D"]
 
@@ -13,11 +12,3 @@ texture = ExtResource("1_qmuab")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(438, 145, 417, 162, 388, 139, 377, 183, 377, 236, 358, 236, 340, 170, 314, 172, 308, 209, 291, 231, 270, 192, 258, 195, 250, 238, 255, 278, 229, 233, 213, 239, 210, 268, 194, 228, 182, 201, 161, 203, 158, 268, 157, 294, 142, 313, 146, 352, -237, 355, -237, 332, -243, 312, -255, 283, -265, 269, -273, 224, -292, 218, -300, 247, -302, 266, -297, 289, -300, 305, -315, 267, -340, 208, -359, 204, -367, 235, -363, 265, -383, 252, -401, 254, -437, 166, -437, -157, -391, -141, -372, -125, -299, -120, -289, -137, -250, -133, -234, -157, -232, -170, -195, -155, -129, -154, -123, -184, -92, -156, -42, -157, -33, -169, -3, -157, -3, -129, 12, -122, 77, -113, 115, -141, 132, -162, 153, -153, 182, -152, 181, -105, 207, -99, 266, -90, 291, -114, 288, -124, 322, -132, 328, -142, 340, -132, 353, -132, 355, -118, 368, -106, 397, -107, 430, -81, 457, -79, 445, 143, 499, 135, 503, -409, -464, -395, -475, 359, -280, 375, 458, 370)
-
-[node name="Bird" parent="." instance=ExtResource("2_5ghpr")]
-position = Vector2(294, -90)
-scale = Vector2(1.5, 1.5)
-
-[node name="Bird2" parent="." instance=ExtResource("2_5ghpr")]
-position = Vector2(-241, -33)
-scale = Vector2(1.5, 1.5)

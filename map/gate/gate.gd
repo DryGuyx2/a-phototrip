@@ -4,7 +4,7 @@ class_name Gate
 @export var exit_point: Node2D
 @export var camera_position: Node2D
 
-@export var camera: Camera2D
+@onready var camera: Camera2D = get_parent().get_parent().find_child("Camera")
 
 # REMEMBER: Connect on exit body entered signal to itself
 
