@@ -170,3 +170,4 @@ animation = &"moving_camera"
 [node name="Step" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ikkvf")
 volume_db = -10.0
+bus = &"SFX"

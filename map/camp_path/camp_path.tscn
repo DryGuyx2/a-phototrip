@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c0lain6cj8oku"]
 
-[ext_resource type="Texture2D" uid="uid://dgc5raahgwybv" path="res://map/camp_intersection_path/camp_intersection_path.png" id="1_upo7l"]
+[ext_resource type="Texture2D" uid="uid://dgc5raahgwybv" path="res://map/camp_path/camp_path.png" id="1_upo7l"]
 
 [node name="CampIntersectionPath" type="Node2D"]
 

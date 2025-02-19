@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyfkhtlrnx55w"]
+
+[ext_resource type="Texture2D" uid="uid://y24oywg71pl4" path="res://map/stub/stub.png" id="1_yxgha"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jejp8"]
+radius = 34.1321
+
+[node name="Stub" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(7, 7)
+texture = ExtResource("1_yxgha")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-152, -353, -135, -325, -130, -290, -160, -247, -157, -212, -367, -108, -352, 54, -323, 92, -320, 153, -292, 125, -261, 205, -245, 156, -230, 193, -218, 154, -183, 259, -160, 177, -134, 252, -120, 196, -96, 255, -78, 184, -54, 242, -39, 160, 4, 274, 16, 212, 32, 194, 61, 256, 75, 198, 95, 243, 113, 91, 158, 199, 188, 41, 222, 143, 249, -3, 282, 92, 306, -49, 333, 3, 329, -205, 117, -194, 84, -267, 84, -398, 447, -408, 448, 341, -438, 343, -434, -363)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-40, 20)
+shape = SubResource("CircleShape2D_jejp8")

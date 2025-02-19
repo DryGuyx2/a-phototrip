@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgc5raahgwybv"
-path="res://.godot/imported/camp_intersection_path.png-48a37e8ded22dc878266608db5a0a2a0.ctex"
+path="res://.godot/imported/camp_path.png-48aed0206e147fb7f18202bbb2d07c58.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://map/camp_intersection_path/camp_intersection_path.png"
-dest_files=["res://.godot/imported/camp_intersection_path.png-48a37e8ded22dc878266608db5a0a2a0.ctex"]
+source_file="res://map/camp_path/camp_path.png"
+dest_files=["res://.godot/imported/camp_path.png-48aed0206e147fb7f18202bbb2d07c58.ctex"]
 
 [params]
 
