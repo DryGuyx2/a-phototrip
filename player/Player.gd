@@ -87,6 +87,7 @@ func _on_camera_finished_flash():
 		return
 	
 	var photo_subject = photo_area.get_overlapping_areas()[0]
+	photo_subject.photographed()
 	DialogueManager.show_example_dialogue_balloon(load("res://player/dialogue/photo.dialogue"), "photo")
 	animation_component.play("idle_camera")
 	photographing = false

@@ -12,10 +12,16 @@ radius = 34.1321
 scale = Vector2(7, 7)
 texture = ExtResource("1_yxgha")
 
-[node name="Bird" parent="." instance=ExtResource("1_f51vt")]
+[node name="Bird" parent="." node_paths=PackedStringArray("exit_position") instance=ExtResource("1_f51vt")]
 position = Vector2(-73, -35)
 scale = Vector2(1.25, 1.25)
 type = "yellow"
+exit_position = NodePath("ExitPosition")
+exit_time = 14.0
+
+[node name="ExitPosition" type="Node2D" parent="Bird"]
+position = Vector2(507.2, 322.4)
+scale = Vector2(0.8, 0.8)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
