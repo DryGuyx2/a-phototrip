@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dxdhvyb7fwrkp"]
+[gd_scene load_steps=26 format=3 uid="uid://dxdhvyb7fwrkp"]
 
 [ext_resource type="PackedScene" uid="uid://timxvbh6c5qq" path="res://player/player.tscn" id="1_3t1ma"]
 [ext_resource type="PackedScene" uid="uid://jpaba8nxu84q" path="res://map/campsite/campsite.tscn" id="2_qcwwe"]
@@ -7,8 +7,10 @@
 [ext_resource type="Script" path="res://map/gate/gate.gd" id="4_qqvtk"]
 [ext_resource type="PackedScene" uid="uid://b7b22y3s1dtaj" path="res://map/intersection/intersection.tscn" id="5_dl3kp"]
 [ext_resource type="PackedScene" uid="uid://bg6u7sqdxw0fu" path="res://map/parking_spot/parking_spot.tscn" id="7_3mtq8"]
-[ext_resource type="PackedScene" uid="uid://dsxef6d44rppb" path="res://map/cliff_path.tscn" id="8_oacsy"]
+[ext_resource type="PackedScene" uid="uid://dsxef6d44rppb" path="res://map/cliff_path/cliff_path.tscn" id="8_oacsy"]
 [ext_resource type="PackedScene" uid="uid://cyfkhtlrnx55w" path="res://map/stub.tscn" id="8_oeojp"]
+[ext_resource type="PackedScene" uid="uid://dw04mj1dxk5g0" path="res://map/cliff/cliff.tscn" id="10_7054t"]
+[ext_resource type="PackedScene" uid="uid://bqawwtu0g82dj" path="res://map/coast/coast.tscn" id="10_hmdfp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mvor"]
 size = Vector2(74, 179)
@@ -45,6 +47,12 @@ size = Vector2(20, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnmih"]
 size = Vector2(368, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qn5sa"]
+size = Vector2(20, 209)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_il10t"]
+size = Vector2(27, 215)
 
 [node name="Main" type="Node2D"]
 
@@ -133,10 +141,13 @@ position = Vector2(-379, 118)
 
 [node name="CameraPosition" type="Node2D" parent="Intersection"]
 
-[node name="GateRight" type="Area2D" parent="Intersection"]
+[node name="GateRight" type="Area2D" parent="Intersection" node_paths=PackedStringArray("exit_point", "camera_position", "camera")]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("4_qqvtk")
+exit_point = NodePath("../../Coast/GateLeft/ExitPoint")
+camera_position = NodePath("../../Coast/CameraPosition")
+camera = NodePath("../../Camera2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Intersection/GateRight"]
 position = Vector2(439, 44)
@@ -195,9 +206,6 @@ position = Vector2(377, 34)
 
 [node name="CameraPosition" type="Node2D" parent="ParkingSpot"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(4240, 352)
-
 [node name="Stub" parent="." instance=ExtResource("8_oeojp")]
 position = Vector2(5448, 363)
 
@@ -221,10 +229,13 @@ position = Vector2(6709, 351)
 
 [node name="CameraPosition" type="Node2D" parent="CliffPath"]
 
-[node name="GateLeft" type="Area2D" parent="CliffPath"]
+[node name="GateLeft" type="Area2D" parent="CliffPath" node_paths=PackedStringArray("exit_point", "camera_position", "camera")]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("4_qqvtk")
+exit_point = NodePath("../../Cliff/GateRight/ExitPoint")
+camera_position = NodePath("../../Cliff/CameraPosition")
+camera = NodePath("../../Camera2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CliffPath/GateLeft"]
 position = Vector2(-436, 77)
@@ -248,9 +259,48 @@ shape = SubResource("RectangleShape2D_dnmih")
 [node name="ExitPoint" type="Node2D" parent="CliffPath/GateDown"]
 position = Vector2(74, 277)
 
+[node name="Cliff" parent="." instance=ExtResource("10_7054t")]
+position = Vector2(7835, 350)
+
+[node name="CameraPosition" type="Node2D" parent="Cliff"]
+
+[node name="GateRight" type="Area2D" parent="Cliff" node_paths=PackedStringArray("exit_point", "camera_position", "camera")]
+script = ExtResource("4_qqvtk")
+exit_point = NodePath("../../CliffPath/GateLeft/ExitPoint")
+camera_position = NodePath("../../CliffPath/CameraPosition")
+camera = NodePath("../../Camera2D")
+
+[node name="ExitPoint" type="Node2D" parent="Cliff/GateRight"]
+position = Vector2(396, 73)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cliff/GateRight"]
+position = Vector2(438, 72.5)
+shape = SubResource("RectangleShape2D_qn5sa")
+
+[node name="Coast" parent="." instance=ExtResource("10_hmdfp")]
+position = Vector2(9008, 354)
+
+[node name="GateLeft" type="Area2D" parent="Coast" node_paths=PackedStringArray("exit_point", "camera_position", "camera")]
+script = ExtResource("4_qqvtk")
+exit_point = NodePath("../../Intersection/GateRight/ExitPoint")
+camera_position = NodePath("../../Intersection/CameraPosition")
+camera = NodePath("../../Camera2D")
+
+[node name="ExitPoint" type="Node2D" parent="Coast/GateLeft"]
+position = Vector2(-383, -93)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coast/GateLeft"]
+position = Vector2(-434.5, -96.5)
+shape = SubResource("RectangleShape2D_il10t")
+
+[node name="CameraPosition" type="Node2D" parent="Coast"]
+
 [node name="Player" parent="." instance=ExtResource("1_3t1ma")]
 position = Vector2(4249, 398)
 speed = 700
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(4240, 352)
 
 [connection signal="body_entered" from="Campsite/GateLeft" to="Campsite/GateLeft" method="_on_body_entered"]
 [connection signal="body_entered" from="CampPath/GateRight" to="CampPath/GateRight" method="_on_body_entered"]
@@ -262,3 +312,5 @@ speed = 700
 [connection signal="body_entered" from="Stub/GateUp" to="Stub/GateUp" method="_on_body_entered"]
 [connection signal="body_entered" from="CliffPath/GateLeft" to="CliffPath/GateLeft" method="_on_body_entered"]
 [connection signal="body_entered" from="CliffPath/GateDown" to="CliffPath/GateDown" method="_on_body_entered"]
+[connection signal="body_entered" from="Cliff/GateRight" to="Cliff/GateRight" method="_on_body_entered"]
+[connection signal="body_entered" from="Coast/GateLeft" to="Coast/GateLeft" method="_on_body_entered"]

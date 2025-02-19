@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw04mj1dxk5g0"]
+
+[ext_resource type="Texture2D" uid="uid://yqgry8s2ub4p" path="res://map/cliff/cliff.png" id="1_fah2f"]
+
+[node name="Cliff" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(7, 7)
+texture = ExtResource("1_fah2f")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(435, 181, 426, 199, 418, 176, 409, 204, 377, 163, 350, 203, 329, 212, 305, 189, 255, 153, 229, 134, 188, 164, 169, 164, 120, 136, 119, 123, 96, 154, 68, 120, 54, 122, 35, 148, 7, 119, -13, 147, -69, 77, -132, 147, -170, 127, -191, 155, -225, 159, -234, 188, -271, 101, -311, 146, -349, 126, -354, 62, -327, 59, -361, -70, -171, -121, -95, -80, -1, -144, 23, -101, 62, -103, 100, -130, 138, -131, 145, -179, 205, -169, 229, -197, 236, -142, 295, -145, 297, -191, 324, -159, 359, -162, 363, -105, 402, -101, 405, -52, 439, -38, 438, -345, -432, -337, -442, 337, 454, 345)
