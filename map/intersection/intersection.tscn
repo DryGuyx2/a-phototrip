@@ -1,20 +1,219 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7b22y3s1dtaj"]
+[gd_scene load_steps=24 format=3 uid="uid://b7b22y3s1dtaj"]
 
 [ext_resource type="Texture2D" uid="uid://bi3l3n4i3jseb" path="res://map/intersection/intersection.png" id="1_ug6ao"]
 [ext_resource type="Texture2D" uid="uid://b11oavnqusgo6" path="res://map/intersection/intersection_bottom_trees.png" id="2_io0fd"]
+[ext_resource type="Texture2D" uid="uid://dcks0if72lo01" path="res://objects/cult/portal.png" id="3_lqpy1"]
+[ext_resource type="Texture2D" uid="uid://cnt4eobrdgxbd" path="res://objects/cult/cultist.png" id="4_wai4u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsb0y"]
+atlas = ExtResource("3_lqpy1")
+region = Rect2(0, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmwib"]
+atlas = ExtResource("3_lqpy1")
+region = Rect2(35, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41dlo"]
+atlas = ExtResource("3_lqpy1")
+region = Rect2(70, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ci4s"]
+atlas = ExtResource("3_lqpy1")
+region = Rect2(105, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vp4m1"]
+atlas = ExtResource("3_lqpy1")
+region = Rect2(140, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stb2l"]
+atlas = ExtResource("3_lqpy1")
+region = Rect2(175, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eie1x"]
+atlas = ExtResource("3_lqpy1")
+region = Rect2(210, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4qli"]
+atlas = ExtResource("3_lqpy1")
+region = Rect2(245, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd182"]
+atlas = ExtResource("3_lqpy1")
+region = Rect2(280, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq5p3"]
+atlas = ExtResource("3_lqpy1")
+region = Rect2(315, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7iaa1"]
+atlas = ExtResource("3_lqpy1")
+region = Rect2(0, 0, 35, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v1nh7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsb0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmwib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41dlo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ci4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vp4m1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stb2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eie1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4qli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd182")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq5p3")
+}],
+"loop": false,
+"name": &"active",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7iaa1")
+}],
+"loop": false,
+"name": &"inactive",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xxysp"]
+radius = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk83x"]
+atlas = ExtResource("4_wai4u")
+region = Rect2(0, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wc6xs"]
+atlas = ExtResource("4_wai4u")
+region = Rect2(15, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqetl"]
+atlas = ExtResource("4_wai4u")
+region = Rect2(30, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euv5f"]
+atlas = ExtResource("4_wai4u")
+region = Rect2(45, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f81ve"]
+atlas = ExtResource("4_wai4u")
+region = Rect2(60, 0, 15, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wwlkh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk83x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wc6xs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqetl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euv5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f81ve")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Intersection" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(7, 7)
 texture = ExtResource("1_ug6ao")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-438, 21, -387, 33, -357, 24, -361, -37, -327, -41, -327, -78, -347, -78, -348, -127, -303, -141, -283, -169, -270, -190, -199, -178, -170, -188, -166, -209, -134, -212, -115, -223, -128, -256, -127, -277, -87, -281, -86, -349, -86, -387, 247, -386, 265, -348, 266, -325, 246, -292, 243, -207, 245, -198, 279, -199, 278, -151, 280, -143, 312, -131, 325, -114, 362, -114, 364, -50, 437, -40, 468, -40, 468, 127, 427, 201, 398, 222, 380, 262, 384, 299, 381, 323, 377, 339, 377, 350, 340, 376, 38, 376, 19, 345, -3, 315, -36, 345, -76, 304, -102, 337, -128, 304, -146, 320, -149, 348, -192, 350, -249, 350, -263, 308, -277, 288, -294, 265, -343, 261, -377, 255, -413, 257, -419, 233, -435, 212, -456, 210, -449, 22, -484, 19, -484, 376, 506, 416, 496, -408, -517, -380)
+polygon = PackedVector2Array(-438, 21, -387, 33, -357, 24, -361, -37, -327, -41, -327, -78, -347, -78, -348, -127, -303, -141, -283, -169, -270, -190, -199, -178, -170, -188, -166, -209, -134, -212, -115, -223, -128, -256, -127, -277, -87, -281, -86, -349, -86, -387, 247, -386, 265, -348, 266, -325, 246, -292, 243, -207, 245, -198, 279, -199, 278, -151, 280, -143, 312, -131, 325, -114, 362, -114, 364, -50, 437, -40, 468, -40, 468, 127, 427, 201, 398, 222, 380, 262, 384, 299, 381, 323, 377, 339, 377, 350, 340, 376, 38, 376, 19, 345, -3, 315, -36, 345, -76, 304, -102, 337, -128, 304, -146, 320, -149, 348, -192, 350, -249, 350, -263, 308, -277, 288, -294, 265, -343, 261, -377, 255, -413, 257, -419, 233, -435, 212, -456, 210, -449, 22, -484, 19, -484, 376, 506, 416, 496, -408, -436, -369)
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="BottomTrees" type="Sprite2D" parent="."]
 z_index = 1
 scale = Vector2(7, 7)
 texture = ExtResource("2_io0fd")
+
+[node name="Portal" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(-1, 0)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_v1nh7")
+animation = &"active"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Portal"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal/StaticBody2D"]
+position = Vector2(14.3333, 8.33333)
+shape = SubResource("CircleShape2D_xxysp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Portal/StaticBody2D"]
+position = Vector2(-13.6667, 8)
+shape = SubResource("CircleShape2D_xxysp")
+
+[node name="Cultists" type="Node2D" parent="."]
+visible = false
+z_index = 1
+scale = Vector2(5, 5)
+
+[node name="Cultist1" type="AnimatedSprite2D" parent="Cultists"]
+position = Vector2(-19.4, -0.2)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_wwlkh")
+frame_progress = 0.626118
+
+[node name="Cultist2" type="AnimatedSprite2D" parent="Cultists"]
+position = Vector2(-13.4, -9)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_wwlkh")
+frame_progress = 0.626118
+
+[node name="Cultist3" type="AnimatedSprite2D" parent="Cultists"]
+position = Vector2(-15.4, 11.2)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_wwlkh")
+frame_progress = 0.626118
+
+[node name="Cultist4" type="AnimatedSprite2D" parent="Cultists"]
+position = Vector2(16.4, 11)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_wwlkh")
+frame_progress = 0.626118
+flip_h = true
+
+[node name="Cultist5" type="AnimatedSprite2D" parent="Cultists"]
+position = Vector2(22.2, 1.4)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_wwlkh")
+frame_progress = 0.626118
+flip_h = true
+
+[node name="Cultist6" type="AnimatedSprite2D" parent="Cultists"]
+position = Vector2(17, -8.8)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_wwlkh")
+frame_progress = 0.626118
+flip_h = true

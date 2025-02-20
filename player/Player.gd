@@ -9,6 +9,7 @@ class_name Player
 @onready var  audio_player: AudioStreamPlayer = $Step
 @onready var photo_area: Area2D = $Pivot/PhotoArea
 @onready var pivot: Node2D = $Pivot
+@onready var interaction_zone = $InteractionZone
 
 var equipped_camera: bool = false
 var photographing: bool = false
@@ -21,6 +22,7 @@ func _ready() -> void:
 	
 	set_collision_mask_value(GlobalData.layers["player_physics"], true)
 	photo_area.set_collision_mask_value(GlobalData.layers["photo_detection"], true)
+	interaction_zone.set_collision_mask_value(GlobalData.layers["interaction"], true)
 
 func _process(delta: float) -> void:
 	handle_input()
@@ -54,8 +56,12 @@ func handle_input():
 func _unhandled_input(event) -> void:
 	if immobile:
 		return
+	if event.is_action_pressed("interact") and not equipped_camera:
+		interact()
+		return
 	if event.is_action_pressed("interact") and equipped_camera:
 		photographing = true
+		return
 
 func handle_animations() -> void:
 	if direction.x > 0:
@@ -76,6 +82,14 @@ func handle_animations() -> void:
 			return
 		animation_component.play("moving")
 
+func interact():
+	if interaction_zone.get_overlapping_areas().is_empty():
+		return
+	
+	var interactable = interaction_zone.get_overlapping_areas()[0]
+	interactable.get_parent().interact()
+
+
 var capturing = false
 func photograph() -> void:
 	if not capturing:
@@ -91,8 +105,17 @@ func _on_camera_finished_flash():
 	
 	var photo_subject = photo_area.get_overlapping_areas()[0]
 	photo_subject.photographed()
-	DialogueManager.show_example_dialogue_balloon(load("res://player/dialogue/photo.dialogue"), "photo_%s" % photo_subject.number)
+	DialogueManager.show_example_dialogue_balloon(load("res://player/dialogue/main.dialogue"), "photo_%s" % photo_subject.number)
 	animation_component.play("idle_camera")
 	album.add_photo(photo_subject.number)
 	photographing = false
 	capturing = false
+
+
+func _on_camp_sleep():
+	immobile = true
+
+
+func _on_camera_awoke():
+	DialogueManager.show_example_dialogue_balloon(load("res://player/dialogue/main.dialogue"), "sleep_complaint")
+	immobile = false

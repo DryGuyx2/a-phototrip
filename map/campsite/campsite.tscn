@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://jpaba8nxu84q"]
+[gd_scene load_steps=2 format=3 uid="uid://jpaba8nxu84q"]
 
-[ext_resource type="PackedScene" uid="uid://b6pqca004itdl" path="res://objects/camp/camp.tscn" id="2_4gio2"]
 [ext_resource type="Texture2D" uid="uid://bgr5rk1oige2o" path="res://map/campsite/campsite.png" id="5_j8085"]
 
 [node name="Campsite" type="Node2D"]
@@ -14,7 +13,3 @@ texture = ExtResource("5_j8085")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border"]
 polygon = PackedVector2Array(875, 596, 875, 576, 875, 413, 799, 413, 758, 413, 759, 192, 413, 225, 150, 220, 145, 408, 88, 416, -2, 416, -2, 598, 858, 594, 875, 596, 926, 689, -56, 696, -58, -63, 971, -34, 938, 607)
-
-[node name="Camp" parent="." instance=ExtResource("2_4gio2")]
-position = Vector2(372, 317)
-scale = Vector2(4, 4)

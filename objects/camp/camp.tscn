@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6pqca004itdl"]
+[gd_scene load_steps=13 format=3 uid="uid://b6pqca004itdl"]
 
 [ext_resource type="Script" path="res://objects/camp/camp.gd" id="1_mq6j5"]
 [ext_resource type="Texture2D" uid="uid://bl1wuaipc30n8" path="res://objects/camp/camp.png" id="2_4q22r"]
@@ -60,12 +60,16 @@ height = 14.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_1d88s"]
 radius = 3.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8353q"]
+radius = 3.0
+
 [node name="Camp" type="StaticBody2D"]
 script = ExtResource("1_mq6j5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_pshik")
+frame_progress = 0.344868
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(12, 9)
@@ -75,3 +79,11 @@ shape = SubResource("CapsuleShape2D_pxx3r")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-4, 11)
 shape = SubResource("CircleShape2D_1d88s")
+
+[node name="InteractionPoint" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionPoint"]
+position = Vector2(13, 9)
+shape = SubResource("CircleShape2D_8353q")
