@@ -4,6 +4,7 @@ class_name Player
 @export var speed: int = 1000
 @export var camera: Camera2D
 @export var album: Album
+@export var intersection: Node2D
 
 @onready var animation_component: AnimatedSprite2D = $AnimatedSprite2D
 @onready var  audio_player: AudioStreamPlayer = $Step
@@ -15,10 +16,12 @@ var equipped_camera: bool = false
 var photographing: bool = false
 var direction: Vector2 = Vector2.ZERO
 var immobile: bool = false
+var cursed = false
 
 func _ready() -> void:
 	set_collision_layer_value(GlobalData.layers["player_physics"], true)
 	set_collision_layer_value(GlobalData.layers["gate"], true)
+	set_collision_layer_value(GlobalData.layers["scene_trigger"], true)
 	
 	set_collision_mask_value(GlobalData.layers["player_physics"], true)
 	photo_area.set_collision_mask_value(GlobalData.layers["photo_detection"], true)
@@ -29,7 +32,7 @@ func _process(delta: float) -> void:
 	handle_animations()
 	handle_sound()
 	
-	if not photographing:
+	if not photographing and not immobile:
 		position += direction * speed * delta
 	move_and_slide()
 
@@ -64,6 +67,8 @@ func _unhandled_input(event) -> void:
 		return
 
 func handle_animations() -> void:
+	if immobile:
+		return
 	if direction.x > 0:
 		animation_component.flip_h = false
 		pivot.scale.x = 1
@@ -72,15 +77,24 @@ func handle_animations() -> void:
 		pivot.scale.x = -1
 	
 	if direction.x == 0 and direction.y == 0:
-		if equipped_camera:
-			animation_component.play("idle_camera")
-			return
-		animation_component.play("idle")
+		play_idle()
 	else:
-		if equipped_camera:
+		play_moving()
+
+func play_moving() -> void:
+	if equipped_camera:
 			animation_component.play("moving_camera")
 			return
+	else:
 		animation_component.play("moving")
+
+func play_idle() -> void:
+	if equipped_camera:
+			animation_component.play("idle_camera")
+			return
+	else:
+		animation_component.play("idle")
+	
 
 func interact():
 	if interaction_zone.get_overlapping_areas().is_empty():
@@ -98,7 +112,7 @@ func photograph() -> void:
 
 func _on_camera_finished_flash():
 	if photo_area.get_overlapping_areas().is_empty():
-		DialogueManager.show_example_dialogue_balloon(load("res://player/dialogue/photo.dialogue"), "no_photo")
+		DialogueManager.show_example_dialogue_balloon(load("res://player/dialogue/main.dialogue"), "no_photo")
 		photographing = false
 		capturing = false
 		return
@@ -107,7 +121,7 @@ func _on_camera_finished_flash():
 	photo_subject.photographed()
 	DialogueManager.show_example_dialogue_balloon(load("res://player/dialogue/main.dialogue"), "photo_%s" % photo_subject.number)
 	animation_component.play("idle_camera")
-	album.add_photo(photo_subject.number)
+	album.add_photo(photo_subject.number, cursed)
 	photographing = false
 	capturing = false
 
@@ -118,4 +132,24 @@ func _on_camp_sleep():
 
 func _on_camera_awoke():
 	DialogueManager.show_example_dialogue_balloon(load("res://player/dialogue/main.dialogue"), "sleep_complaint")
+	immobile = false
+
+func _on_cult_scene_trigger_triggered_scene():
+	immobile = true
+	play_idle()
+	await get_tree().create_timer(1).timeout
+	DialogueManager.show_example_dialogue_balloon(load("res://player/dialogue/main.dialogue"), "spotted_cult")
+	await get_tree().create_timer(1).timeout
+	play_moving()
+	var hide_tween = create_tween()
+	hide_tween.tween_property(self, "position", intersection.hiding_spot.global_position, 3)
+	hide_tween.tween_callback(finish_walking)
+
+func finish_walking() -> void:
+	play_idle()
+	intersection.portal.play("active")
+
+func _on_intersection_ritual_finished():
+	DialogueManager.show_example_dialogue_balloon(load("res://player/dialogue/main.dialogue"), "awoke_from_ritual")
+	await get_tree().create_timer(0.1)
 	immobile = false

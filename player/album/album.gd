@@ -1,23 +1,44 @@
 extends Node2D
 class_name Album
 
-@onready var photo_1 = $Photo1
-@onready var photo_2 = $Photo2
-@onready var photo_3 = $Photo3
+@onready var photo_1_normal = $Normal1
+@onready var photo_2_normal = $Normal2
+@onready var photo_3_normal = $Normal3
+@onready var photo_1_cursed = $Cursed1
+@onready var photo_2_cursed = $Cursed2
+@onready var photo_3_cursed = $Cursed3
 
-@onready var photos = [photo_1, photo_2, photo_3]
+@onready var normal_photos = [photo_1_normal, photo_2_normal, photo_3_normal]
+@onready var cursed_photos = [photo_1_cursed, photo_2_cursed, photo_3_cursed]
+
+@onready var positions = {
+	$Position1: "empty",
+	$Position2: "empty",
+	$Position3: "empty",
+	$Position4: "empty",
+	$Position5: "empty",
+	$Position6: "empty",
+}
+
+func _ready() -> void:
+	normal_photos[0].position = positions.keys()[0].position
 
 func _process(delta: float):
 	if Input.is_action_just_pressed("test_1"):
-		add_photo(1)
+		add_photo(1, true)
 	if Input.is_action_just_pressed("test_2"):
-		curse_photo(1)
+		add_photo(1, false)
 	if Input.is_action_just_pressed("test_3"):
-		add_photo(0)
+		add_photo(0, true)
 
-func add_photo(number) -> void:
-	photos[number].find_child("Normal").visible = true
-
-func curse_photo(number: int) -> void:
-	photos[number].find_child("Normal").visible = false
-	photos[number].find_child("Cursed").visible = true
+func add_photo(number, cursed) -> void:
+	var photo_position
+	for position in positions.keys():
+		if positions[position] == "empty":
+			photo_position = position
+			positions[position] = "used"
+			break
+	if cursed:
+		cursed_photos[number].global_position = photo_position.global_position
+	else:
+		normal_photos[number].global_position = photo_position.global_position

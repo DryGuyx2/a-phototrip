@@ -29,16 +29,17 @@ func finish() -> void:
 
 
 func _on_camp_sleep() -> void:
-	var flash_tween = create_tween()
-	flash_tween.tween_property(sleep_sprite, "modulate:a", 1, sleep_speed / 2).set_trans(Tween.TRANS_LINEAR)
-	flash_tween.play()
-	flash_tween.tween_callback(wake)
+	var sleep_tween = create_tween()
+	sleep_tween.tween_property(sleep_sprite, "modulate:a", 1, sleep_speed / 3).set_trans(Tween.TRANS_LINEAR)
+	sleep_tween.play()
+	sleep_tween.tween_callback(wake)
 
 func wake() -> void:
-	var flash_tween = create_tween()
-	flash_tween.tween_property(sleep_sprite, "modulate:a", 0, sleep_speed / 2).set_trans(Tween.TRANS_LINEAR)
-	flash_tween.play()
-	flash_tween.tween_callback(emit_wake)
+	await get_tree().create_timer(sleep_speed / 3).timeout
+	var wake_tween = create_tween()
+	wake_tween.tween_property(sleep_sprite, "modulate:a", 0, sleep_speed / 3).set_trans(Tween.TRANS_LINEAR)
+	wake_tween.play()
+	wake_tween.tween_callback(emit_wake)
 
 func emit_wake() -> void:
 	emit_signal("awoke")

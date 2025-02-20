@@ -1,12 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://b7b22y3s1dtaj"]
+[gd_scene load_steps=28 format=3 uid="uid://b7b22y3s1dtaj"]
 
 [ext_resource type="Texture2D" uid="uid://bi3l3n4i3jseb" path="res://map/intersection/intersection.png" id="1_ug6ao"]
 [ext_resource type="Script" path="res://map/intersection/intersection.gd" id="1_yhcmu"]
 [ext_resource type="Texture2D" uid="uid://b11oavnqusgo6" path="res://map/intersection/intersection_bottom_trees.png" id="2_io0fd"]
 [ext_resource type="Texture2D" uid="uid://dcks0if72lo01" path="res://objects/cult/portal.png" id="3_lqpy1"]
 [ext_resource type="Texture2D" uid="uid://cnt4eobrdgxbd" path="res://objects/cult/cultist.png" id="4_wai4u"]
-[ext_resource type="Texture2D" uid="uid://d2f308de23g5u" path="res://objects/cult/explosion.png" id="5_7iy7y"]
 [ext_resource type="AudioStream" uid="uid://dytngfyc3kyl8" path="res://objects/cult/cult_noise.wav" id="6_edm8f"]
+[ext_resource type="Script" path="res://objects/scene_trigger/scene_trigger.gd" id="7_ktm5q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gsb0y"]
 atlas = ExtResource("3_lqpy1")
@@ -23,6 +23,30 @@ region = Rect2(70, 0, 35, 28)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ci4s"]
 atlas = ExtResource("3_lqpy1")
 region = Rect2(105, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vp4m1"]
+atlas = ExtResource("3_lqpy1")
+region = Rect2(140, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stb2l"]
+atlas = ExtResource("3_lqpy1")
+region = Rect2(175, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eie1x"]
+atlas = ExtResource("3_lqpy1")
+region = Rect2(210, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4qli"]
+atlas = ExtResource("3_lqpy1")
+region = Rect2(245, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd182"]
+atlas = ExtResource("3_lqpy1")
+region = Rect2(280, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq5p3"]
+atlas = ExtResource("3_lqpy1")
+region = Rect2(315, 0, 35, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7iaa1"]
 atlas = ExtResource("3_lqpy1")
@@ -42,6 +66,24 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5ci4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vp4m1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stb2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eie1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4qli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd182")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq5p3")
 }],
 "loop": false,
 "name": &"active",
@@ -102,6 +144,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwpj1"]
+size = Vector2(51, 189.5)
+
 [node name="Intersection" type="Node2D"]
 script = ExtResource("1_yhcmu")
 
@@ -125,6 +170,8 @@ position = Vector2(-1, 0)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_v1nh7")
 animation = &"active"
+frame = 9
+frame_progress = 1.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Portal"]
 
@@ -135,13 +182,6 @@ shape = SubResource("CircleShape2D_xxysp")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Portal/StaticBody2D"]
 position = Vector2(-13.6667, 8)
 shape = SubResource("CircleShape2D_xxysp")
-
-[node name="Explosion" type="Sprite2D" parent="Portal"]
-visible = false
-z_index = 2
-position = Vector2(0.25, 0)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("5_7iy7y")
 
 [node name="Cultists" type="Node2D" parent="."]
 visible = false
@@ -189,10 +229,17 @@ flip_h = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cultists"]
 stream = ExtResource("6_edm8f")
-volume_db = -30.0
+volume_db = -40.0
 
-[node name="HidingSpot" type="Node2D" parent="."]
-position = Vector2(-212, 281)
+[node name="CultSceneTrigger" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("7_ktm5q")
 
-[connection signal="animation_finished" from="Portal" to="." method="_on_portal_animation_finished"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CultSceneTrigger"]
+position = Vector2(-383, 143)
+shape = SubResource("RectangleShape2D_dwpj1")
+
 [connection signal="finished" from="Cultists/AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="body_entered" from="CultSceneTrigger" to="CultSceneTrigger" method="_on_body_entered"]
+[connection signal="triggered_scene" from="CultSceneTrigger" to="." method="_on_cult_scene_trigger_triggered_scene"]

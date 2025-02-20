@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b6pqca004itdl" path="res://objects/camp/camp.tscn" id="4_vrn81"]
 [ext_resource type="PackedScene" uid="uid://b7b22y3s1dtaj" path="res://map/intersection/intersection.tscn" id="5_dl3kp"]
 [ext_resource type="PackedScene" uid="uid://bg6u7sqdxw0fu" path="res://map/parking_spot/parking_spot.tscn" id="7_3mtq8"]
-[ext_resource type="Script" path="res://objects/cult/cult_scene_trigger.gd" id="7_7i8es"]
+[ext_resource type="Script" path="res://objects/scene_trigger/scene_trigger.gd" id="7_7i8es"]
 [ext_resource type="PackedScene" uid="uid://dsxef6d44rppb" path="res://map/cliff_path/cliff_path.tscn" id="8_oacsy"]
 [ext_resource type="PackedScene" uid="uid://cyfkhtlrnx55w" path="res://map/nest_area/nest_area.tscn" id="8_oeojp"]
 [ext_resource type="PackedScene" uid="uid://dw04mj1dxk5g0" path="res://map/cliff/cliff.tscn" id="10_7054t"]
@@ -198,6 +198,8 @@ script = ExtResource("7_7i8es")
 position = Vector2(-383, 143)
 shape = SubResource("RectangleShape2D_tiokq")
 
+[node name="HidingSpot" type="Node2D" parent="Intersection"]
+
 [node name="ParkingSpot" parent="." instance=ExtResource("7_3mtq8")]
 position = Vector2(4240, 352)
 
@@ -301,14 +303,12 @@ shape = SubResource("RectangleShape2D_il10t")
 
 [node name="CameraPosition" type="Node2D" parent="Coast"]
 
-[node name="Player" parent="." node_paths=PackedStringArray("camera", "album", "intersection") instance=ExtResource("1_3t1ma")]
+[node name="Player" parent="." node_paths=PackedStringArray("camera", "album", "intersection_hiding_spot") instance=ExtResource("1_3t1ma")]
 position = Vector2(4249, 398)
-collision_layer = 0
-collision_mask = 0
 speed = 700
 camera = NodePath("../Camera")
 album = NodePath("../Camera/Album")
-intersection = NodePath("../Intersection")
+intersection_hiding_spot = NodePath("../Intersection/HidingSpot")
 
 [node name="Camera" parent="." instance=ExtResource("12_rcc37")]
 z_index = 2
@@ -319,11 +319,9 @@ position = Vector2(-107, -103)
 
 [connection signal="body_entered" from="Campsite/GateLeft" to="Campsite/GateLeft" method="_on_body_entered"]
 [connection signal="sleep" from="Campsite/Camp" to="Intersection" method="_on_camp_sleep"]
-[connection signal="sleep" from="Campsite/Camp" to="Intersection/CultSceneTrigger" method="_on_camp_sleep"]
 [connection signal="sleep" from="Campsite/Camp" to="Player" method="_on_camp_sleep"]
 [connection signal="sleep" from="Campsite/Camp" to="Camera" method="_on_camp_sleep"]
 [connection signal="body_entered" from="CampPath/GateRight" to="CampPath/GateRight" method="_on_body_entered"]
-[connection signal="ritual_finished" from="Intersection" to="Player" method="_on_intersection_ritual_finished"]
 [connection signal="body_entered" from="Intersection/GateLeft" to="Intersection/GateLeft" method="_on_body_entered"]
 [connection signal="body_entered" from="Intersection/GateRight" to="Intersection/GateRight" method="_on_body_entered"]
 [connection signal="body_entered" from="Intersection/GateDown" to="Intersection/GateDown" method="_on_body_entered"]

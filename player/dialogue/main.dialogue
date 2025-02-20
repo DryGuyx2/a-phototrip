@@ -15,3 +15,15 @@ Josh: Awww, that is such a cute bird!
 Josh: Ugh. What's all that noise? It's been keeping me awake all night!
 
 => END
+
+~ spotted_cult
+
+Josh: What the heck is going on here? I have to take a closer look!
+
+=> END
+
+~ awoke_from_ritual
+
+Josh: Haah... My head hurts. I must have tripped on a branch and hit my head while taking pictures or something.
+
+=> END

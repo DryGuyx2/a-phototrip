@@ -11,6 +11,7 @@ class_name Bird
 var idle_time_left: float = randf_range(3.0, 6.0)
 
 func _ready() -> void:
+	animation_component.play("default_%s" % type)
 	set_collision_layer_value(GlobalData.layers["photo_detection"], true)
 
 

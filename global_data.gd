@@ -5,5 +5,6 @@ var layers: Dictionary = {
 	"player_physics": 1,
 	"gate": 3,
 	"interaction": 4,
+	"scene_trigger": 5,
 }
 
