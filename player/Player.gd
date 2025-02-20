@@ -58,10 +58,10 @@ func _unhandled_input(event) -> void:
 		photographing = true
 
 func handle_animations() -> void:
-	if direction.x == 1:
+	if direction.x > 0:
 		animation_component.flip_h = false
 		pivot.scale.x = 1
-	elif direction.x == -1:
+	elif direction.x < 0:
 		animation_component.flip_h = true
 		pivot.scale.x = -1
 	

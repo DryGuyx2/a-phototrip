@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b7b22y3s1dtaj" path="res://map/intersection/intersection.tscn" id="5_dl3kp"]
 [ext_resource type="PackedScene" uid="uid://bg6u7sqdxw0fu" path="res://map/parking_spot/parking_spot.tscn" id="7_3mtq8"]
 [ext_resource type="PackedScene" uid="uid://dsxef6d44rppb" path="res://map/cliff_path/cliff_path.tscn" id="8_oacsy"]
-[ext_resource type="PackedScene" uid="uid://cyfkhtlrnx55w" path="res://map/stub.tscn" id="8_oeojp"]
+[ext_resource type="PackedScene" uid="uid://cyfkhtlrnx55w" path="res://map/nest_area/nest_area.tscn" id="8_oeojp"]
 [ext_resource type="PackedScene" uid="uid://dw04mj1dxk5g0" path="res://map/cliff/cliff.tscn" id="10_7054t"]
 [ext_resource type="PackedScene" uid="uid://bqawwtu0g82dj" path="res://map/coast/coast.tscn" id="10_hmdfp"]
 [ext_resource type="PackedScene" uid="uid://j8784ry2jjss" path="res://camera/camera.tscn" id="12_rcc37"]
@@ -21,19 +21,19 @@ size = Vector2(74, 179)
 size = Vector2(20, 174)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ps0c5"]
-size = Vector2(20, 168)
+size = Vector2(20, 230)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6hhxy"]
-size = Vector2(20, 201)
+size = Vector2(20, 235)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qi85f"]
 size = Vector2(27, 174)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2rqno"]
-size = Vector2(20, 154)
+size = Vector2(20, 183)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pifi8"]
-size = Vector2(294, 20)
+size = Vector2(314, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nui3w"]
 size = Vector2(337, 20)
@@ -99,7 +99,7 @@ exit_point = NodePath("../../Campsite/GateLeft/ExitPoint")
 camera_position = NodePath("../../Campsite/CameraPosition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CampPath/GateRight"]
-position = Vector2(431, 37)
+position = Vector2(431, 68)
 shape = SubResource("RectangleShape2D_ps0c5")
 
 [node name="ExitPoint" type="Node2D" parent="CampPath/GateRight"]
@@ -111,7 +111,7 @@ exit_point = NodePath("../../ParkingSpot/GateRight/ExitPoint")
 camera_position = NodePath("../../ParkingSpot/CameraPosition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CampPath/GateLeft"]
-position = Vector2(1643, 704.5)
+position = Vector2(1643, 721.5)
 shape = SubResource("RectangleShape2D_6hhxy")
 
 [node name="ExitPoint" type="Node2D" parent="CampPath/GateLeft"]
@@ -121,6 +121,8 @@ position = Vector2(1686, 708)
 
 [node name="Intersection" parent="." instance=ExtResource("5_dl3kp")]
 position = Vector2(3034, 357)
+
+[node name="CameraPosition" type="Node2D" parent="Intersection"]
 
 [node name="GateLeft" type="Area2D" parent="Intersection" node_paths=PackedStringArray("exit_point", "camera_position")]
 collision_layer = 0
@@ -136,8 +138,6 @@ shape = SubResource("RectangleShape2D_qi85f")
 [node name="ExitPoint" type="Node2D" parent="Intersection/GateLeft"]
 position = Vector2(-379, 118)
 
-[node name="CameraPosition" type="Node2D" parent="Intersection"]
-
 [node name="GateRight" type="Area2D" parent="Intersection" node_paths=PackedStringArray("exit_point", "camera_position")]
 collision_layer = 0
 collision_mask = 0
@@ -146,7 +146,7 @@ exit_point = NodePath("../../Coast/GateLeft/ExitPoint")
 camera_position = NodePath("../../Coast/CameraPosition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Intersection/GateRight"]
-position = Vector2(439, 44)
+position = Vector2(439, 58.5)
 shape = SubResource("RectangleShape2D_2rqno")
 
 [node name="ExitPoint" type="Node2D" parent="Intersection/GateRight"]
@@ -156,11 +156,11 @@ position = Vector2(403, 46)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("4_qqvtk")
-exit_point = NodePath("../../Stub/GateUp/ExitPoint")
-camera_position = NodePath("../../Stub/CameraPostion")
+exit_point = NodePath("../../NestArea/GateUp/ExitPoint")
+camera_position = NodePath("../../NestArea/CameraPostion")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Intersection/GateDown"]
-position = Vector2(188, 349)
+position = Vector2(198, 349)
 shape = SubResource("RectangleShape2D_pifi8")
 
 [node name="ExitPoint" type="Node2D" parent="Intersection/GateDown"]
@@ -199,21 +199,21 @@ position = Vector2(377, 34)
 
 [node name="CameraPosition" type="Node2D" parent="ParkingSpot"]
 
-[node name="Stub" parent="." instance=ExtResource("8_oeojp")]
+[node name="NestArea" parent="." instance=ExtResource("8_oeojp")]
 position = Vector2(5448, 363)
 
-[node name="CameraPostion" type="Node2D" parent="Stub"]
+[node name="CameraPostion" type="Node2D" parent="NestArea"]
 
-[node name="GateUp" type="Area2D" parent="Stub" node_paths=PackedStringArray("exit_point", "camera_position")]
+[node name="GateUp" type="Area2D" parent="NestArea" node_paths=PackedStringArray("exit_point", "camera_position")]
 script = ExtResource("4_qqvtk")
 exit_point = NodePath("../../Intersection/GateDown/ExitPoint")
 camera_position = NodePath("../../Intersection/CameraPosition")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Stub/GateUp"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NestArea/GateUp"]
 position = Vector2(-29, -345)
 shape = SubResource("RectangleShape2D_g6a0i")
 
-[node name="ExitPoint" type="Node2D" parent="Stub/GateUp"]
+[node name="ExitPoint" type="Node2D" parent="NestArea/GateUp"]
 position = Vector2(-28, -301)
 
 [node name="CliffPath" parent="." instance=ExtResource("8_oacsy")]
@@ -294,7 +294,6 @@ album = NodePath("../Camera/Album")
 [node name="Album" parent="Camera" instance=ExtResource("13_vt8ry")]
 visible = false
 position = Vector2(-107, -103)
-scale = Vector2(1, 1)
 
 [connection signal="body_entered" from="Campsite/GateLeft" to="Campsite/GateLeft" method="_on_body_entered"]
 [connection signal="body_entered" from="CampPath/GateRight" to="CampPath/GateRight" method="_on_body_entered"]
@@ -303,7 +302,7 @@ scale = Vector2(1, 1)
 [connection signal="body_entered" from="Intersection/GateDown" to="Intersection/GateDown" method="_on_body_entered"]
 [connection signal="body_entered" from="Intersection/GateUp" to="Intersection/GateUp" method="_on_body_entered"]
 [connection signal="body_entered" from="ParkingSpot/GateRight" to="ParkingSpot/GateRight" method="_on_body_entered"]
-[connection signal="body_entered" from="Stub/GateUp" to="Stub/GateUp" method="_on_body_entered"]
+[connection signal="body_entered" from="NestArea/GateUp" to="NestArea/GateUp" method="_on_body_entered"]
 [connection signal="body_entered" from="CliffPath/GateLeft" to="CliffPath/GateLeft" method="_on_body_entered"]
 [connection signal="body_entered" from="CliffPath/GateDown" to="CliffPath/GateDown" method="_on_body_entered"]
 [connection signal="body_entered" from="Cliff/GateRight" to="Cliff/GateRight" method="_on_body_entered"]

@@ -22,14 +22,12 @@ texture = SubResource("PlaceholderTexture2D_sjgv8")
 visible = false
 position = Vector2(97, 13)
 rotation = 0.0984442
-scale = Vector2(1, 1)
 texture = ExtResource("3_f668a")
 
 [node name="Cursed" type="Sprite2D" parent="Photo1"]
 visible = false
 position = Vector2(97, 13)
 rotation = 0.0984442
-scale = Vector2(1, 1)
 texture = ExtResource("3_mi6oe")
 
 [node name="Photo2" type="Node2D" parent="."]

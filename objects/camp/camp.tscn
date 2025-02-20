@@ -64,6 +64,7 @@ radius = 3.0
 script = ExtResource("1_mq6j5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_pshik")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

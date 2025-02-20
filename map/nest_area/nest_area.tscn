@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyfkhtlrnx55w"]
+
+[ext_resource type="PackedScene" uid="uid://bbfwjx1f5i5os" path="res://objects/photo_subjects/bird/bird.tscn" id="1_f51vt"]
+[ext_resource type="Texture2D" uid="uid://cg5dyixyx3cce" path="res://map/nest_area/stub.png" id="1_febce"]
+[ext_resource type="Texture2D" uid="uid://bpe7unfw3wdpe" path="res://map/nest_area/nest_area_bottom_trees.png" id="1_irmuu"]
+[ext_resource type="Texture2D" uid="uid://g4oxuony0uys" path="res://map/nest_area/nest_area.png" id="2_5e73y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bj6mk"]
+radius = 1.79968
+height = 10.7905
+
+[node name="NestArea" type="Node2D"]
+
+[node name="BottomTrees" type="Sprite2D" parent="."]
+z_index = 1
+scale = Vector2(7, 7)
+texture = ExtResource("1_irmuu")
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(7, 7)
+texture = ExtResource("2_5e73y")
+
+[node name="Bird" parent="." node_paths=PackedStringArray("exit_position") instance=ExtResource("1_f51vt")]
+position = Vector2(-22, -41)
+scale = Vector2(1.25, 1.25)
+type = "yellow"
+exit_position = NodePath("ExitPosition")
+exit_time = 14.0
+
+[node name="ExitPosition" type="Node2D" parent="Bird"]
+position = Vector2(507.2, 322.4)
+scale = Vector2(0.8, 0.8)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-152, -353, -135, -325, -130, -290, -160, -247, -157, -212, -411, -109, -386, 82, -357, 166, -335, 219, -302, 274, -246, 308, -227, 277, -213, 271, -191, 288, -171, 332, -152, 310, -140, 308, -109, 321, -86, 333, -67, 314, -49, 310, -25, 304, 16, 335, 28, 305, 43, 303, 68, 330, 89, 305, 116, 295, 130, 253, 164, 275, 200, 198, 230, 217, 263, 160, 290, 150, 320, 105, 377, 7, 380, -212, 117, -194, 84, -267, 84, -398, 447, -408, 448, 341, -438, 343, -434, -363)
+
+[node name="Stub" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(43, -3)
+scale = Vector2(5, 5)
+texture = ExtResource("1_febce")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Stub"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stub/StaticBody2D2"]
+position = Vector2(-8.4, 1.8)
+rotation = 1.55183
+shape = SubResource("CapsuleShape2D_bj6mk")
