@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckpw8p5eqcdpq"]
+
+[ext_resource type="Script" path="res://player/album/album.gd" id="1_jhro3"]
+[ext_resource type="Texture2D" uid="uid://cn2f1l0rhltah" path="res://player/album/photo_1.png" id="2_ew88k"]
+[ext_resource type="Texture2D" uid="uid://caou1giy2hng0" path="res://player/album/photo_2.png" id="3_f668a"]
+[ext_resource type="Texture2D" uid="uid://dyoqxwkubtwph" path="res://player/album/cursed_photo_placeholder.png" id="3_mi6oe"]
+[ext_resource type="Texture2D" uid="uid://dot6qj0wgfv4j" path="res://player/album/photo_3.png" id="4_sdufi"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sjgv8"]
+
+[node name="Album" type="Node2D"]
+script = ExtResource("1_jhro3")
+
+[node name="Book" type="Sprite2D" parent="."]
+position = Vector2(126.5, 150.5)
+scale = Vector2(331, 395)
+texture = SubResource("PlaceholderTexture2D_sjgv8")
+
+[node name="Photo1" type="Node2D" parent="."]
+
+[node name="Normal" type="Sprite2D" parent="Photo1"]
+visible = false
+position = Vector2(97, 13)
+rotation = 0.0984442
+scale = Vector2(1, 1)
+texture = ExtResource("3_f668a")
+
+[node name="Cursed" type="Sprite2D" parent="Photo1"]
+visible = false
+position = Vector2(97, 13)
+rotation = 0.0984442
+scale = Vector2(1, 1)
+texture = ExtResource("3_mi6oe")
+
+[node name="Photo2" type="Node2D" parent="."]
+
+[node name="Normal" type="Sprite2D" parent="Photo2"]
+visible = false
+position = Vector2(15, 16)
+rotation = 0.0851011
+texture = ExtResource("2_ew88k")
+
+[node name="Cursed" type="Sprite2D" parent="Photo2"]
+visible = false
+position = Vector2(15, 16)
+rotation = 0.0851011
+texture = ExtResource("3_mi6oe")
+
+[node name="Photo3" type="Node2D" parent="."]
+
+[node name="Normal" type="Sprite2D" parent="Photo3"]
+visible = false
+position = Vector2(21, 101)
+rotation = -0.0755
+texture = ExtResource("4_sdufi")
+
+[node name="Cursed" type="Sprite2D" parent="Photo3"]
+visible = false
+position = Vector2(21, 101)
+rotation = -0.0755
+texture = ExtResource("3_mi6oe")

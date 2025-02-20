@@ -4,6 +4,7 @@ class_name Bird
 @export var type: String
 @export var exit_position: Node2D
 @export var exit_time: float
+@export var number: int
 
 @onready var animation_component: AnimatedSprite2D = $AnimatedSprite2D
 

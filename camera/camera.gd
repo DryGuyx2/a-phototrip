@@ -7,10 +7,6 @@ signal finished_flash
 @onready var flash_sprite = $Flash
 @onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
-func _process(delta):
-	if Input.is_action_just_pressed("test_1"):
-		flash()
-
 func flash() -> void:
 	audio_player.play()
 	var flash_tween = create_tween()

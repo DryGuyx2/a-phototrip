@@ -146,7 +146,7 @@ stream_0/weight = 1.0
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(5, 5)
 script = ExtResource("1_6qjth")
-speed = 400
+speed = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3.68)

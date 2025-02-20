@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dxdhvyb7fwrkp"]
+[gd_scene load_steps=28 format=3 uid="uid://dxdhvyb7fwrkp"]
 
 [ext_resource type="PackedScene" uid="uid://timxvbh6c5qq" path="res://player/player.tscn" id="1_3t1ma"]
 [ext_resource type="PackedScene" uid="uid://jpaba8nxu84q" path="res://map/campsite/campsite.tscn" id="2_qcwwe"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dw04mj1dxk5g0" path="res://map/cliff/cliff.tscn" id="10_7054t"]
 [ext_resource type="PackedScene" uid="uid://bqawwtu0g82dj" path="res://map/coast/coast.tscn" id="10_hmdfp"]
 [ext_resource type="PackedScene" uid="uid://j8784ry2jjss" path="res://camera/camera.tscn" id="12_rcc37"]
+[ext_resource type="PackedScene" uid="uid://ckpw8p5eqcdpq" path="res://player/album/album.tscn" id="13_vt8ry"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mvor"]
 size = Vector2(74, 179)
@@ -282,12 +283,18 @@ shape = SubResource("RectangleShape2D_il10t")
 
 [node name="CameraPosition" type="Node2D" parent="Coast"]
 
-[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_3t1ma")]
+[node name="Player" parent="." node_paths=PackedStringArray("camera", "album") instance=ExtResource("1_3t1ma")]
 position = Vector2(4249, 398)
-speed = 700
+speed = 300
 camera = NodePath("../Camera")
+album = NodePath("../Camera/Album")
 
 [node name="Camera" parent="." instance=ExtResource("12_rcc37")]
+
+[node name="Album" parent="Camera" instance=ExtResource("13_vt8ry")]
+visible = false
+position = Vector2(-107, -103)
+scale = Vector2(1, 1)
 
 [connection signal="body_entered" from="Campsite/GateLeft" to="Campsite/GateLeft" method="_on_body_entered"]
 [connection signal="body_entered" from="CampPath/GateRight" to="CampPath/GateRight" method="_on_body_entered"]

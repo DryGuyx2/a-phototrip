@@ -2,7 +2,8 @@ extends CharacterBody2D
 class_name Player
 
 @export var speed: int = 1000
-@export var camera: Camera2D 
+@export var camera: Camera2D
+@export var album: Album
 
 @onready var animation_component: AnimatedSprite2D = $AnimatedSprite2D
 @onready var  audio_player: AudioStreamPlayer = $Step
@@ -44,6 +45,9 @@ func handle_input():
 	
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
+	if Input.is_action_just_pressed("album"):
+		album.visible = not album.visible
+	
 	if Input.is_action_just_pressed("equip"):
 		equipped_camera = not equipped_camera
 
@@ -78,7 +82,6 @@ func photograph() -> void:
 		capturing = true
 		camera.flash()
 
-
 func _on_camera_finished_flash():
 	if photo_area.get_overlapping_areas().is_empty():
 		DialogueManager.show_example_dialogue_balloon(load("res://player/dialogue/photo.dialogue"), "no_photo")
@@ -88,7 +91,8 @@ func _on_camera_finished_flash():
 	
 	var photo_subject = photo_area.get_overlapping_areas()[0]
 	photo_subject.photographed()
-	DialogueManager.show_example_dialogue_balloon(load("res://player/dialogue/photo.dialogue"), "photo")
+	DialogueManager.show_example_dialogue_balloon(load("res://player/dialogue/photo.dialogue"), "photo_%s" % photo_subject.number)
 	animation_component.play("idle_camera")
+	album.add_photo(photo_subject.number)
 	photographing = false
 	capturing = false
