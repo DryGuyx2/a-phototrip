@@ -1,9 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqawwtu0g82dj"]
+[gd_scene load_steps=5 format=3 uid="uid://bqawwtu0g82dj"]
 
 [ext_resource type="Texture2D" uid="uid://m88gwunh6t7a" path="res://map/coast/coast.png" id="1_hl7ln"]
+[ext_resource type="PackedScene" uid="uid://bbfwjx1f5i5os" path="res://objects/photo_subjects/bird/bird.tscn" id="1_jtj4l"]
 [ext_resource type="Texture2D" uid="uid://cvfmkftwhscsp" path="res://map/coast/coast_bottom_trees.png" id="2_qonij"]
 
+[sub_resource type="Curve2D" id="Curve2D_xp03g"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 458, 289, 0, 0, 0, 0, 427, 317, 0, 0, 0, 0, 390, 323, 0, 0, 0, 0, 351, 297, 0, 0, 0, 0, 332, 256, 0, 0, 0, 0, 334, 194, 0, 0, 0, 0, 329, 82, 0, 0, 0, 0, 328, -4, 0, 0, 0, 0, 335, -65, 0, 0, 0, 0, 358, -104, 0, 0, 0, 0, 385, -122, 0, 0, 0, 0, 409, -122, 0, 0, 0, 0, 439, -101, 0, 0, 0, 0, 446, -65, 0, 0, 0, 0, 446, -2, 0, 0, 0, 0, 458, 289)
+}
+point_count = 16
+
 [node name="Coast" type="Node2D"]
+
+[node name="Path2D" type="Path2D" parent="."]
+z_index = 4
+position = Vector2(-49, -88)
+curve = SubResource("Curve2D_xp03g")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(449.814, 90.4968)
+rotation = -1.39837
+progress = 823.465
+rotates = false
+
+[node name="Bird" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("exit_position", "path_follow", "flight_turnpoint") instance=ExtResource("1_jtj4l")]
+z_index = 2
+position = Vector2(-24.663, -11.16)
+rotation = 1.39626
+scale = Vector2(1.25, 1.25)
+type = "red"
+exit_position = NodePath("../../../ExitPosition")
+path_follow = NodePath("..")
+flight_turnpoint = NodePath("../../TurnPoint")
+
+[node name="TurnPoint" type="Node2D" parent="Path2D"]
+position = Vector2(393, 87)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(7, 7)
@@ -18,3 +49,6 @@ polygon = PackedVector2Array(-437, 16, -426, 21, -429, 61, -433, 92, -388, 299, 
 z_index = 1
 scale = Vector2(7, 7)
 texture = ExtResource("2_qonij")
+
+[node name="ExitPosition" type="Node2D" parent="."]
+position = Vector2(373, -365)

@@ -1,23 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bbfwjx1f5i5os"]
+[gd_scene load_steps=20 format=3 uid="uid://bbfwjx1f5i5os"]
 
 [ext_resource type="Script" path="res://objects/photo_subjects/bird/bird.gd" id="1_4ggdc"]
-[ext_resource type="Texture2D" uid="uid://cnemusqcpcqwl" path="res://objects/photo_subjects/bird/bird.png" id="2_ydmwa"]
+[ext_resource type="Texture2D" uid="uid://cnemusqcpcqwl" path="res://objects/photo_subjects/bird/bird_flying.png" id="2_y38xn"]
 [ext_resource type="Texture2D" uid="uid://ciws8h0hn7cyn" path="res://objects/photo_subjects/bird/bird_nest.png" id="3_nuddp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hifl7"]
 size = Vector2(12, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q6byq"]
-atlas = ExtResource("2_ydmwa")
-region = Rect2(0, 0, 5, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qgx16"]
-atlas = ExtResource("2_ydmwa")
-region = Rect2(5, 0, 5, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iy0qg"]
-atlas = ExtResource("2_ydmwa")
-region = Rect2(10, 0, 5, 5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qdckg"]
 atlas = ExtResource("3_nuddp")
@@ -35,30 +23,48 @@ region = Rect2(10, 5, 5, 5)
 atlas = ExtResource("3_nuddp")
 region = Rect2(15, 5, 5, 5)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_brpvr"]
-atlas = ExtResource("2_ydmwa")
-region = Rect2(0, 0, 5, 5)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_mtjev"]
 atlas = ExtResource("3_nuddp")
 region = Rect2(0, 5, 5, 5)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5peh"]
+atlas = ExtResource("2_y38xn")
+region = Rect2(0, 0, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdecn"]
+atlas = ExtResource("2_y38xn")
+region = Rect2(5, 0, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drp01"]
+atlas = ExtResource("2_y38xn")
+region = Rect2(10, 0, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap3sq"]
+atlas = ExtResource("2_y38xn")
+region = Rect2(0, 15, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36xt2"]
+atlas = ExtResource("2_y38xn")
+region = Rect2(5, 15, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0uloe"]
+atlas = ExtResource("2_y38xn")
+region = Rect2(10, 15, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5thma"]
+atlas = ExtResource("2_y38xn")
+region = Rect2(0, 5, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7u7n"]
+atlas = ExtResource("2_y38xn")
+region = Rect2(5, 5, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpn0c"]
+atlas = ExtResource("2_y38xn")
+region = Rect2(10, 5, 5, 5)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_2h3po"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q6byq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qgx16")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iy0qg")
-}],
-"loop": false,
-"name": &"acting_blue",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qdckg")
@@ -78,19 +84,53 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_brpvr")
-}],
-"loop": false,
-"name": &"default_blue",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_mtjev")
 }],
 "loop": false,
 "name": &"default_yellow",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5peh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdecn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drp01")
+}],
+"loop": true,
+"name": &"flight_blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ap3sq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36xt2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0uloe")
+}],
+"loop": true,
+"name": &"flight_red",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5thma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7u7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpn0c")
+}],
+"loop": true,
+"name": &"flight_yellow",
+"speed": 7.0
 }]
 
 [node name="Bird" type="Area2D"]
@@ -107,6 +147,6 @@ shape = SubResource("RectangleShape2D_hifl7")
 position = Vector2(13, 13)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_2h3po")
-animation = &"acting_blue"
+animation = &"flight_blue"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

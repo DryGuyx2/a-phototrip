@@ -305,7 +305,7 @@ shape = SubResource("RectangleShape2D_il10t")
 position = Vector2(4249, 398)
 collision_layer = 0
 collision_mask = 0
-speed = 300
+speed = 700
 camera = NodePath("../Camera")
 album = NodePath("../Camera/Album")
 intersection = NodePath("../Intersection")
@@ -336,5 +336,6 @@ position = Vector2(-107, -103)
 [connection signal="body_entered" from="CliffPath/GateDown" to="CliffPath/GateDown" method="_on_body_entered"]
 [connection signal="body_entered" from="Cliff/GateRight" to="Cliff/GateRight" method="_on_body_entered"]
 [connection signal="body_entered" from="Coast/GateLeft" to="Coast/GateLeft" method="_on_body_entered"]
+[connection signal="photographed" from="Player" to="Camera" method="_on_player_photographed"]
 [connection signal="awoke" from="Camera" to="Player" method="_on_camera_awoke"]
 [connection signal="finished_flash" from="Camera" to="Player" method="_on_camera_finished_flash"]

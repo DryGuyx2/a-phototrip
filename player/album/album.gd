@@ -28,8 +28,6 @@ func _process(delta: float):
 		add_photo(1, true)
 	if Input.is_action_just_pressed("test_2"):
 		add_photo(1, false)
-	if Input.is_action_just_pressed("test_3"):
-		add_photo(0, true)
 
 func add_photo(number, cursed) -> void:
 	var photo_position

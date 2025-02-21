@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dw04mj1dxk5g0"]
+[gd_scene load_steps=4 format=3 uid="uid://dw04mj1dxk5g0"]
 
 [ext_resource type="Texture2D" uid="uid://yqgry8s2ub4p" path="res://map/cliff/cliff.png" id="1_fah2f"]
+[ext_resource type="PackedScene" uid="uid://bbfwjx1f5i5os" path="res://objects/photo_subjects/bird/bird.tscn" id="2_13om1"]
+
+[sub_resource type="Curve2D" id="Curve2D_h7pnl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -410, 252, 0, 0, 0, 0, -396, 219, 0, 0, 0, 0, -371, 207, 0, 0, 0, 0, -345, 199, 0, 0, 0, 0, -295, 198, 0, 0, 0, 0, 306, 225, 0, 0, 0, 0, 364, 227, 0, 0, 0, 0, 389, 249, 0, 0, 0, 0, 383, 272, 0, 0, 0, 0, 369, 290, 0, 0, 0, 0, 347, 296, 0, 0, 0, 0, 310, 310, 0, 0, 0, 0, 283, 323, 0, 0, 0, 0, 235, 332, 0, 0, 0, 0, -262, 323, 0, 0, 0, 0, -303, 314, 0, 0, 0, 0, -344, 300, 0, 0, 0, 0, -377, 280, 0, 0, 0, 0, -398, 261, 0, 0, 0, 0, -410, 252)
+}
+point_count = 20
 
 [node name="Cliff" type="Node2D"]
 
@@ -12,3 +19,28 @@ texture = ExtResource("1_fah2f")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(435, 181, 426, 199, 418, 176, 409, 204, 377, 163, 350, 203, 329, 212, 305, 189, 255, 153, 229, 134, 188, 164, 169, 164, 120, 136, 119, 123, 96, 154, 68, 120, 54, 122, 35, 148, 7, 119, -13, 147, -69, 77, -132, 147, -170, 127, -191, 155, -225, 159, -234, 188, -271, 101, -311, 146, -349, 126, -354, 62, -327, 59, -361, -70, -171, -121, -95, -80, -1, -144, 23, -101, 62, -103, 100, -130, 138, -131, 145, -179, 205, -169, 229, -197, 236, -142, 295, -145, 297, -191, 324, -159, 359, -162, 363, -105, 402, -101, 405, -52, 439, -38, 438, -345, -432, -337, -442, 337, 454, 345)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_h7pnl")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-165.654, 203.811)
+rotation = 0.0448949
+progress = 270.27
+rotates = false
+
+[node name="Bird" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("exit_position", "path_follow", "flight_turnpoint") instance=ExtResource("2_13om1")]
+z_index = 2
+position = Vector2(-14.9966, -14.1521)
+scale = Vector2(1.25, 1.25)
+type = "blue"
+exit_position = NodePath("../../../BirdExit")
+exit_time = 1.0
+path_follow = NodePath("..")
+flight_turnpoint = NodePath("../../TurnPoint")
+
+[node name="TurnPoint" type="Node2D" parent="Path2D"]
+position = Vector2(-13, 269)
+
+[node name="BirdExit" type="Node2D" parent="."]
+position = Vector2(-604, 250)

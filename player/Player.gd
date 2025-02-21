@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+signal photographed
+
 @export var speed: int = 1000
 @export var camera: Camera2D
 @export var album: Album
@@ -20,6 +22,7 @@ var direction: Vector2 = Vector2.ZERO
 var immobile: bool = false
 var cursed = false
 
+
 func _ready() -> void:
 	set_collision_layer_value(GlobalData.layers["player_physics"], true)
 	set_collision_layer_value(GlobalData.layers["gate"], true)
@@ -32,6 +35,7 @@ func _ready() -> void:
 	DialogueManager.dialogue_started.connect(_on_dialogue_started)
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
+
 func _process(delta: float) -> void:
 	handle_input()
 	handle_animations()
@@ -41,10 +45,12 @@ func _process(delta: float) -> void:
 		position += direction * speed * delta
 	move_and_slide()
 
+
 func handle_sound():
 	if animation_component.animation == "moving" or animation_component.animation =="moving_camera":
 		if animation_component.frame == 1:
 			audio_player.play()
+
 
 func handle_input():
 	if immobile:
@@ -120,7 +126,6 @@ func interact():
 var capturing = false
 func photograph() -> void:
 	if not capturing:
-		print("Capturing")
 		capturing = true
 		animation_component.play("photographing")
 
@@ -142,6 +147,7 @@ func _on_camera_finished_flash():
 	
 	var photo_subject = photo_area.get_overlapping_areas()[0]
 	photo_subject.photographed()
+	emit_signal("photographed")
 	DialogueManager.show_example_dialogue_balloon(main_dialogue, "photo_%s" % photo_subject.number)
 	animation_component.play("idle_camera")
 	album.add_photo(photo_subject.number, cursed)
@@ -153,6 +159,7 @@ func immobilize() -> void:
 	play_idle()
 	immobile = true
 	direction = Vector2.ZERO
+
 
 func _on_camp_sleep():
 	immobilize()
