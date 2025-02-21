@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://ckpw8p5eqcdpq"]
 
 [ext_resource type="Script" path="res://player/album/album.gd" id="1_jhro3"]
-[ext_resource type="Texture2D" uid="uid://cn2f1l0rhltah" path="res://player/album/photo_1.png" id="2_ew88k"]
+[ext_resource type="Texture2D" uid="uid://bjglpspuueqt4" path="res://player/album/photo_1.png" id="2_ew88k"]
 [ext_resource type="Texture2D" uid="uid://dnf2brn8g38vv" path="res://camera/black_square.png" id="2_oolpo"]
 [ext_resource type="Texture2D" uid="uid://b6jm11ij2rdco" path="res://player/album/album.png" id="2_upgbt"]
 [ext_resource type="Texture2D" uid="uid://caou1giy2hng0" path="res://player/album/photo_2.png" id="3_f668a"]
-[ext_resource type="Texture2D" uid="uid://dyoqxwkubtwph" path="res://player/album/cursed_photo_placeholder.png" id="3_mi6oe"]
-[ext_resource type="Texture2D" uid="uid://ddqlonmo3kmm2" path="res://player/album/cursed_1.png" id="3_oejce"]
-[ext_resource type="Texture2D" uid="uid://d0125h8wrryx3" path="res://player/album/cursed_2.png" id="4_5uriu"]
+[ext_resource type="Texture2D" uid="uid://p54byem1v4ak" path="res://player/album/bird_creature.png" id="4_c07m2"]
 [ext_resource type="Texture2D" uid="uid://dot6qj0wgfv4j" path="res://player/album/photo_3.png" id="4_sdufi"]
+[ext_resource type="Texture2D" uid="uid://07x86oh3v54m" path="res://player/album/tree_creature.png" id="5_k2tud"]
+[ext_resource type="Texture2D" uid="uid://ce42gerl4wvcm" path="res://player/album/water_creature.png" id="6_xthtg"]
 
 [node name="Album" type="Node2D"]
 z_index = 4
@@ -29,25 +29,25 @@ texture = ExtResource("2_upgbt")
 [node name="Cursed1" type="Sprite2D" parent="."]
 position = Vector2(-653.151, 16.7791)
 rotation = 0.0984442
-texture = ExtResource("3_oejce")
+texture = ExtResource("4_c07m2")
 
 [node name="Cursed2" type="Sprite2D" parent="."]
 position = Vector2(-654.151, 99.7791)
-texture = ExtResource("4_5uriu")
+texture = ExtResource("5_k2tud")
 
 [node name="Cursed3" type="Sprite2D" parent="."]
 position = Vector2(-649.445, 185)
 rotation = 0.0851011
-texture = ExtResource("3_mi6oe")
+texture = ExtResource("6_xthtg")
 
 [node name="Normal1" type="Sprite2D" parent="."]
-position = Vector2(-743.445, 102)
-texture = ExtResource("2_ew88k")
-
-[node name="Normal2" type="Sprite2D" parent="."]
 position = Vector2(-744.445, 17)
 rotation = -0.0755
 texture = ExtResource("3_f668a")
+
+[node name="Normal2" type="Sprite2D" parent="."]
+position = Vector2(-743.445, 102)
+texture = ExtResource("2_ew88k")
 
 [node name="Normal3" type="Sprite2D" parent="."]
 position = Vector2(-743.445, 183)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0125h8wrryx3"
-path="res://.godot/imported/cursed_2.png-56e43460304776f83a4124c59667b8ef.ctex"
+uid="uid://p54byem1v4ak"
+path="res://.godot/imported/bird_creature.png-6dda94b1080c459ec118a1d2f3587aad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/album/cursed_2.png"
-dest_files=["res://.godot/imported/cursed_2.png-56e43460304776f83a4124c59667b8ef.ctex"]
+source_file="res://player/album/bird_creature.png"
+dest_files=["res://.godot/imported/bird_creature.png-6dda94b1080c459ec118a1d2f3587aad.ctex"]
 
 [params]
 
