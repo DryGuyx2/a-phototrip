@@ -29,7 +29,7 @@ rotation = 0.0448949
 progress = 270.27
 rotates = false
 
-[node name="Bird" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("exit_position", "path_follow", "flight_turnpoint") instance=ExtResource("2_13om1")]
+[node name="BlueBird" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("exit_position", "path_follow", "flight_turnpoint") instance=ExtResource("2_13om1")]
 z_index = 2
 position = Vector2(-14.9966, -14.1521)
 scale = Vector2(1.25, 1.25)
@@ -37,6 +37,7 @@ type = "blue"
 exit_position = NodePath("../../../BirdExit")
 exit_time = 1.0
 number = 1
+flying = true
 path_follow = NodePath("..")
 flight_turnpoint = NodePath("../../TurnPoint")
 

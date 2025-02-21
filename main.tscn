@@ -315,7 +315,7 @@ z_index = 2
 
 [node name="Album" parent="Camera" instance=ExtResource("13_vt8ry")]
 visible = false
-position = Vector2(-107, -103)
+position = Vector2(-200, -235)
 
 [connection signal="body_entered" from="Campsite/GateLeft" to="Campsite/GateLeft" method="_on_body_entered"]
 [connection signal="sleep" from="Campsite/Camp" to="Intersection" method="_on_camp_sleep"]

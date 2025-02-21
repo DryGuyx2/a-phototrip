@@ -23,14 +23,16 @@ rotation = -1.39837
 progress = 823.465
 rotates = false
 
-[node name="Bird" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("exit_position", "path_follow", "flight_turnpoint") instance=ExtResource("1_jtj4l")]
+[node name="RedBird" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("exit_position", "path_follow", "flight_turnpoint") instance=ExtResource("1_jtj4l")]
 z_index = 2
 position = Vector2(-24.663, -11.16)
 rotation = 1.39626
 scale = Vector2(1.25, 1.25)
 type = "red"
 exit_position = NodePath("../../../ExitPosition")
+exit_time = 1.0
 number = 2
+flying = true
 path_follow = NodePath("..")
 flight_turnpoint = NodePath("../../TurnPoint")
 

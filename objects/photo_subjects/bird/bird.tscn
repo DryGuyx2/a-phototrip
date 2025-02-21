@@ -147,6 +147,6 @@ shape = SubResource("RectangleShape2D_hifl7")
 position = Vector2(13, 13)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_2h3po")
-animation = &"flight_blue"
+animation = &"acting_yellow"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

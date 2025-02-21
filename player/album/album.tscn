@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckpw8p5eqcdpq"]
+[gd_scene load_steps=10 format=3 uid="uid://ckpw8p5eqcdpq"]
 
 [ext_resource type="Script" path="res://player/album/album.gd" id="1_jhro3"]
 [ext_resource type="Texture2D" uid="uid://cn2f1l0rhltah" path="res://player/album/photo_1.png" id="2_ew88k"]
+[ext_resource type="Texture2D" uid="uid://dnf2brn8g38vv" path="res://camera/black_square.png" id="2_oolpo"]
 [ext_resource type="Texture2D" uid="uid://b6jm11ij2rdco" path="res://player/album/album.png" id="2_upgbt"]
 [ext_resource type="Texture2D" uid="uid://caou1giy2hng0" path="res://player/album/photo_2.png" id="3_f668a"]
 [ext_resource type="Texture2D" uid="uid://dyoqxwkubtwph" path="res://player/album/cursed_photo_placeholder.png" id="3_mi6oe"]
@@ -10,7 +11,15 @@
 [ext_resource type="Texture2D" uid="uid://dot6qj0wgfv4j" path="res://player/album/photo_3.png" id="4_sdufi"]
 
 [node name="Album" type="Node2D"]
+z_index = 4
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_jhro3")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.533333)
+position = Vector2(123, 167)
+scale = Vector2(8.60667, 6.13333)
+texture = ExtResource("2_oolpo")
 
 [node name="Book" type="Sprite2D" parent="."]
 position = Vector2(126.5, 150.5)
