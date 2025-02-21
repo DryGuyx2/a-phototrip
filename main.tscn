@@ -50,7 +50,7 @@ size = Vector2(21, 220)
 size = Vector2(218, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5fqsu"]
-size = Vector2(23, 348)
+size = Vector2(24, 360)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnmih"]
 size = Vector2(368, 20)
@@ -247,7 +247,7 @@ exit_point = NodePath("../../Cliff/GateRight/ExitPoint")
 camera_position = NodePath("../../Cliff/CameraPosition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CliffPath/GateLeft"]
-position = Vector2(-434.5, 155)
+position = Vector2(-434, 161)
 shape = SubResource("RectangleShape2D_5fqsu")
 
 [node name="ExitPoint" type="Node2D" parent="CliffPath/GateLeft"]

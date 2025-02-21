@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/album/album.gd" id="1_jhro3"]
 [ext_resource type="Texture2D" uid="uid://cn2f1l0rhltah" path="res://player/album/photo_1.png" id="2_ew88k"]
-[ext_resource type="Texture2D" uid="uid://njaphbr5mn6t" path="res://player/album/album.png" id="2_upgbt"]
+[ext_resource type="Texture2D" uid="uid://b6jm11ij2rdco" path="res://player/album/album.png" id="2_upgbt"]
 [ext_resource type="Texture2D" uid="uid://caou1giy2hng0" path="res://player/album/photo_2.png" id="3_f668a"]
 [ext_resource type="Texture2D" uid="uid://dyoqxwkubtwph" path="res://player/album/cursed_photo_placeholder.png" id="3_mi6oe"]
 [ext_resource type="Texture2D" uid="uid://ddqlonmo3kmm2" path="res://player/album/cursed_1.png" id="3_oejce"]
@@ -20,7 +20,6 @@ texture = ExtResource("2_upgbt")
 [node name="Cursed1" type="Sprite2D" parent="."]
 position = Vector2(-653.151, 16.7791)
 rotation = 0.0984442
-scale = Vector2(1, 1)
 texture = ExtResource("3_oejce")
 
 [node name="Cursed2" type="Sprite2D" parent="."]

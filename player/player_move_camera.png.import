@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2pvwpur4lona"
-path="res://.godot/imported/player_walking_camera.png-35ec38032019bfea25341f9f7d96d290.ctex"
+uid="uid://bl1bawfwh1o6"
+path="res://.godot/imported/player_move_camera.png-06f071ef2331faeeab04a791d87a820a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/player_walking_camera.png"
-dest_files=["res://.godot/imported/player_walking_camera.png-35ec38032019bfea25341f9f7d96d290.ctex"]
+source_file="res://player/player_move_camera.png"
+dest_files=["res://.godot/imported/player_move_camera.png-06f071ef2331faeeab04a791d87a820a.ctex"]
 
 [params]
 

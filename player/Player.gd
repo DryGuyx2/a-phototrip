@@ -69,6 +69,8 @@ func _unhandled_input(event) -> void:
 func handle_animations() -> void:
 	if immobile:
 		return
+	if capturing:
+		return
 	if direction.x > 0:
 		animation_component.flip_h = false
 		pivot.scale.x = 1
@@ -94,7 +96,7 @@ func play_idle() -> void:
 			return
 	else:
 		animation_component.play("idle")
-	
+
 
 func interact():
 	if interaction_zone.get_overlapping_areas().is_empty():
@@ -107,8 +109,16 @@ func interact():
 var capturing = false
 func photograph() -> void:
 	if not capturing:
+		print("Capturing")
 		capturing = true
+		animation_component.play("photographing")
+
+func _on_animated_sprite_2d_animation_finished():
+	if animation_component.animation == "photographing":
+		print("Flashing")
 		camera.flash()
+	else:
+		print("Not flashing")
 
 func _on_camera_finished_flash():
 	if photo_area.get_overlapping_areas().is_empty():
