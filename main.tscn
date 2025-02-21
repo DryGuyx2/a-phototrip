@@ -23,19 +23,19 @@ size = Vector2(74, 179)
 size = Vector2(20, 174)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ps0c5"]
-size = Vector2(20, 230)
+size = Vector2(13, 265)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6hhxy"]
-size = Vector2(20, 235)
+size = Vector2(15, 269)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qi85f"]
-size = Vector2(27, 174)
+size = Vector2(27, 175)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2rqno"]
 size = Vector2(20, 183)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pifi8"]
-size = Vector2(314, 20)
+size = Vector2(318, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nui3w"]
 size = Vector2(337, 20)
@@ -50,7 +50,7 @@ size = Vector2(21, 220)
 size = Vector2(218, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5fqsu"]
-size = Vector2(20, 192)
+size = Vector2(23, 348)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnmih"]
 size = Vector2(368, 20)
@@ -108,7 +108,7 @@ exit_point = NodePath("../../Campsite/GateLeft/ExitPoint")
 camera_position = NodePath("../../Campsite/CameraPosition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CampPath/GateRight"]
-position = Vector2(431, 68)
+position = Vector2(427.5, 85.5)
 shape = SubResource("RectangleShape2D_ps0c5")
 
 [node name="ExitPoint" type="Node2D" parent="CampPath/GateRight"]
@@ -120,7 +120,7 @@ exit_point = NodePath("../../ParkingSpot/GateRight/ExitPoint")
 camera_position = NodePath("../../ParkingSpot/CameraPosition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CampPath/GateLeft"]
-position = Vector2(1643, 721.5)
+position = Vector2(1651.5, 738.5)
 shape = SubResource("RectangleShape2D_6hhxy")
 
 [node name="ExitPoint" type="Node2D" parent="CampPath/GateLeft"]
@@ -141,7 +141,7 @@ exit_point = NodePath("../../Campsite/GateRight/ExitPoint")
 camera_position = NodePath("../../Campsite/CameraPosition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Intersection/GateLeft"]
-position = Vector2(-431, 118)
+position = Vector2(-431, 118.5)
 shape = SubResource("RectangleShape2D_qi85f")
 
 [node name="ExitPoint" type="Node2D" parent="Intersection/GateLeft"]
@@ -169,7 +169,7 @@ exit_point = NodePath("../../NestArea/GateUp/ExitPoint")
 camera_position = NodePath("../../NestArea/CameraPostion")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Intersection/GateDown"]
-position = Vector2(198, 349)
+position = Vector2(196, 349)
 shape = SubResource("RectangleShape2D_pifi8")
 
 [node name="ExitPoint" type="Node2D" parent="Intersection/GateDown"]
@@ -247,7 +247,7 @@ exit_point = NodePath("../../Cliff/GateRight/ExitPoint")
 camera_position = NodePath("../../Cliff/CameraPosition")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CliffPath/GateLeft"]
-position = Vector2(-436, 77)
+position = Vector2(-434.5, 155)
 shape = SubResource("RectangleShape2D_5fqsu")
 
 [node name="ExitPoint" type="Node2D" parent="CliffPath/GateLeft"]
@@ -305,7 +305,7 @@ shape = SubResource("RectangleShape2D_il10t")
 position = Vector2(4249, 398)
 collision_layer = 0
 collision_mask = 0
-speed = 700
+speed = 300
 camera = NodePath("../Camera")
 album = NodePath("../Camera/Album")
 intersection = NodePath("../Intersection")
