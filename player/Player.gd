@@ -9,9 +9,8 @@ signal photographed
 @export var intersection: Node2D
 
 @onready var animation_component: AnimatedSprite2D = $AnimatedSprite2D
-@onready var  audio_player: AudioStreamPlayer = $Step
-@onready var photo_area: Area2D = $Pivot/PhotoArea
-@onready var pivot: Node2D = $Pivot
+@onready var audio_player: AudioStreamPlayer = $Step
+@onready var photo_area: Area2D = $PhotoArea
 @onready var interaction_zone = $InteractionZone
 
 var dialoguing = false
@@ -61,6 +60,15 @@ func handle_input():
 		photograph()
 		return
 	
+	if Input.is_action_pressed("move_up"):
+		photo_area.global_rotation_degrees = -90
+	elif Input.is_action_pressed("move_down"):
+		photo_area.global_rotation_degrees = 90
+	elif Input.is_action_pressed("move_left"):
+		photo_area.global_rotation_degrees = 180
+	elif Input.is_action_pressed("move_right"):
+		photo_area.global_rotation_degrees = 0
+	
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	if Input.is_action_just_pressed("album"):
@@ -87,10 +95,8 @@ func handle_animations() -> void:
 		return
 	if direction.x > 0:
 		animation_component.flip_h = false
-		pivot.scale.x = 1
 	elif direction.x < 0:
 		animation_component.flip_h = true
-		pivot.scale.x = -1
 	
 	if direction.x == 0 and direction.y == 0:
 		play_idle()

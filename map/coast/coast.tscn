@@ -18,7 +18,7 @@ position = Vector2(-49, -88)
 curve = SubResource("Curve2D_xp03g")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(449.814, 90.4968)
+position = Vector2(449.814, 90.497)
 rotation = -1.39837
 progress = 823.465
 rotates = false
@@ -30,6 +30,7 @@ rotation = 1.39626
 scale = Vector2(1.25, 1.25)
 type = "red"
 exit_position = NodePath("../../../ExitPosition")
+number = 2
 path_follow = NodePath("..")
 flight_turnpoint = NodePath("../../TurnPoint")
 

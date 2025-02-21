@@ -36,6 +36,7 @@ scale = Vector2(1.25, 1.25)
 type = "blue"
 exit_position = NodePath("../../../BirdExit")
 exit_time = 1.0
+number = 1
 path_follow = NodePath("..")
 flight_turnpoint = NodePath("../../TurnPoint")
 
