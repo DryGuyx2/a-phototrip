@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw04mj1dxk5g0"]
+[gd_scene load_steps=5 format=3 uid="uid://dw04mj1dxk5g0"]
 
 [ext_resource type="Texture2D" uid="uid://yqgry8s2ub4p" path="res://map/cliff/cliff.png" id="1_fah2f"]
+[ext_resource type="Script" path="res://map/bird_area.gd" id="1_y3vhy"]
 [ext_resource type="PackedScene" uid="uid://bbfwjx1f5i5os" path="res://objects/photo_subjects/bird/bird.tscn" id="2_13om1"]
 
 [sub_resource type="Curve2D" id="Curve2D_h7pnl"]
@@ -10,6 +11,7 @@ _data = {
 point_count = 20
 
 [node name="Cliff" type="Node2D"]
+script = ExtResource("1_y3vhy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(7, 7)
@@ -35,7 +37,7 @@ position = Vector2(-14.9966, -14.1521)
 scale = Vector2(1.25, 1.25)
 type = "blue"
 exit_position = NodePath("../../../BirdExit")
-exit_time = 1.0
+exit_time = 2.0
 number = 1
 flying = true
 path_follow = NodePath("..")
@@ -45,4 +47,4 @@ flight_turnpoint = NodePath("../../TurnPoint")
 position = Vector2(-13, 269)
 
 [node name="BirdExit" type="Node2D" parent="."]
-position = Vector2(-604, 250)
+position = Vector2(-803, 259)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyfkhtlrnx55w"]
+[gd_scene load_steps=7 format=3 uid="uid://cyfkhtlrnx55w"]
 
 [ext_resource type="PackedScene" uid="uid://bbfwjx1f5i5os" path="res://objects/photo_subjects/bird/bird.tscn" id="1_f51vt"]
 [ext_resource type="Texture2D" uid="uid://cg5dyixyx3cce" path="res://map/nest_area/stub.png" id="1_febce"]
 [ext_resource type="Texture2D" uid="uid://bpe7unfw3wdpe" path="res://map/nest_area/nest_area_bottom_trees.png" id="1_irmuu"]
+[ext_resource type="Script" path="res://map/bird_area.gd" id="1_q8d40"]
 [ext_resource type="Texture2D" uid="uid://g4oxuony0uys" path="res://map/nest_area/nest_area.png" id="2_5e73y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bj6mk"]
@@ -10,6 +11,10 @@ radius = 1.79968
 height = 10.7905
 
 [node name="NestArea" type="Node2D"]
+script = ExtResource("1_q8d40")
+
+[node name="ExitPosition" type="Node2D" parent="."]
+position = Vector2(612, 362)
 
 [node name="BottomTrees" type="Sprite2D" parent="."]
 z_index = 1
@@ -19,17 +24,6 @@ texture = ExtResource("1_irmuu")
 [node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(7, 7)
 texture = ExtResource("2_5e73y")
-
-[node name="Bird" parent="." node_paths=PackedStringArray("exit_position") instance=ExtResource("1_f51vt")]
-position = Vector2(-22, -41)
-scale = Vector2(1.25, 1.25)
-type = "yellow"
-exit_position = NodePath("ExitPosition")
-exit_time = 14.0
-
-[node name="ExitPosition" type="Node2D" parent="Bird"]
-position = Vector2(507.2, 322.4)
-scale = Vector2(0.8, 0.8)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -48,3 +42,12 @@ texture = ExtResource("1_febce")
 position = Vector2(-8.4, 1.8)
 rotation = 1.55183
 shape = SubResource("CapsuleShape2D_bj6mk")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="YellowBird" parent="Node2D" node_paths=PackedStringArray("exit_position") instance=ExtResource("1_f51vt")]
+position = Vector2(-22, -41)
+scale = Vector2(1.25, 1.25)
+type = "yellow"
+exit_position = NodePath("../../ExitPosition")
+exit_time = 2.0

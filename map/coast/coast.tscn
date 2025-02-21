@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqawwtu0g82dj"]
+[gd_scene load_steps=6 format=3 uid="uid://bqawwtu0g82dj"]
 
 [ext_resource type="Texture2D" uid="uid://m88gwunh6t7a" path="res://map/coast/coast.png" id="1_hl7ln"]
 [ext_resource type="PackedScene" uid="uid://bbfwjx1f5i5os" path="res://objects/photo_subjects/bird/bird.tscn" id="1_jtj4l"]
+[ext_resource type="Script" path="res://map/bird_area.gd" id="1_ut13f"]
 [ext_resource type="Texture2D" uid="uid://cvfmkftwhscsp" path="res://map/coast/coast_bottom_trees.png" id="2_qonij"]
 
 [sub_resource type="Curve2D" id="Curve2D_xp03g"]
@@ -11,6 +12,7 @@ _data = {
 point_count = 16
 
 [node name="Coast" type="Node2D"]
+script = ExtResource("1_ut13f")
 
 [node name="Path2D" type="Path2D" parent="."]
 z_index = 4
@@ -30,7 +32,7 @@ rotation = 1.39626
 scale = Vector2(1.25, 1.25)
 type = "red"
 exit_position = NodePath("../../../ExitPosition")
-exit_time = 1.0
+exit_time = 2.0
 number = 2
 flying = true
 path_follow = NodePath("..")
@@ -54,4 +56,4 @@ scale = Vector2(7, 7)
 texture = ExtResource("2_qonij")
 
 [node name="ExitPosition" type="Node2D" parent="."]
-position = Vector2(373, -365)
+position = Vector2(387, -590)

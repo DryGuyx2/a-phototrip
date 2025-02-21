@@ -217,8 +217,9 @@ position = Vector2(377, 34)
 
 [node name="CameraPosition" type="Node2D" parent="ParkingSpot"]
 
-[node name="NestArea" parent="." instance=ExtResource("8_oeojp")]
+[node name="NestArea" parent="." node_paths=PackedStringArray("intersection") instance=ExtResource("8_oeojp")]
 position = Vector2(5448, 363)
+intersection = NodePath("../Intersection")
 
 [node name="CameraPostion" type="Node2D" parent="NestArea"]
 
@@ -251,7 +252,7 @@ position = Vector2(-434, 161)
 shape = SubResource("RectangleShape2D_5fqsu")
 
 [node name="ExitPoint" type="Node2D" parent="CliffPath/GateLeft"]
-position = Vector2(-407, 77)
+position = Vector2(-362, 125)
 
 [node name="GateDown" type="Area2D" parent="CliffPath" node_paths=PackedStringArray("exit_point", "camera_position")]
 collision_layer = 0
@@ -267,8 +268,9 @@ shape = SubResource("RectangleShape2D_dnmih")
 [node name="ExitPoint" type="Node2D" parent="CliffPath/GateDown"]
 position = Vector2(74, 277)
 
-[node name="Cliff" parent="." instance=ExtResource("10_7054t")]
+[node name="Cliff" parent="." node_paths=PackedStringArray("intersection") instance=ExtResource("10_7054t")]
 position = Vector2(7835, 350)
+intersection = NodePath("../Intersection")
 
 [node name="CameraPosition" type="Node2D" parent="Cliff"]
 
@@ -284,8 +286,9 @@ position = Vector2(396, 73)
 position = Vector2(438, 72.5)
 shape = SubResource("RectangleShape2D_qn5sa")
 
-[node name="Coast" parent="." instance=ExtResource("10_hmdfp")]
+[node name="Coast" parent="." node_paths=PackedStringArray("intersection") instance=ExtResource("10_hmdfp")]
 position = Vector2(9008, 354)
+intersection = NodePath("../Intersection")
 
 [node name="GateLeft" type="Area2D" parent="Coast" node_paths=PackedStringArray("exit_point", "camera_position")]
 script = ExtResource("4_qqvtk")
@@ -305,7 +308,7 @@ shape = SubResource("RectangleShape2D_il10t")
 position = Vector2(4249, 398)
 collision_layer = 0
 collision_mask = 0
-speed = 700
+speed = 1000
 camera = NodePath("../Camera")
 album = NodePath("../Camera/Album")
 intersection = NodePath("../Intersection")

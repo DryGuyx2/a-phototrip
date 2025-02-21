@@ -154,9 +154,14 @@ func _on_camera_finished_flash():
 	var photo_subject = photo_area.get_overlapping_areas()[0]
 	photo_subject.photographed()
 	emit_signal("photographed")
-	DialogueManager.show_example_dialogue_balloon(main_dialogue, "photo_%s" % photo_subject.number)
+	var title = "photo_%s" % photo_subject.number
+	if photo_subject.cursed:
+		print("Curse")
+		title = "%s_cursed" % title
+	print(photo_subject.cursed)
+	DialogueManager.show_example_dialogue_balloon(main_dialogue, title)
 	animation_component.play("idle_camera")
-	album.add_photo(photo_subject.number, cursed)
+	album.add_photo(photo_subject.number, photo_subject.cursed)
 	photographing = false
 	capturing = false
 

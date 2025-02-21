@@ -13,9 +13,11 @@ class_name Bird
 @export var flight_turnpoint: Node2D
 
 @onready var animation_component: AnimatedSprite2D = $AnimatedSprite2D
+@onready var initial_position: Vector2 = get_parent().global_position
 
+var intersection: Node2D
 var idle_time_left: float = randf_range(3.0, 6.0)
-
+var cursed = false
 var flown_away: bool = false
 
 func _ready() -> void:
@@ -28,13 +30,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("test_3") and get_name() == "RedBird":
-		print(global_position)
 	if flying and not flown_away:
 		animation_component.flip_h = global_position.x > flight_turnpoint.global_position.x
 		path_follow.progress += flight_speed * delta
-		if get_name() == "RedBird":
-			print("Path")
 		return
 	if idle_time_left > 0:
 		idle_time_left -= delta
@@ -53,10 +51,19 @@ func photographed() -> void:
 	flown_away = true
 	animation_component.play("flight_%s" % type)
 	var flight_tween = create_tween()
-	flight_tween.tween_property(animation_component, "global_position", exit_position.global_position, exit_time)
+	flight_tween.tween_property(get_parent(), "global_position", exit_position.global_position, exit_time)
 	flight_tween.tween_callback(disable_photography)
 	flight_tween.play()
 
 
 func disable_photography() -> void:
 	set_collision_layer_value(GlobalData.layers["photo_detection"], false)
+
+func reset() -> void:
+	set_collision_layer_value(GlobalData.layers["photo_detection"], true)
+	get_parent().global_position = initial_position
+	flown_away = false
+
+func _on_ritual_finished():
+	reset()
+	cursed = true
