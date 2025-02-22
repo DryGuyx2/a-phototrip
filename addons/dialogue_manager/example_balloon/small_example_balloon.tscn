@@ -104,6 +104,7 @@ grow_vertical = 2
 theme = SubResource("Theme_qq3yp")
 
 [node name="Panel" type="Panel" parent="Balloon"]
+modulate = Color(1, 1, 1, 0.490196)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -142,7 +143,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
-skip_pause_at_abbreviations = PackedStringArray("Mr", "Mrs", "Ms", "Dr", "etc", "eg", "ex")
 
 [node name="Responses" type="MarginContainer" parent="Balloon"]
 layout_mode = 1
