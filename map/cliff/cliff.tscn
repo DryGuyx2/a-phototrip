@@ -1,33 +1,32 @@
-[gd_scene load_steps=12 format=3 uid="uid://dw04mj1dxk5g0"]
+[gd_scene load_steps=11 format=3 uid="uid://dw04mj1dxk5g0"]
 
 [ext_resource type="Texture2D" uid="uid://yqgry8s2ub4p" path="res://map/cliff/cliff.png" id="1_fah2f"]
 [ext_resource type="Script" path="res://map/bird_area.gd" id="1_y3vhy"]
 [ext_resource type="PackedScene" uid="uid://bbfwjx1f5i5os" path="res://objects/photo_subjects/bird/bird.tscn" id="2_13om1"]
-[ext_resource type="Texture2D" uid="uid://bkn88refdpw65" path="res://objects/photo_subjects/bird/bird_eating.png" id="4_227ps"]
 [ext_resource type="Texture2D" uid="uid://cnemusqcpcqwl" path="res://objects/photo_subjects/bird/bird_flying.png" id="5_6fx3i"]
 [ext_resource type="Script" path="res://map/cliff/fake_bird.gd" id="6_ken73"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r2q7w"]
-atlas = ExtResource("4_227ps")
-region = Rect2(0, 15, 5, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pk7ef"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sf0c"]
 atlas = ExtResource("5_6fx3i")
-region = Rect2(0, 15, 5, 5)
+region = Rect2(0, 5, 5, 5)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_68q6o"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_45j3q"]
 atlas = ExtResource("5_6fx3i")
-region = Rect2(5, 15, 5, 5)
+region = Rect2(0, 5, 5, 5)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_duxpt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkm66"]
 atlas = ExtResource("5_6fx3i")
-region = Rect2(10, 15, 5, 5)
+region = Rect2(5, 5, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0873y"]
+atlas = ExtResource("5_6fx3i")
+region = Rect2(10, 5, 5, 5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0p5kc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r2q7w")
+"texture": SubResource("AtlasTexture_2sf0c")
 }],
 "loop": true,
 "name": &"default",
@@ -35,13 +34,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pk7ef")
+"texture": SubResource("AtlasTexture_45j3q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_68q6o")
+"texture": SubResource("AtlasTexture_xkm66")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_duxpt")
+"texture": SubResource("AtlasTexture_0873y")
 }],
 "loop": true,
 "name": &"flying",
