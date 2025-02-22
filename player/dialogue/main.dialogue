@@ -1,6 +1,12 @@
-~ start
+~ start_0
 
-Josh: Aaaah. Finally got off work, and now i can do my favourite hobby, bird photography! I've heard some weird rumors about this place, but it seems to have a solid amount of wildlife, and what could go wrong anyways?
+Josh: Aaaah. Finally got off work, and now i can do my favourite hobby, bird photography!
+
+=> start_1
+
+~ start_1
+
+Josh: I've heard some weird rumors about this place, but it seems to have a solid amount of wildlife, and what could go wrong anyways?
 
 => END
 

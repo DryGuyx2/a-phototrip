@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://d2dtr0n45af62"]
 
 [ext_resource type="Texture2D" uid="uid://dnf2brn8g38vv" path="res://camera/black_square.png" id="1_n70a6"]
-[ext_resource type="FontFile" uid="uid://dawrd0vxhqgh3" path="res://dogica.ttf" id="2_fdsrl"]
+[ext_resource type="FontFile" uid="uid://g3q58jarv7nq" path="res://Pixeled.ttf" id="2_ua341"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_su0nw"]
-font = ExtResource("2_fdsrl")
+font = ExtResource("2_ua341")
 
 [sub_resource type="LabelSettings" id="LabelSettings_7xhea"]
-font = ExtResource("2_fdsrl")
+font = ExtResource("2_ua341")
 
 [node name="EndScreen" type="Node2D"]
 z_index = 1
@@ -39,11 +39,8 @@ offset_top = -36.8
 offset_right = 182.0
 offset_bottom = 64.2
 text = "Credits:
-
-GrassyPotat: Art
-
-Gran: Sfx and testing
-
-DryGuy: Programming"
+Art: GrassyPotat
+Sfx and testing: Gran
+Programming: DryGuy"
 label_settings = SubResource("LabelSettings_7xhea")
 horizontal_alignment = 1

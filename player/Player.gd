@@ -256,4 +256,4 @@ func _on_dialogue_ended(_resource):
 
 func _on_start_menu_game_started():
 	immobile = false
-	DialogueManager.show_example_dialogue_balloon(main_dialogue, "start")
+	DialogueManager.show_example_dialogue_balloon(main_dialogue, "start_0")

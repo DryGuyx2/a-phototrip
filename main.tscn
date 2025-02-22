@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://j8784ry2jjss" path="res://camera/camera.tscn" id="12_rcc37"]
 [ext_resource type="PackedScene" uid="uid://ckpw8p5eqcdpq" path="res://player/album/album.tscn" id="13_vt8ry"]
 [ext_resource type="PackedScene" uid="uid://dstpabo3pxix" path="res://map/road/road.tscn" id="17_brnwf"]
-[ext_resource type="PackedScene" uid="uid://cnh6gitah8j88" path="res://start_menu/start_menu.tscn" id="18_icw22"]
+[ext_resource type="PackedScene" uid="uid://bye06dcblufnq" path="res://start_menu/start_menu.tscn" id="18_icw22"]
 [ext_resource type="Texture2D" uid="uid://dcks0if72lo01" path="res://objects/cult/portal.png" id="19_1wwru"]
 [ext_resource type="Texture2D" uid="uid://d2f308de23g5u" path="res://objects/cult/explosion.png" id="20_r5h5p"]
 [ext_resource type="Texture2D" uid="uid://cg5dyixyx3cce" path="res://map/nest_area/stub.png" id="21_rs70s"]
@@ -510,7 +510,6 @@ position = Vector2(0, 12.8571)
 z_index = 1
 position = Vector2(-0.142655, 5.57143)
 rotation = 1.5708
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_71cig")
 
 [connection signal="body_entered" from="Campsite/GateLeft" to="Campsite/GateLeft" method="_on_body_entered"]
