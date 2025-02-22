@@ -16,6 +16,9 @@ signal awoke
 @onready var cursed_photos = [$PhotoDisplay/Cursed1, $PhotoDisplay/Cursed2, $PhotoDisplay/Cursed3]
 
 
+func _ready() -> void:
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+
 func flash() -> void:
 	audio_player.play()
 	var flash_tween = create_tween()
@@ -56,11 +59,12 @@ func emit_wake() -> void:
 
 
 func remove_photo() -> void:
-	await get_tree().create_timer(4).timeout
 	var photo_slide_tween = create_tween()
 	photo_slide_tween.tween_property(photo, "position:y", 632/6, 1).set_trans(Tween.TRANS_LINEAR)
 	photo_slide_tween.play()
+	showing_photo = false
 
+var showing_photo: bool = false
 var photo: Sprite2D
 func _on_player_photographed(number, cursed):
 	if cursed:
@@ -69,9 +73,9 @@ func _on_player_photographed(number, cursed):
 		photo = normal_photos[number]
 	photo.position = Vector2(0, 632/6)
 	photo.visible = true
+	showing_photo = true
 	var photo_slide_tween = create_tween()
 	photo_slide_tween.tween_property(photo, "global_position", global_position, 1).set_trans(Tween.TRANS_QUAD)
-	photo_slide_tween.tween_callback(remove_photo)
 	photo_slide_tween.play()
 	
 	var night_tween = create_tween()
@@ -81,3 +85,7 @@ func _on_player_photographed(number, cursed):
 func _on_intersection_ritual_finished():
 	night_sprite.modulate.a = 0
 	sleep_sprite.modulate.a = 0
+
+func _on_dialogue_ended(_resource: DialogueResource):
+	if showing_photo:
+		remove_photo()

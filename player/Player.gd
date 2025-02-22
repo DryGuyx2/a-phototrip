@@ -25,6 +25,7 @@ var cursed = false
 var photos_taken = 0
 
 func _ready() -> void:
+	immobile = true
 	set_collision_layer_value(GlobalData.layers["player_physics"], true)
 	set_collision_layer_value(GlobalData.layers["gate"], true)
 	set_collision_layer_value(GlobalData.layers["scene_trigger"], true)
@@ -222,3 +223,8 @@ func _on_dialogue_ended(_resource):
 		triggered_sleepy = true
 		DialogueManager.show_example_dialogue_balloon(main_dialogue, "sleepy")
 		emit_signal("sleepy")
+
+
+func _on_start_menu_game_started():
+	immobile = false
+	DialogueManager.show_example_dialogue_balloon(main_dialogue, "start")

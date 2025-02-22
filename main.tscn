@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dxdhvyb7fwrkp"]
+[gd_scene load_steps=34 format=3 uid="uid://dxdhvyb7fwrkp"]
 
 [ext_resource type="PackedScene" uid="uid://timxvbh6c5qq" path="res://player/player.tscn" id="1_3t1ma"]
 [ext_resource type="PackedScene" uid="uid://jpaba8nxu84q" path="res://map/campsite/campsite.tscn" id="2_qcwwe"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://j8784ry2jjss" path="res://camera/camera.tscn" id="12_rcc37"]
 [ext_resource type="PackedScene" uid="uid://ckpw8p5eqcdpq" path="res://player/album/album.tscn" id="13_vt8ry"]
 [ext_resource type="PackedScene" uid="uid://dstpabo3pxix" path="res://map/road/road.tscn" id="17_brnwf"]
+[ext_resource type="PackedScene" uid="uid://cnh6gitah8j88" path="res://start_menu/start_menu.tscn" id="18_icw22"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mvor"]
 size = Vector2(74, 179)
@@ -314,6 +315,19 @@ shape = SubResource("RectangleShape2D_il10t")
 
 [node name="CameraPosition" type="Node2D" parent="Coast"]
 
+[node name="Road" parent="." node_paths=PackedStringArray("car") instance=ExtResource("17_brnwf")]
+position = Vector2(13372, 389)
+car = NodePath("../ParkingSpot/Car")
+
+[node name="CarExplosionPoint" type="Node2D" parent="Road"]
+position = Vector2(-2591, -61)
+
+[node name="EndCarEntryPoint" type="Node2D" parent="Road"]
+position = Vector2(3136, -59)
+
+[node name="StartCarEnrtyPoint" type="Node2D" parent="Road"]
+position = Vector2(-3473, 38)
+
 [node name="Player" parent="." node_paths=PackedStringArray("camera", "album", "intersection") instance=ExtResource("1_3t1ma")]
 position = Vector2(4249, 398)
 collision_layer = 0
@@ -330,18 +344,7 @@ z_index = 2
 visible = false
 position = Vector2(-200, -235)
 
-[node name="Road" parent="." node_paths=PackedStringArray("car") instance=ExtResource("17_brnwf")]
-position = Vector2(13372, 389)
-car = NodePath("../ParkingSpot/Car")
-
-[node name="CarExplosionPoint" type="Node2D" parent="Road"]
-position = Vector2(-2591, -61)
-
-[node name="EndCarEntryPoint" type="Node2D" parent="Road"]
-position = Vector2(3136, -59)
-
-[node name="StartCarEnrtyPoint" type="Node2D" parent="Road"]
-position = Vector2(-3473, 38)
+[node name="StartMenu" parent="Camera" instance=ExtResource("18_icw22")]
 
 [connection signal="body_entered" from="Campsite/GateLeft" to="Campsite/GateLeft" method="_on_body_entered"]
 [connection signal="sleep" from="Campsite/Camp" to="Intersection" method="_on_camp_sleep"]
@@ -368,3 +371,4 @@ position = Vector2(-3473, 38)
 [connection signal="sleepy" from="Player" to="Campsite/Camp" method="_on_player_sleepy"]
 [connection signal="awoke" from="Camera" to="Player" method="_on_camera_awoke"]
 [connection signal="finished_flash" from="Camera" to="Player" method="_on_camera_finished_flash"]
+[connection signal="game_started" from="Camera/StartMenu" to="Player" method="_on_start_menu_game_started"]
