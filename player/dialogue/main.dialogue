@@ -1,3 +1,9 @@
+~ start
+
+Josh: Start
+
+=> END
+
 ~ no_photo
 
 Josh: Hmmm, doesn't seem like there are any birds here... Mabye over there!
@@ -61,5 +67,11 @@ Josh: Photo1Cursed
 ~ photo_2_cursed
 
 Josh: Photo2Cursed
+
+=> END
+
+~ escape
+
+Josh: End
 
 => END

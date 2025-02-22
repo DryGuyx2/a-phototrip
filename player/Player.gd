@@ -3,6 +3,7 @@ class_name Player
 
 signal photographed(number, cursed)
 signal sleepy
+signal escaping
 
 @export var speed: int = 1000
 @export var camera: Camera2D
@@ -53,6 +54,9 @@ func handle_sound():
 
 
 func handle_input():
+	if Input.is_action_just_pressed("test_1"):
+		emit_signal("escaping")
+		photos_taken = 6
 	if immobile:
 		return
 	if dialoguing:
@@ -162,6 +166,9 @@ func _on_camera_finished_flash():
 	animation_component.play("idle_camera")
 	album.add_photo(photo_subject.number, photo_subject.cursed)
 	photos_taken += 1
+	if photos_taken == 6:
+		DialogueManager.show_example_dialogue_balloon(main_dialogue, "escape")
+		emit_signal("escaping")
 	
 	photographing = false
 	capturing = false
@@ -202,7 +209,6 @@ func finish_walking() -> void:
 
 func _on_intersection_ritual_finished():
 	DialogueManager.show_example_dialogue_balloon(main_dialogue, "awoke_from_ritual")
-	await get_tree().create_timer(0.1)
 	immobile = false
 
 func _on_dialogue_started(_resource):

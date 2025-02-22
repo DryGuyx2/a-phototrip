@@ -24,13 +24,6 @@ class_name Album
 #	normal_photos[0].position = positions.keys()[0].position
 
 
-func _process(delta: float):
-	if Input.is_action_just_pressed("test_1"):
-		add_photo(1, true)
-	if Input.is_action_just_pressed("test_2"):
-		add_photo(1, false)
-
-
 func add_photo(number, cursed) -> void:
 	print("Adding photo: ", number)
 	var photo_position

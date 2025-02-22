@@ -1,0 +1,120 @@
+[gd_scene load_steps=17 format=3 uid="uid://dstpabo3pxix"]
+
+[ext_resource type="Texture2D" uid="uid://cwcdp3qqsxhpy" path="res://map/road/falling_tree.png" id="1_0xp43"]
+[ext_resource type="Script" path="res://map/road/road.gd" id="1_ww56h"]
+[ext_resource type="Texture2D" uid="uid://dxhmrbc15imtu" path="res://map/road/road.png" id="3_8mwy8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45rox"]
+atlas = ExtResource("1_0xp43")
+region = Rect2(0, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_if34f"]
+atlas = ExtResource("1_0xp43")
+region = Rect2(42, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7c7l"]
+atlas = ExtResource("1_0xp43")
+region = Rect2(84, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dpca"]
+atlas = ExtResource("1_0xp43")
+region = Rect2(126, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xtb2"]
+atlas = ExtResource("1_0xp43")
+region = Rect2(168, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2e6kn"]
+atlas = ExtResource("1_0xp43")
+region = Rect2(210, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nlnh"]
+atlas = ExtResource("1_0xp43")
+region = Rect2(252, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5h7nr"]
+atlas = ExtResource("1_0xp43")
+region = Rect2(294, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sjaa"]
+atlas = ExtResource("1_0xp43")
+region = Rect2(336, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71hqs"]
+atlas = ExtResource("1_0xp43")
+region = Rect2(378, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37ffn"]
+atlas = ExtResource("1_0xp43")
+region = Rect2(420, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ad8b"]
+atlas = ExtResource("1_0xp43")
+region = Rect2(0, 0, 46, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_do75x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45rox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_if34f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7c7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dpca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xtb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2e6kn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nlnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5h7nr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sjaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71hqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37ffn")
+}],
+"loop": false,
+"name": &"falling",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ad8b")
+}],
+"loop": true,
+"name": &"standing",
+"speed": 5.0
+}]
+
+[node name="Road" type="Node2D"]
+script = ExtResource("1_ww56h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(-2640, -175)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_do75x")
+animation = &"falling"
+
+[node name="TreeFallTriggerPoint" type="Node2D" parent="AnimatedSprite2D"]
+position = Vector2(52, 23)
+scale = Vector2(0.25, 0.25)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(7, 7)
+texture = ExtResource("3_8mwy8")

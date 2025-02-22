@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dxdhvyb7fwrkp"]
+[gd_scene load_steps=33 format=3 uid="uid://dxdhvyb7fwrkp"]
 
 [ext_resource type="PackedScene" uid="uid://timxvbh6c5qq" path="res://player/player.tscn" id="1_3t1ma"]
 [ext_resource type="PackedScene" uid="uid://jpaba8nxu84q" path="res://map/campsite/campsite.tscn" id="2_qcwwe"]
@@ -11,10 +11,12 @@
 [ext_resource type="Script" path="res://objects/cult/cult_scene_trigger.gd" id="7_7i8es"]
 [ext_resource type="PackedScene" uid="uid://dsxef6d44rppb" path="res://map/cliff_path/cliff_path.tscn" id="8_oacsy"]
 [ext_resource type="PackedScene" uid="uid://cyfkhtlrnx55w" path="res://map/nest_area/nest_area.tscn" id="8_oeojp"]
+[ext_resource type="PackedScene" uid="uid://c6pp1v7xogdik" path="res://objects/car/car.tscn" id="9_4m2a7"]
 [ext_resource type="PackedScene" uid="uid://dw04mj1dxk5g0" path="res://map/cliff/cliff.tscn" id="10_7054t"]
 [ext_resource type="PackedScene" uid="uid://bqawwtu0g82dj" path="res://map/coast/coast.tscn" id="10_hmdfp"]
 [ext_resource type="PackedScene" uid="uid://j8784ry2jjss" path="res://camera/camera.tscn" id="12_rcc37"]
 [ext_resource type="PackedScene" uid="uid://ckpw8p5eqcdpq" path="res://player/album/album.tscn" id="13_vt8ry"]
+[ext_resource type="PackedScene" uid="uid://dstpabo3pxix" path="res://map/road/road.tscn" id="17_brnwf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mvor"]
 size = Vector2(74, 179)
@@ -217,6 +219,14 @@ position = Vector2(377, 34)
 
 [node name="CameraPosition" type="Node2D" parent="ParkingSpot"]
 
+[node name="Car" parent="ParkingSpot" node_paths=PackedStringArray("car_entry", "explosion_point", "player", "camera") instance=ExtResource("9_4m2a7")]
+position = Vector2(237, 129)
+scale = Vector2(4, 4)
+car_entry = NodePath("../../Road/EndCarEntryPoint")
+explosion_point = NodePath("../../Road/CarExplosionPoint")
+player = NodePath("../../Player")
+camera = NodePath("../../Camera")
+
 [node name="NestArea" parent="." node_paths=PackedStringArray("intersection") instance=ExtResource("8_oeojp")]
 position = Vector2(5448, 363)
 intersection = NodePath("../Intersection")
@@ -320,6 +330,19 @@ z_index = 2
 visible = false
 position = Vector2(-200, -235)
 
+[node name="Road" parent="." node_paths=PackedStringArray("car") instance=ExtResource("17_brnwf")]
+position = Vector2(13372, 389)
+car = NodePath("../ParkingSpot/Car")
+
+[node name="CarExplosionPoint" type="Node2D" parent="Road"]
+position = Vector2(-2591, -61)
+
+[node name="EndCarEntryPoint" type="Node2D" parent="Road"]
+position = Vector2(3136, -59)
+
+[node name="StartCarEnrtyPoint" type="Node2D" parent="Road"]
+position = Vector2(-3473, 38)
+
 [connection signal="body_entered" from="Campsite/GateLeft" to="Campsite/GateLeft" method="_on_body_entered"]
 [connection signal="sleep" from="Campsite/Camp" to="Intersection" method="_on_camp_sleep"]
 [connection signal="sleep" from="Campsite/Camp" to="Intersection/CultSceneTrigger" method="_on_camp_sleep"]
@@ -340,6 +363,7 @@ position = Vector2(-200, -235)
 [connection signal="body_entered" from="CliffPath/GateDown" to="CliffPath/GateDown" method="_on_body_entered"]
 [connection signal="body_entered" from="Cliff/GateRight" to="Cliff/GateRight" method="_on_body_entered"]
 [connection signal="body_entered" from="Coast/GateLeft" to="Coast/GateLeft" method="_on_body_entered"]
+[connection signal="escaping" from="Player" to="ParkingSpot/Car" method="_on_player_escaping"]
 [connection signal="photographed" from="Player" to="Camera" method="_on_player_photographed"]
 [connection signal="sleepy" from="Player" to="Campsite/Camp" method="_on_player_sleepy"]
 [connection signal="awoke" from="Camera" to="Player" method="_on_camera_awoke"]
