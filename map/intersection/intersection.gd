@@ -11,6 +11,7 @@ $Cultists/Cultist6]
 
 @onready var portal = $Portal
 @onready var hiding_spot = $HidingSpot
+@onready var explosion = $Cultists/Explosion
 
 func _ready() -> void:
 	for cultist in cultists:
@@ -24,13 +25,13 @@ func _process(delta):
 
 func _on_camp_sleep():
 	$Cultists.visible = true
-	$Cultists/AudioStreamPlayer.play()
+	$Cultists/Ritual.play()
 	performing = true
 
 
 func _on_audio_stream_player_finished():
 	if performing:
-		$Cultists/AudioStreamPlayer.play()
+		$Cultists/Ritual.play()
 
 
 func _on_cult_scene_trigger_triggered_scene() -> void:
@@ -49,7 +50,7 @@ func finish_ritual() -> void:
 	await get_tree().create_timer(3).timeout
 	portal.play("inactive")
 	$Cultists.visible = false
-	$Cultists/AudioStreamPlayer.stop()
+	$Cultists/Ritual.stop()
 	var explosion_tween = create_tween()
 	explosion_tween.tween_property($Portal/Explosion, "modulate:a", 0, 1).set_trans(Tween.TRANS_LINEAR)
 	emit_signal("ritual_finished")

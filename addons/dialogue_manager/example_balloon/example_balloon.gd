@@ -156,10 +156,10 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 	# When there are no response options the balloon itself is the clickable thing
 	get_viewport().set_input_as_handled()
 
-	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-		next(dialogue_line.next_id)
-	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
-		next(dialogue_line.next_id)
+	#if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+	#	next(dialogue_line.next_id)
+	#elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
+	#	next(dialogue_line.next_id)
 
 
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
@@ -167,3 +167,8 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 #endregion
+
+
+func _on_dialogue_label_finished_typing():
+	await get_tree().create_timer(1).timeout
+	next(dialogue_line.next_id)

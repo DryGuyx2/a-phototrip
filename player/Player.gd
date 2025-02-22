@@ -197,6 +197,7 @@ func _on_cult_scene_trigger_triggered_scene():
 func finish_walking() -> void:
 	play_idle()
 	intersection.portal.play("active")
+	intersection.explosion.play()
 
 
 func _on_intersection_ritual_finished():

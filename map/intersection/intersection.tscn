@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b7b22y3s1dtaj"]
+[gd_scene load_steps=22 format=3 uid="uid://b7b22y3s1dtaj"]
 
 [ext_resource type="Texture2D" uid="uid://bi3l3n4i3jseb" path="res://map/intersection/intersection.png" id="1_ug6ao"]
 [ext_resource type="Script" path="res://map/intersection/intersection.gd" id="1_yhcmu"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cnt4eobrdgxbd" path="res://objects/cult/cultist.png" id="4_wai4u"]
 [ext_resource type="Texture2D" uid="uid://d2f308de23g5u" path="res://objects/cult/explosion.png" id="5_7iy7y"]
 [ext_resource type="AudioStream" uid="uid://dytngfyc3kyl8" path="res://objects/cult/cult_noise.wav" id="6_edm8f"]
+[ext_resource type="AudioStream" uid="uid://bmygroad106kw" path="res://objects/cult/portal_explosion.wav" id="8_hdnqh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gsb0y"]
 atlas = ExtResource("3_lqpy1")
@@ -187,12 +188,15 @@ sprite_frames = SubResource("SpriteFrames_wwlkh")
 frame_progress = 0.626118
 flip_h = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Cultists"]
+[node name="Ritual" type="AudioStreamPlayer" parent="Cultists"]
 stream = ExtResource("6_edm8f")
 volume_db = -30.0
+
+[node name="Explosion" type="AudioStreamPlayer" parent="Cultists"]
+stream = ExtResource("8_hdnqh")
 
 [node name="HidingSpot" type="Node2D" parent="."]
 position = Vector2(-212, 281)
 
 [connection signal="animation_finished" from="Portal" to="." method="_on_portal_animation_finished"]
-[connection signal="finished" from="Cultists/AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="finished" from="Cultists/Ritual" to="." method="_on_audio_stream_player_finished"]

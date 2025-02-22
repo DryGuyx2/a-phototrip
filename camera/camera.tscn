@@ -18,7 +18,6 @@ flash_speed = 0.4
 sleep_speed = 5.0
 
 [node name="PhotoDisplay" type="Node2D" parent="."]
-position = Vector2(0, -1000)
 scale = Vector2(5, 5)
 
 [node name="Normal1" type="Sprite2D" parent="PhotoDisplay"]

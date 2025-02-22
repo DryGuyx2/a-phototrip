@@ -43,4 +43,3 @@ func add_photo(number, cursed) -> void:
 		cursed_photos[number].global_position = photo_position.global_position
 	else:
 		normal_photos[number].global_position = photo_position.global_position
-	print("Photo positions: ", positions)

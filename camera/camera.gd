@@ -56,7 +56,7 @@ func emit_wake() -> void:
 
 
 func remove_photo() -> void:
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(4).timeout
 	var photo_slide_tween = create_tween()
 	photo_slide_tween.tween_property(photo, "position:y", 632/6, 1).set_trans(Tween.TRANS_LINEAR)
 	photo_slide_tween.play()
