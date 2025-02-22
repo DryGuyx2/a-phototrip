@@ -58,7 +58,7 @@ func emit_wake() -> void:
 func remove_photo() -> void:
 	await get_tree().create_timer(1).timeout
 	var photo_slide_tween = create_tween()
-	photo_slide_tween.tween_property(photo, "position:y", 1264, 5).set_trans(Tween.TRANS_LINEAR)
+	photo_slide_tween.tween_property(photo, "position:y", 632, 5).set_trans(Tween.TRANS_LINEAR)
 	photo_slide_tween.play()
 
 var photo: Sprite2D
@@ -67,7 +67,7 @@ func _on_player_photographed(number, cursed):
 		photo = cursed_photos[number]
 	else:
 		photo = normal_photos[number]
-	photo.position = Vector2(0, 1264)
+	photo.position = Vector2(0, 632)
 	photo.visible = true
 	var photo_slide_tween = create_tween()
 	photo_slide_tween.tween_property(photo, "global_position", global_position, 5).set_trans(Tween.TRANS_QUAD)

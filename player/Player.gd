@@ -61,11 +61,7 @@ func handle_input():
 		photograph()
 		return
 	
-	if Input.is_action_pressed("move_up"):
-		photo_area.global_rotation_degrees = -90
-	elif Input.is_action_pressed("move_down"):
-		photo_area.global_rotation_degrees = 90
-	elif Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("move_left"):
 		photo_area.global_rotation_degrees = 180
 	elif Input.is_action_pressed("move_right"):
 		photo_area.global_rotation_degrees = 0
