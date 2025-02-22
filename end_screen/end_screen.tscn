@@ -8,9 +8,12 @@ font = ExtResource("2_ua341")
 
 [sub_resource type="LabelSettings" id="LabelSettings_7xhea"]
 font = ExtResource("2_ua341")
+font_size = 18
 
 [node name="EndScreen" type="Node2D"]
 z_index = 1
+position = Vector2(-2, -4)
+scale = Vector2(0.5, 0.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 66)
@@ -22,10 +25,10 @@ position = Vector2(-335, 123)
 scale = Vector2(3, 3)
 
 [node name="ThankYou" type="Label" parent="Node2D"]
-offset_left = -142.333
-offset_top = -118.0
-offset_right = 353.667
-offset_bottom = -95.0
+offset_left = -97.6667
+offset_top = -195.0
+offset_right = 329.333
+offset_bottom = -149.0
 text = "Thank you for playing our game!"
 label_settings = SubResource("LabelSettings_su0nw")
 
@@ -34,10 +37,10 @@ position = Vector2(110.333, -25)
 scale = Vector2(0.5, 0.5)
 
 [node name="Credits" type="Label" parent="Node2D/Node2D"]
-offset_left = -154.0
-offset_top = -36.8
-offset_right = 182.0
-offset_bottom = 64.2
+offset_left = -154.666
+offset_top = -94.6667
+offset_right = 181.334
+offset_bottom = 98.3333
 text = "Credits:
 Art: GrassyPotat
 Sfx and testing: Gran

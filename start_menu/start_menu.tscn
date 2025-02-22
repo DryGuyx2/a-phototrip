@@ -37,6 +37,7 @@ size = Vector2(74.6667, 11.6667)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6uqa8"]
 font = ExtResource("4_ux73k")
+font_size = 12
 
 [node name="StartMenu" type="Node2D"]
 position = Vector2(0, -20)
@@ -59,10 +60,10 @@ position = Vector2(0.333332, -6.5)
 shape = SubResource("RectangleShape2D_woc58")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -428.182
-offset_top = -345.455
-offset_right = -254.182
-offset_bottom = -218.455
+offset_left = -382.727
+offset_top = -286.364
+offset_right = -68.7273
+offset_bottom = -44.3636
 text = "Keys:
 WASD/Arrows: Move
 Q: Equip camera

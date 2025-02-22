@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh71pr6yw1417"]
+
+[ext_resource type="Script" path="res://player/death_article/death_article.gd" id="1_aem0l"]
+[ext_resource type="Texture2D" uid="uid://ce5n247bwdwt3" path="res://player/death_article/death_article.png" id="1_rf5ub"]
+[ext_resource type="FontFile" uid="uid://g3q58jarv7nq" path="res://Pixeled.ttf" id="3_dfprc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_exaek"]
+font = ExtResource("3_dfprc")
+font_color = Color(0.266667, 0.266667, 0.266667, 1)
+
+[node name="DeathArticle" type="Node2D"]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_aem0l")
+
+[node name="Article" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("1_rf5ub")
+
+[node name="Titile" type="Node2D" parent="."]
+position = Vector2(17.977, -15.083)
+scale = Vector2(0.08, 0.08)
+
+[node name="Label" type="Label" parent="Titile"]
+z_index = 1
+offset_left = -167.0
+offset_top = -67.0
+offset_right = 25.0
+offset_bottom = 28.0
+text = "Bird
+photographer
+ found dead"
+label_settings = SubResource("LabelSettings_exaek")
+
+[node name="Date" type="Node2D" parent="."]
+position = Vector2(-18.013, -5.93)
+scale = Vector2(0.08, 0.08)
+
+[node name="Label" type="Label" parent="Date"]
+z_index = 1
+offset_left = 6.66667
+offset_top = -10.0
+offset_right = 198.667
+offset_bottom = 85.0
+text = "Date: 19 Feb 1984"
+label_settings = SubResource("LabelSettings_exaek")
+
+[node name="Content" type="Node2D" parent="."]
+position = Vector2(-18.013, -5.93)
+scale = Vector2(0.08, 0.08)
+
+[node name="Label" type="Label" parent="Content"]
+z_index = 1
+offset_left = 17.0
+offset_top = 116.0
+offset_right = 338.0
+offset_bottom = 407.0
+text = "The brutal wreckage of 
+photograpger Josh
+Browns car was found
+on the road exiting
+Yellow Rock national
+park last night"
+label_settings = SubResource("LabelSettings_exaek")
