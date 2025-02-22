@@ -262,11 +262,9 @@ collision_mask = 0
 script = ExtResource("1_4ggdc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(13, 13)
 shape = SubResource("RectangleShape2D_hifl7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(13, 13)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_2h3po")
 animation = &"acting_orange"

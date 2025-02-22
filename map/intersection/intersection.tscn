@@ -1,64 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://b7b22y3s1dtaj"]
+[gd_scene load_steps=13 format=3 uid="uid://b7b22y3s1dtaj"]
 
 [ext_resource type="Texture2D" uid="uid://bi3l3n4i3jseb" path="res://map/intersection/intersection.png" id="1_ug6ao"]
 [ext_resource type="Script" path="res://map/intersection/intersection.gd" id="1_yhcmu"]
 [ext_resource type="Texture2D" uid="uid://b11oavnqusgo6" path="res://map/intersection/intersection_bottom_trees.png" id="2_io0fd"]
-[ext_resource type="Texture2D" uid="uid://dcks0if72lo01" path="res://objects/cult/portal.png" id="3_lqpy1"]
 [ext_resource type="Texture2D" uid="uid://cnt4eobrdgxbd" path="res://objects/cult/cultist.png" id="4_wai4u"]
-[ext_resource type="Texture2D" uid="uid://d2f308de23g5u" path="res://objects/cult/explosion.png" id="5_7iy7y"]
 [ext_resource type="AudioStream" uid="uid://dytngfyc3kyl8" path="res://objects/cult/cult_noise.wav" id="6_edm8f"]
 [ext_resource type="AudioStream" uid="uid://bmygroad106kw" path="res://objects/cult/portal_explosion.wav" id="8_hdnqh"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gsb0y"]
-atlas = ExtResource("3_lqpy1")
-region = Rect2(0, 0, 35, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xmwib"]
-atlas = ExtResource("3_lqpy1")
-region = Rect2(35, 0, 35, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_41dlo"]
-atlas = ExtResource("3_lqpy1")
-region = Rect2(70, 0, 35, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ci4s"]
-atlas = ExtResource("3_lqpy1")
-region = Rect2(105, 0, 35, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7iaa1"]
-atlas = ExtResource("3_lqpy1")
-region = Rect2(0, 0, 35, 28)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_v1nh7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gsb0y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xmwib")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_41dlo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5ci4s")
-}],
-"loop": false,
-"name": &"active",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7iaa1")
-}],
-"loop": false,
-"name": &"inactive",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xxysp"]
-radius = 3.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pk83x"]
 atlas = ExtResource("4_wai4u")
@@ -120,30 +67,6 @@ z_index = 1
 scale = Vector2(7, 7)
 texture = ExtResource("2_io0fd")
 
-[node name="Portal" type="AnimatedSprite2D" parent="."]
-z_index = 1
-position = Vector2(-1, 0)
-scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_v1nh7")
-animation = &"active"
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Portal"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal/StaticBody2D"]
-position = Vector2(14.3333, 8.33333)
-shape = SubResource("CircleShape2D_xxysp")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Portal/StaticBody2D"]
-position = Vector2(-13.6667, 8)
-shape = SubResource("CircleShape2D_xxysp")
-
-[node name="Explosion" type="Sprite2D" parent="Portal"]
-visible = false
-z_index = 2
-position = Vector2(0.25, 0)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("5_7iy7y")
-
 [node name="Cultists" type="Node2D" parent="."]
 visible = false
 z_index = 1
@@ -198,5 +121,4 @@ stream = ExtResource("8_hdnqh")
 [node name="HidingSpot" type="Node2D" parent="."]
 position = Vector2(-212, 281)
 
-[connection signal="animation_finished" from="Portal" to="." method="_on_portal_animation_finished"]
 [connection signal="finished" from="Cultists/Ritual" to="." method="_on_audio_stream_player_finished"]

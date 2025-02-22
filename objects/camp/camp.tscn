@@ -64,7 +64,6 @@ radius = 3.0
 radius = 3.0
 
 [node name="Camp" type="StaticBody2D"]
-y_sort_enabled = true
 script = ExtResource("1_mq6j5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

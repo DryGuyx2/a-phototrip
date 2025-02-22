@@ -9,11 +9,13 @@ $Cultists/Cultist4,
 $Cultists/Cultist5,
 $Cultists/Cultist6]
 
-@onready var portal = $Portal
+@export var portal: Node2D
 @onready var hiding_spot = $HidingSpot
 @onready var explosion = $Cultists/Explosion
 
 func _ready() -> void:
+	print("Portal position: ", portal.global_position)
+	print("Intersection posistion: ", self.global_position)
 	for cultist in cultists:
 		cultist.play("default")
 

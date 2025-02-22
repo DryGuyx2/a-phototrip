@@ -3,7 +3,8 @@ extends Node2D
 signal game_started
 
 @onready var start_button = $StartButton
-var hovered = false
+var hovered: bool = false
+var clicked: bool = false
 
 func _ready() -> void:
 	start_button.play("default")
@@ -18,7 +19,8 @@ func _on_area_2d_mouse_exited():
 	hovered = false
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("click"):
+	if Input.is_action_just_pressed("click") and not clicked and hovered:
+		clicked = true
 		var menu_fade_tween = create_tween()
 		menu_fade_tween.tween_property(self, "modulate:a", 0, 1).set_trans(Tween.TRANS_LINEAR)
 		menu_fade_tween.play()

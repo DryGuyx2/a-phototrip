@@ -74,7 +74,7 @@ exit_time = 2.0
 
 [node name="FakeBird" type="AnimatedSprite2D" parent="Node2D/Bird"]
 z_index = 2
-position = Vector2(27.2, -1.6)
+position = Vector2(-4.8, -20.8)
 scale = Vector2(4.25, 4.25)
 sprite_frames = SubResource("SpriteFrames_0p5kc")
 script = ExtResource("6_ken73")

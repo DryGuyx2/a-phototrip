@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dxdhvyb7fwrkp"]
+[gd_scene load_steps=46 format=3 uid="uid://dxdhvyb7fwrkp"]
 
 [ext_resource type="PackedScene" uid="uid://timxvbh6c5qq" path="res://player/player.tscn" id="1_3t1ma"]
 [ext_resource type="PackedScene" uid="uid://jpaba8nxu84q" path="res://map/campsite/campsite.tscn" id="2_qcwwe"]
@@ -18,6 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://ckpw8p5eqcdpq" path="res://player/album/album.tscn" id="13_vt8ry"]
 [ext_resource type="PackedScene" uid="uid://dstpabo3pxix" path="res://map/road/road.tscn" id="17_brnwf"]
 [ext_resource type="PackedScene" uid="uid://cnh6gitah8j88" path="res://start_menu/start_menu.tscn" id="18_icw22"]
+[ext_resource type="Texture2D" uid="uid://dcks0if72lo01" path="res://objects/cult/portal.png" id="19_1wwru"]
+[ext_resource type="Texture2D" uid="uid://d2f308de23g5u" path="res://objects/cult/explosion.png" id="20_r5h5p"]
+[ext_resource type="Texture2D" uid="uid://cg5dyixyx3cce" path="res://map/nest_area/stub.png" id="21_rs70s"]
+[ext_resource type="PackedScene" uid="uid://bbfwjx1f5i5os" path="res://objects/photo_subjects/bird/bird.tscn" id="22_csipr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mvor"]
 size = Vector2(74, 179)
@@ -64,6 +68,61 @@ size = Vector2(20, 209)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_il10t"]
 size = Vector2(27, 215)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsb0y"]
+atlas = ExtResource("19_1wwru")
+region = Rect2(0, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmwib"]
+atlas = ExtResource("19_1wwru")
+region = Rect2(35, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41dlo"]
+atlas = ExtResource("19_1wwru")
+region = Rect2(70, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ci4s"]
+atlas = ExtResource("19_1wwru")
+region = Rect2(105, 0, 35, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7iaa1"]
+atlas = ExtResource("19_1wwru")
+region = Rect2(0, 0, 35, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8x8pi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsb0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmwib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41dlo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ci4s")
+}],
+"loop": false,
+"name": &"active",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7iaa1")
+}],
+"loop": false,
+"name": &"inactive",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o0o64"]
+radius = 3.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivtxr"]
+radius = 1.79968
+height = 10.7905
+
 [node name="Main" type="Node2D"]
 
 [node name="Campsite" parent="." instance=ExtResource("2_qcwwe")]
@@ -97,10 +156,6 @@ shape = SubResource("RectangleShape2D_mnwx0")
 [node name="ExitPoint" type="Node2D" parent="Campsite/GateLeft"]
 position = Vector2(47, 508)
 
-[node name="Camp" parent="Campsite" instance=ExtResource("4_vrn81")]
-position = Vector2(425, 349)
-scale = Vector2(4, 4)
-
 [node name="CampPath" parent="." instance=ExtResource("3_s4768")]
 position = Vector2(8967, 427)
 
@@ -132,8 +187,9 @@ position = Vector2(1686, 708)
 
 [node name="CameraPosition" type="Node2D" parent="CampPath"]
 
-[node name="Intersection" parent="." instance=ExtResource("5_dl3kp")]
+[node name="Intersection" parent="." node_paths=PackedStringArray("portal") instance=ExtResource("5_dl3kp")]
 position = Vector2(11672, 357)
+portal = NodePath("../YSorted/Portal")
 
 [node name="CameraPosition" type="Node2D" parent="Intersection"]
 
@@ -221,17 +277,10 @@ position = Vector2(377, 34)
 
 [node name="CameraPosition" type="Node2D" parent="ParkingSpot"]
 
-[node name="Car" parent="ParkingSpot" node_paths=PackedStringArray("car_entry", "explosion_point", "player", "camera") instance=ExtResource("9_4m2a7")]
-position = Vector2(237, 129)
-scale = Vector2(4, 4)
-car_entry = NodePath("../../Road/EndCarEntryPoint")
-explosion_point = NodePath("../../Road/CarExplosionPoint")
-player = NodePath("../../Player")
-camera = NodePath("../../Camera")
-
-[node name="NestArea" parent="." node_paths=PackedStringArray("intersection") instance=ExtResource("8_oeojp")]
+[node name="NestArea" parent="." node_paths=PackedStringArray("intersection", "yellow_bird") instance=ExtResource("8_oeojp")]
 position = Vector2(16196, 363)
 intersection = NodePath("../Intersection")
+yellow_bird = NodePath("../YSorted/Node2D2/YellowBird")
 
 [node name="CameraPostion" type="Node2D" parent="NestArea"]
 
@@ -318,7 +367,7 @@ shape = SubResource("RectangleShape2D_il10t")
 
 [node name="Road" parent="." node_paths=PackedStringArray("car") instance=ExtResource("17_brnwf")]
 position = Vector2(32026, 374)
-car = NodePath("../ParkingSpot/Car")
+car = NodePath("../YSorted/Car")
 
 [node name="CarExplosionPoint" type="Node2D" parent="Road"]
 position = Vector2(-2591, -61)
@@ -328,15 +377,6 @@ position = Vector2(3136, -59)
 
 [node name="StartCarEnrtyPoint" type="Node2D" parent="Road"]
 position = Vector2(-3473, 38)
-
-[node name="Player" parent="." node_paths=PackedStringArray("camera", "album", "intersection") instance=ExtResource("1_3t1ma")]
-position = Vector2(6537, 439)
-collision_layer = 0
-collision_mask = 0
-speed = 1000
-camera = NodePath("../Camera")
-album = NodePath("../Camera/Album")
-intersection = NodePath("../Intersection")
 
 [node name="Camera" parent="." instance=ExtResource("12_rcc37")]
 z_index = 2
@@ -349,29 +389,111 @@ position = Vector2(-200, -235)
 [node name="StartMenu" parent="Camera" instance=ExtResource("18_icw22")]
 z_index = 10
 
+[node name="YSorted" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="YSorted" node_paths=PackedStringArray("camera", "album", "intersection") instance=ExtResource("1_3t1ma")]
+z_index = 1
+position = Vector2(6537, 439)
+collision_layer = 0
+collision_mask = 0
+speed = 1000
+camera = NodePath("../../Camera")
+album = NodePath("../../Camera/Album")
+intersection = NodePath("../../Intersection")
+
+[node name="Camp" parent="YSorted" instance=ExtResource("4_vrn81")]
+position = Vector2(6526, 439)
+scale = Vector2(4, 4)
+
+[node name="Car" parent="YSorted" node_paths=PackedStringArray("car_entry", "explosion_point", "player", "camera") instance=ExtResource("9_4m2a7")]
+position = Vector2(14141, 538)
+scale = Vector2(4, 4)
+car_entry = NodePath("../../Road/EndCarEntryPoint")
+explosion_point = NodePath("../../Road/CarExplosionPoint")
+player = NodePath("../Player")
+camera = NodePath("../../Camera")
+
+[node name="Portal" type="AnimatedSprite2D" parent="YSorted"]
+z_index = 1
+position = Vector2(11672, 346)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_8x8pi")
+animation = &"active"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="YSorted/Portal"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSorted/Portal/StaticBody2D"]
+position = Vector2(14.3333, 8.33333)
+shape = SubResource("CircleShape2D_o0o64")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSorted/Portal/StaticBody2D"]
+position = Vector2(-13.6667, 8)
+shape = SubResource("CircleShape2D_o0o64")
+
+[node name="Explosion" type="Sprite2D" parent="YSorted/Portal"]
+visible = false
+z_index = 2
+position = Vector2(0.25, 0)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("20_r5h5p")
+
+[node name="Node2D" type="Node2D" parent="YSorted"]
+z_index = 1
+position = Vector2(16203, 328)
+
+[node name="Stub" type="Sprite2D" parent="YSorted/Node2D"]
+position = Vector2(42, 33)
+scale = Vector2(5, 5)
+texture = ExtResource("21_rs70s")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="YSorted/Node2D/Stub"]
+position = Vector2(0.4, -6.10948e-06)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSorted/Node2D/Stub/StaticBody2D2"]
+position = Vector2(-8.4, 1.8)
+rotation = 1.55183
+shape = SubResource("CapsuleShape2D_ivtxr")
+
+[node name="Node2D2" type="Node2D" parent="YSorted"]
+z_index = 1
+position = Vector2(16196, 350)
+
+[node name="YellowBird" parent="YSorted/Node2D2" node_paths=PackedStringArray("exit_position") instance=ExtResource("22_csipr")]
+z_index = 0
+position = Vector2(-5, -11)
+scale = Vector2(1.25, 1.25)
+type = "yellow"
+exit_position = NodePath("../ExitPosition")
+exit_time = 2.0
+number = 1
+
+[node name="ExitPosition" type="Node2D" parent="YSorted/Node2D2"]
+position = Vector2(612, 362)
+
 [connection signal="body_entered" from="Campsite/GateLeft" to="Campsite/GateLeft" method="_on_body_entered"]
-[connection signal="sleep" from="Campsite/Camp" to="Intersection" method="_on_camp_sleep"]
-[connection signal="sleep" from="Campsite/Camp" to="Intersection/CultSceneTrigger" method="_on_camp_sleep"]
-[connection signal="sleep" from="Campsite/Camp" to="Camera" method="_on_camp_sleep"]
-[connection signal="sleep" from="Campsite/Camp" to="Player" method="_on_camp_sleep"]
 [connection signal="body_entered" from="CampPath/GateRight" to="CampPath/GateRight" method="_on_body_entered"]
 [connection signal="ritual_finished" from="Intersection" to="Camera" method="_on_intersection_ritual_finished"]
-[connection signal="ritual_finished" from="Intersection" to="Player" method="_on_intersection_ritual_finished"]
+[connection signal="ritual_finished" from="Intersection" to="YSorted/Player" method="_on_intersection_ritual_finished"]
 [connection signal="body_entered" from="Intersection/GateLeft" to="Intersection/GateLeft" method="_on_body_entered"]
 [connection signal="body_entered" from="Intersection/GateRight" to="Intersection/GateRight" method="_on_body_entered"]
 [connection signal="body_entered" from="Intersection/GateDown" to="Intersection/GateDown" method="_on_body_entered"]
 [connection signal="body_entered" from="Intersection/GateUp" to="Intersection/GateUp" method="_on_body_entered"]
 [connection signal="body_entered" from="Intersection/CultSceneTrigger" to="Intersection/CultSceneTrigger" method="_on_body_entered"]
-[connection signal="triggered_scene" from="Intersection/CultSceneTrigger" to="Player" method="_on_cult_scene_trigger_triggered_scene"]
+[connection signal="triggered_scene" from="Intersection/CultSceneTrigger" to="YSorted/Player" method="_on_cult_scene_trigger_triggered_scene"]
 [connection signal="body_entered" from="ParkingSpot/GateRight" to="ParkingSpot/GateRight" method="_on_body_entered"]
 [connection signal="body_entered" from="NestArea/GateUp" to="NestArea/GateUp" method="_on_body_entered"]
 [connection signal="body_entered" from="CliffPath/GateLeft" to="CliffPath/GateLeft" method="_on_body_entered"]
 [connection signal="body_entered" from="CliffPath/GateDown" to="CliffPath/GateDown" method="_on_body_entered"]
 [connection signal="body_entered" from="Cliff/GateRight" to="Cliff/GateRight" method="_on_body_entered"]
 [connection signal="body_entered" from="Coast/GateLeft" to="Coast/GateLeft" method="_on_body_entered"]
-[connection signal="escaping" from="Player" to="ParkingSpot/Car" method="_on_player_escaping"]
-[connection signal="photographed" from="Player" to="Camera" method="_on_player_photographed"]
-[connection signal="sleepy" from="Player" to="Campsite/Camp" method="_on_player_sleepy"]
-[connection signal="awoke" from="Camera" to="Player" method="_on_camera_awoke"]
-[connection signal="finished_flash" from="Camera" to="Player" method="_on_camera_finished_flash"]
-[connection signal="game_started" from="Camera/StartMenu" to="Player" method="_on_start_menu_game_started"]
+[connection signal="awoke" from="Camera" to="YSorted/Player" method="_on_camera_awoke"]
+[connection signal="finished_flash" from="Camera" to="YSorted/Player" method="_on_camera_finished_flash"]
+[connection signal="game_started" from="Camera/StartMenu" to="YSorted/Player" method="_on_start_menu_game_started"]
+[connection signal="escaping" from="YSorted/Player" to="YSorted/Car" method="_on_player_escaping"]
+[connection signal="photographed" from="YSorted/Player" to="Camera" method="_on_player_photographed"]
+[connection signal="sleepy" from="YSorted/Player" to="YSorted/Camp" method="_on_player_sleepy"]
+[connection signal="sleep" from="YSorted/Camp" to="Intersection" method="_on_camp_sleep"]
+[connection signal="sleep" from="YSorted/Camp" to="Intersection/CultSceneTrigger" method="_on_camp_sleep"]
+[connection signal="sleep" from="YSorted/Camp" to="Camera" method="_on_camp_sleep"]
+[connection signal="sleep" from="YSorted/Camp" to="YSorted/Player" method="_on_camp_sleep"]
