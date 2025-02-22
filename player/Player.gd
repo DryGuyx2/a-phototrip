@@ -73,6 +73,7 @@ func handle_input():
 	
 	if Input.is_action_just_pressed("equip"):
 		equipped_camera = not equipped_camera
+		$PhotoArea/Outline.visible = not $PhotoArea/Outline.visible
 
 func _unhandled_input(event) -> void:
 	if immobile:
