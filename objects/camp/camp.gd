@@ -11,6 +11,7 @@ func _ready() -> void:
 func interact() -> void:
 	if not slept:
 		slept = true
+		$InteractionPoint.set_collision_layer_value(GlobalData.layers["interaction"], false)
 		emit_signal("sleep")
 
 

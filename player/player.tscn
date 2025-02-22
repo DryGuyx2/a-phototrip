@@ -1,11 +1,14 @@
-[gd_scene load_steps=25 format=3 uid="uid://timxvbh6c5qq"]
+[gd_scene load_steps=26 format=3 uid="uid://timxvbh6c5qq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_6qjth"]
 [ext_resource type="Texture2D" uid="uid://ba4uvabyo1y5d" path="res://player/player_move.png" id="2_ljrr6"]
-[ext_resource type="Texture2D" uid="uid://bh2nns75ck733" path="res://player/photo_area_outline.png" id="2_wfu7w"]
+[ext_resource type="Texture2D" uid="uid://cah64ac7exixg" path="res://player/photo_area_outline.png" id="2_wfu7w"]
 [ext_resource type="Texture2D" uid="uid://bl1bawfwh1o6" path="res://player/player_move_camera.png" id="3_p8pki"]
 [ext_resource type="Texture2D" uid="uid://r7x6f22gvoao" path="res://player/player_photographing.png" id="4_pcd17"]
 [ext_resource type="AudioStream" uid="uid://xpkm28pj3emy" path="res://player/walk.wav" id="5_r315o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uytmb"]
+size = Vector2(200, 111.2)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gfuit"]
 atlas = ExtResource("2_ljrr6")
@@ -134,8 +137,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l5rrp"]
-radius = 3.2
-height = 10.0
+radius = 1.12
+height = 3.6
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ikkvf"]
 random_pitch = 4.0
@@ -148,6 +151,7 @@ stream_0/weight = 1.0
 radius = 14.2014
 
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
 scale = Vector2(5, 5)
 script = ExtResource("1_6qjth")
 speed = 0
@@ -160,20 +164,30 @@ collision_mask = 0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PhotoArea"]
 position = Vector2(-4.6, -3.8)
 scale = Vector2(1.86892, 1.16153)
-polygon = PackedVector2Array(4, -1.2, 4, 7.8, 41.6283, 25.828, 41.4143, -18.9405)
+polygon = PackedVector2Array(4, -1.2, 4, 7.8, 70.736, 37.3645, 70.415, -31.6824)
 
 [node name="Outline" type="Sprite2D" parent="PhotoArea"]
 visible = false
-position = Vector2(62.8, 2.2)
+position = Vector2(60, 1.8)
 scale = Vector2(2, 2)
 texture = ExtResource("2_wfu7w")
+
+[node name="MissArea" type="Area2D" parent="PhotoArea"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhotoArea/MissArea"]
+position = Vector2(79.6, -1.8)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_uytmb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_h1v1q")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3.68)
+position = Vector2(-0.6, 7)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_l5rrp")
 
 [node name="Step" type="AudioStreamPlayer" parent="."]

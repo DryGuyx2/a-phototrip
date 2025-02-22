@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://j8784ry2jjss"]
+[gd_scene load_steps=13 format=3 uid="uid://j8784ry2jjss"]
 
 [ext_resource type="Script" path="res://camera/camera.gd" id="1_fxby6"]
 [ext_resource type="Texture2D" uid="uid://bjglpspuueqt4" path="res://player/album/photo_2.png" id="2_3q8pr"]
@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://ce42gerl4wvcm" path="res://player/album/cursed_3.png" id="5_hfku4"]
 [ext_resource type="Texture2D" uid="uid://p54byem1v4ak" path="res://player/album/cursed_1.png" id="5_iqdwr"]
 [ext_resource type="Texture2D" uid="uid://07x86oh3v54m" path="res://player/album/cursed_2.png" id="6_kvb0v"]
+[ext_resource type="FontFile" uid="uid://dawrd0vxhqgh3" path="res://dogica.ttf" id="11_11c25"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n1doi"]
+font = ExtResource("11_11c25")
 
 [node name="Camera" type="Camera2D"]
 position = Vector2(4240, 352)
@@ -73,3 +77,18 @@ texture = ExtResource("2_r418a")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_qff30")
 bus = &"SFX"
+
+[node name="Node2D" type="Node2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.486275)
+z_index = 7
+position = Vector2(-432, -356)
+
+[node name="Label" type="Label" parent="Node2D"]
+offset_left = 5.0
+offset_top = 19.0
+offset_right = 357.0
+offset_bottom = 67.0
+text = "WASD/Arrows: Move
+Q: Equip camera
+E: Interact/use camera"
+label_settings = SubResource("LabelSettings_n1doi")

@@ -25,8 +25,9 @@ func _process(delta):
 
 func _on_camp_sleep():
 	$Cultists.visible = true
-	$Cultists/Ritual.play()
 	performing = true
+	await get_tree().create_timer(1).timeout
+	$Cultists/Ritual.play()
 
 
 func _on_audio_stream_player_finished():

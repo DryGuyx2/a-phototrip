@@ -67,6 +67,7 @@ size = Vector2(27, 215)
 [node name="Main" type="Node2D"]
 
 [node name="Campsite" parent="." instance=ExtResource("2_qcwwe")]
+position = Vector2(6101, 90)
 
 [node name="CameraPosition" type="Node2D" parent="Campsite"]
 position = Vector2(436, 349)
@@ -101,7 +102,7 @@ position = Vector2(425, 349)
 scale = Vector2(4, 4)
 
 [node name="CampPath" parent="." instance=ExtResource("3_s4768")]
-position = Vector2(1697, 365)
+position = Vector2(8967, 427)
 
 [node name="GateRight" type="Area2D" parent="CampPath" node_paths=PackedStringArray("exit_point", "camera_position")]
 collision_layer = 0
@@ -132,7 +133,7 @@ position = Vector2(1686, 708)
 [node name="CameraPosition" type="Node2D" parent="CampPath"]
 
 [node name="Intersection" parent="." instance=ExtResource("5_dl3kp")]
-position = Vector2(3034, 357)
+position = Vector2(11672, 357)
 
 [node name="CameraPosition" type="Node2D" parent="Intersection"]
 
@@ -202,7 +203,7 @@ position = Vector2(-383, 143)
 shape = SubResource("RectangleShape2D_tiokq")
 
 [node name="ParkingSpot" parent="." instance=ExtResource("7_3mtq8")]
-position = Vector2(4240, 352)
+position = Vector2(13904, 409)
 
 [node name="GateRight" type="Area2D" parent="ParkingSpot" node_paths=PackedStringArray("exit_point", "camera_position")]
 collision_layer = 0
@@ -229,7 +230,7 @@ player = NodePath("../../Player")
 camera = NodePath("../../Camera")
 
 [node name="NestArea" parent="." node_paths=PackedStringArray("intersection") instance=ExtResource("8_oeojp")]
-position = Vector2(5448, 363)
+position = Vector2(16196, 363)
 intersection = NodePath("../Intersection")
 
 [node name="CameraPostion" type="Node2D" parent="NestArea"]
@@ -247,7 +248,7 @@ shape = SubResource("RectangleShape2D_g6a0i")
 position = Vector2(-28, -301)
 
 [node name="CliffPath" parent="." instance=ExtResource("8_oacsy")]
-position = Vector2(6709, 351)
+position = Vector2(19538, 289)
 
 [node name="CameraPosition" type="Node2D" parent="CliffPath"]
 
@@ -280,7 +281,7 @@ shape = SubResource("RectangleShape2D_dnmih")
 position = Vector2(74, 277)
 
 [node name="Cliff" parent="." node_paths=PackedStringArray("intersection") instance=ExtResource("10_7054t")]
-position = Vector2(7835, 350)
+position = Vector2(22546, 374)
 intersection = NodePath("../Intersection")
 
 [node name="CameraPosition" type="Node2D" parent="Cliff"]
@@ -298,7 +299,7 @@ position = Vector2(438, 72.5)
 shape = SubResource("RectangleShape2D_qn5sa")
 
 [node name="Coast" parent="." node_paths=PackedStringArray("intersection") instance=ExtResource("10_hmdfp")]
-position = Vector2(9008, 354)
+position = Vector2(25971, 440)
 intersection = NodePath("../Intersection")
 
 [node name="GateLeft" type="Area2D" parent="Coast" node_paths=PackedStringArray("exit_point", "camera_position")]
@@ -316,7 +317,7 @@ shape = SubResource("RectangleShape2D_il10t")
 [node name="CameraPosition" type="Node2D" parent="Coast"]
 
 [node name="Road" parent="." node_paths=PackedStringArray("car") instance=ExtResource("17_brnwf")]
-position = Vector2(13372, 389)
+position = Vector2(32026, 374)
 car = NodePath("../ParkingSpot/Car")
 
 [node name="CarExplosionPoint" type="Node2D" parent="Road"]
@@ -329,7 +330,7 @@ position = Vector2(3136, -59)
 position = Vector2(-3473, 38)
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera", "album", "intersection") instance=ExtResource("1_3t1ma")]
-position = Vector2(4249, 398)
+position = Vector2(6537, 439)
 collision_layer = 0
 collision_mask = 0
 speed = 1000
@@ -339,21 +340,23 @@ intersection = NodePath("../Intersection")
 
 [node name="Camera" parent="." instance=ExtResource("12_rcc37")]
 z_index = 2
+position = Vector2(6537, 439)
 
 [node name="Album" parent="Camera" instance=ExtResource("13_vt8ry")]
 visible = false
 position = Vector2(-200, -235)
 
 [node name="StartMenu" parent="Camera" instance=ExtResource("18_icw22")]
+z_index = 10
 
 [connection signal="body_entered" from="Campsite/GateLeft" to="Campsite/GateLeft" method="_on_body_entered"]
 [connection signal="sleep" from="Campsite/Camp" to="Intersection" method="_on_camp_sleep"]
 [connection signal="sleep" from="Campsite/Camp" to="Intersection/CultSceneTrigger" method="_on_camp_sleep"]
-[connection signal="sleep" from="Campsite/Camp" to="Player" method="_on_camp_sleep"]
 [connection signal="sleep" from="Campsite/Camp" to="Camera" method="_on_camp_sleep"]
+[connection signal="sleep" from="Campsite/Camp" to="Player" method="_on_camp_sleep"]
 [connection signal="body_entered" from="CampPath/GateRight" to="CampPath/GateRight" method="_on_body_entered"]
-[connection signal="ritual_finished" from="Intersection" to="Player" method="_on_intersection_ritual_finished"]
 [connection signal="ritual_finished" from="Intersection" to="Camera" method="_on_intersection_ritual_finished"]
+[connection signal="ritual_finished" from="Intersection" to="Player" method="_on_intersection_ritual_finished"]
 [connection signal="body_entered" from="Intersection/GateLeft" to="Intersection/GateLeft" method="_on_body_entered"]
 [connection signal="body_entered" from="Intersection/GateRight" to="Intersection/GateRight" method="_on_body_entered"]
 [connection signal="body_entered" from="Intersection/GateDown" to="Intersection/GateDown" method="_on_body_entered"]

@@ -32,6 +32,7 @@ func _ready() -> void:
 	
 	set_collision_mask_value(GlobalData.layers["player_physics"], true)
 	photo_area.set_collision_mask_value(GlobalData.layers["photo_detection"], true)
+	$PhotoArea/MissArea.set_collision_mask_value(GlobalData.layers["photo_detection"], true)
 	interaction_zone.set_collision_mask_value(GlobalData.layers["interaction"], true)
 	
 	DialogueManager.dialogue_started.connect(_on_dialogue_started)
@@ -141,14 +142,17 @@ func photograph() -> void:
 
 func _on_animated_sprite_2d_animation_finished():
 	if animation_component.animation == "photographing":
-		print("Flashing")
 		camera.flash()
-	else:
-		print("Not flashing")
+
 
 
 func _on_camera_finished_flash():
 	if photo_area.get_overlapping_areas().is_empty():
+		if not $PhotoArea/MissArea.get_overlapping_areas().is_empty():
+			DialogueManager.show_example_dialogue_balloon(main_dialogue, "missed_photo")
+			photographing = false
+			capturing = false
+			return
 		DialogueManager.show_example_dialogue_balloon(main_dialogue, "no_photo")
 		photographing = false
 		capturing = false
