@@ -224,7 +224,7 @@ func _on_dialogue_ended(_resource):
 		emit_signal("sleepy")
 	
 	if photos_taken == 6 and not triggered_escape:
-		DialogueManager.show_example_dialogue_balloon(main_dialogue, "escape")
+		DialogueManager.show_dialogue_balloon(main_dialogue, "escape")
 		triggered_escape = true
 		emit_signal("escaping")
 

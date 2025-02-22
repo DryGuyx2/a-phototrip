@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://j8784ry2jjss"]
+[gd_scene load_steps=14 format=3 uid="uid://j8784ry2jjss"]
 
 [ext_resource type="Script" path="res://camera/camera.gd" id="1_fxby6"]
 [ext_resource type="Texture2D" uid="uid://bjglpspuueqt4" path="res://player/album/photo_2.png" id="2_3q8pr"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://p54byem1v4ak" path="res://player/album/cursed_1.png" id="5_iqdwr"]
 [ext_resource type="Texture2D" uid="uid://07x86oh3v54m" path="res://player/album/cursed_2.png" id="6_kvb0v"]
 [ext_resource type="FontFile" uid="uid://dawrd0vxhqgh3" path="res://dogica.ttf" id="11_11c25"]
+[ext_resource type="PackedScene" uid="uid://d2dtr0n45af62" path="res://end_screen/end_screen.tscn" id="12_u2g1r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n1doi"]
 font = ExtResource("11_11c25")
@@ -93,3 +94,7 @@ Q: Equip camera
 E: Interact/use camera
 F: Open/close album"
 label_settings = SubResource("LabelSettings_n1doi")
+
+[node name="EndScreen" parent="." instance=ExtResource("12_u2g1r")]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.489422, 0.447799)

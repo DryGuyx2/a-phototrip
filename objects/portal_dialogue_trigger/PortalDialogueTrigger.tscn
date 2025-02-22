@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch7cnuxg2umql"]
+
+[ext_resource type="Script" path="res://objects/portal_dialogue_trigger/portal_dialogue_trigger.gd" id="1_u5noc"]
+
+[node name="PortalDialogueTrigger" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_u5noc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -44,6 +44,7 @@ func exit_parking_spot() -> void:
 
 
 func exit_road() -> void:
+	DialogueManager.show_example_dialogue_balloon(load("res://player/dialogue/main.dialogue"), "escape")
 	$AnimatedSprite2D.play("driving")
 	var drive_tween = create_tween()
 	drive_tween.tween_property(self, "global_position:x", explosion_point.global_position.x, 3)
@@ -55,6 +56,8 @@ func explode() -> void:
 	$Explosion.play()
 	$AnimatedSprite2D.play("exploding")
 	emit_signal("car_exploded")
+	await get_tree().create_timer(0.17).timeout
+	$Burning.play()
 
 
 func _on_player_escaping():

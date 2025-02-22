@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c6pp1v7xogdik"]
+[gd_scene load_steps=29 format=3 uid="uid://c6pp1v7xogdik"]
 
 [ext_resource type="Texture2D" uid="uid://biv1gj4rxoe2f" path="res://objects/car/car_exploding.png" id="1_bowrw"]
 [ext_resource type="Script" path="res://objects/car/car.gd" id="1_l57hl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c3kbgr0dpbxtw" path="res://objects/car/car_driving.png" id="2_uvd6e"]
 [ext_resource type="AudioStream" uid="uid://d0c08hx5wureo" path="res://objects/car/driving.mp3" id="5_0q3xh"]
 [ext_resource type="AudioStream" uid="uid://jg2gt4jclkw7" path="res://objects/car/explosion.wav" id="6_qx7hr"]
+[ext_resource type="AudioStream" uid="uid://7ok026ut22dv" path="res://objects/car/car_burning.wav" id="7_drrpv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_74xmh"]
 atlas = ExtResource("2_uvd6e")
@@ -193,3 +194,6 @@ bus = &"SFX"
 [node name="Explosion" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_qx7hr")
 bus = &"SFX"
+
+[node name="Burning" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_drrpv")

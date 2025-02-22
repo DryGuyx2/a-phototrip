@@ -1,6 +1,12 @@
 ~ start
 
-Josh: Aaaah. Finally got off work, and now i can do my favourite hobby; Bird photography! I've heard some weird stories about this place, but it seems to have a pretty good amount of wildlife, and what could go wrong anyways?
+Josh: Aaaah. Finally got off work, and now i can do my favourite hobby, bird photography! I've heard some weird stories about this place, but it seems to have a pretty good amount of wildlife, and what could go wrong anyways?
+
+=> END
+
+~ portal
+
+Josh: What's that structure? It looks ancient! Like some kind of portal!
 
 => END
 
@@ -30,7 +36,7 @@ Josh: It just left its eggs? Welp, guess it has to prioritize itself.
 
 ~ photo_2
 
-Josh: Woah! That's probably one of the rarest birds i've ever taken a photo of!
+Josh: Woah! That's probably one of the pretties photos i've taken!
 
 => END
 
@@ -84,6 +90,6 @@ Josh: Im done! This place is giving me the creeps.
 
 ~ driving_away
 
-Josh: I'm never going back to that place again! That was... Wait, what's that thing on the road? Oh crap!
+Josh: That was weird! Oh crap!
 
 => END

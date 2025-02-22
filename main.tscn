@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://dxdhvyb7fwrkp"]
+[gd_scene load_steps=50 format=3 uid="uid://dxdhvyb7fwrkp"]
 
 [ext_resource type="PackedScene" uid="uid://timxvbh6c5qq" path="res://player/player.tscn" id="1_3t1ma"]
 [ext_resource type="PackedScene" uid="uid://jpaba8nxu84q" path="res://map/campsite/campsite.tscn" id="2_qcwwe"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b7b22y3s1dtaj" path="res://map/intersection/intersection.tscn" id="5_dl3kp"]
 [ext_resource type="PackedScene" uid="uid://bg6u7sqdxw0fu" path="res://map/parking_spot/parking_spot.tscn" id="7_3mtq8"]
 [ext_resource type="Script" path="res://objects/cult/cult_scene_trigger.gd" id="7_7i8es"]
+[ext_resource type="Script" path="res://objects/portal_dialogue_trigger/portal_dialogue_trigger.gd" id="7_osi3r"]
 [ext_resource type="PackedScene" uid="uid://dsxef6d44rppb" path="res://map/cliff_path/cliff_path.tscn" id="8_oacsy"]
 [ext_resource type="PackedScene" uid="uid://cyfkhtlrnx55w" path="res://map/nest_area/nest_area.tscn" id="8_oeojp"]
 [ext_resource type="PackedScene" uid="uid://c6pp1v7xogdik" path="res://objects/car/car.tscn" id="9_4m2a7"]
@@ -50,6 +51,9 @@ size = Vector2(337, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tiokq"]
 size = Vector2(51, 189.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bv7ks"]
+size = Vector2(354, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1sqg"]
 size = Vector2(21, 220)
@@ -267,6 +271,16 @@ shape = SubResource("RectangleShape2D_tiokq")
 [node name="HidingSpot" type="Node2D" parent="Intersection"]
 position = Vector2(-315, 55)
 
+[node name="PortalDialogueTrigger" type="Area2D" parent="Intersection"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("7_osi3r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Intersection/PortalDialogueTrigger"]
+position = Vector2(-264, 179)
+rotation = 1.11317
+shape = SubResource("RectangleShape2D_bv7ks")
+
 [node name="ParkingSpot" parent="." instance=ExtResource("7_3mtq8")]
 position = Vector2(13904, 409)
 
@@ -406,7 +420,7 @@ z_index = 1
 position = Vector2(6537, 439)
 collision_layer = 0
 collision_mask = 0
-speed = 500
+speed = 300
 camera = NodePath("../../Camera")
 album = NodePath("../../Camera/Album")
 intersection = NodePath("../../Intersection")
@@ -509,6 +523,7 @@ shape = SubResource("CapsuleShape2D_71cig")
 [connection signal="body_entered" from="Intersection/GateUp" to="Intersection/GateUp" method="_on_body_entered"]
 [connection signal="body_entered" from="Intersection/CultSceneTrigger" to="Intersection/CultSceneTrigger" method="_on_body_entered"]
 [connection signal="triggered_scene" from="Intersection/CultSceneTrigger" to="YSorted/Player" method="_on_cult_scene_trigger_triggered_scene"]
+[connection signal="body_entered" from="Intersection/PortalDialogueTrigger" to="Intersection/PortalDialogueTrigger" method="_on_body_entered"]
 [connection signal="body_entered" from="ParkingSpot/GateRight" to="ParkingSpot/GateRight" method="_on_body_entered"]
 [connection signal="body_entered" from="NestArea/GateUp" to="NestArea/GateUp" method="_on_body_entered"]
 [connection signal="body_entered" from="CliffPath/GateLeft" to="CliffPath/GateLeft" method="_on_body_entered"]
@@ -525,4 +540,5 @@ shape = SubResource("CapsuleShape2D_71cig")
 [connection signal="sleep" from="YSorted/Camp" to="Intersection/CultSceneTrigger" method="_on_camp_sleep"]
 [connection signal="sleep" from="YSorted/Camp" to="Camera" method="_on_camp_sleep"]
 [connection signal="sleep" from="YSorted/Camp" to="YSorted/Player" method="_on_camp_sleep"]
+[connection signal="car_exploded" from="YSorted/Car" to="Camera" method="_on_car_car_exploded"]
 [connection signal="animation_finished" from="YSorted/Portal" to="Intersection" method="_on_portal_animation_finished"]

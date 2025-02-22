@@ -86,6 +86,12 @@ func _on_intersection_ritual_finished():
 	night_sprite.modulate.a = 0
 	sleep_sprite.modulate.a = 0
 
+
 func _on_dialogue_ended(_resource: DialogueResource):
 	if showing_photo:
 		remove_photo()
+
+
+func _on_car_car_exploded():
+	var end_screen_tween = create_tween()
+	end_screen_tween.tween_property($EndScreen, "modulate:a", 1, 3).set_trans(Tween.TRANS_LINEAR)
