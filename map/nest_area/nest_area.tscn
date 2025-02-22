@@ -7,8 +7,8 @@
 [node name="NestArea" type="Node2D"]
 script = ExtResource("1_q8d40")
 
-[node name="BottomTrees" type="Sprite2D" parent="."]
-z_index = 1
+[node name="Trees" type="Sprite2D" parent="."]
+z_index = 2
 scale = Vector2(7, 7)
 texture = ExtResource("1_irmuu")
 

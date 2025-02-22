@@ -90,5 +90,6 @@ offset_right = 357.0
 offset_bottom = 67.0
 text = "WASD/Arrows: Move
 Q: Equip camera
-E: Interact/use camera"
+E: Interact/use camera
+F: Open/close album"
 label_settings = SubResource("LabelSettings_n1doi")

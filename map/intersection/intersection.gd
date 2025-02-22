@@ -10,7 +10,7 @@ $Cultists/Cultist5,
 $Cultists/Cultist6]
 
 @export var portal: Node2D
-@onready var hiding_spot = $HidingSpot
+@export var hiding_spot: Node2D
 @onready var explosion = $Cultists/Explosion
 
 func _ready() -> void:
@@ -20,10 +20,6 @@ func _ready() -> void:
 		cultist.play("default")
 
 var performing = false
-
-func _process(delta):
-	if Input.is_action_just_pressed("test_3"):
-		emit_signal("ritual_finished")
 
 func _on_camp_sleep():
 	$Cultists.visible = true
@@ -38,15 +34,15 @@ func _on_audio_stream_player_finished():
 
 
 func _on_cult_scene_trigger_triggered_scene() -> void:
-	print("Increased volume")
 	$Cultists/AudioStreamPlayer.volume_db = 20
+	portal.play("active")
 
 
 func _on_portal_animation_finished() -> void:
 	if portal.animation == "active":
-		$Portal/Explosion.visible = true
+		portal.find_child("Explosion").visible = true
 		var explosion_tween = create_tween()
-		explosion_tween.tween_property($Portal/Explosion, "scale", Vector2(32, 32), 0.2).set_trans(Tween.TRANS_EXPO)
+		explosion_tween.tween_property(portal.find_child("Explosion"), "scale", Vector2(32, 32), 0.2).set_trans(Tween.TRANS_EXPO)
 		explosion_tween.tween_callback(finish_ritual)
 
 func finish_ritual() -> void:
@@ -55,5 +51,5 @@ func finish_ritual() -> void:
 	$Cultists.visible = false
 	$Cultists/Ritual.stop()
 	var explosion_tween = create_tween()
-	explosion_tween.tween_property($Portal/Explosion, "modulate:a", 0, 1).set_trans(Tween.TRANS_LINEAR)
+	explosion_tween.tween_property(portal.find_child("Explosion"), "modulate:a", 0, 1).set_trans(Tween.TRANS_LINEAR)
 	emit_signal("ritual_finished")

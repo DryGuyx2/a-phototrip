@@ -5,7 +5,7 @@
 
 [node name="CliffPath" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(7, 7)
 texture = ExtResource("1_wm7rv")
 
@@ -14,7 +14,7 @@ texture = ExtResource("1_wm7rv")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-433, 332, -411, 299, -382, 339, -349, 306, -316, 324, -291, 295, -266, 317, -240, 303, -200, 340, -167, 314, -135, 340, -112, 386, 260, 387, 271, 338, 281, 327, 289, 320, 296, 307, 315, 311, 340, 275, 371, 238, 380, 158, 387, 80, 401, -138, 339, -138, 338, -152, 337, -189, 288, -178, 270, -165, 221, -163, 213, -155, 161, -171, 106, -170, 81, -154, 23, -180, -21, -163, -78, -172, -139, -166, -188, -129, -252, -130, -291, -97, -359, -129, -374, -123, -379, -102, -418, -102, -418, -65, -403, -45, -437, -24, -489, -21, -486, -360, 479, -346, 464, 411, -440, 406)
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-z_index = 1
+[node name="Trees" type="Sprite2D" parent="."]
+z_index = 2
 scale = Vector2(7, 7)
 texture = ExtResource("2_ykokt")

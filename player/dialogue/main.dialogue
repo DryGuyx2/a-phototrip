@@ -1,6 +1,6 @@
 ~ start
 
-Josh: Start
+Josh: Aaaah. Finally got off work, and now i can do my favourite hobby; Bird photography! I've heard some weird stories about this place, but it seems to have a pretty good amount of wildlife, and what could go wrong anyways?
 
 => END
 
@@ -18,13 +18,13 @@ Josh: Ah! Just missed it!
 
 ~ photo_0
 
-Josh: Those two are so cute together!
+Josh: Awww. Those two look so cute together!
 
 => END
 
 ~ photo_1
 
-Josh: It just left its eggs? Welp guess it has to prioritize itself.
+Josh: It just left its eggs? Welp, guess it has to prioritize itself.
 
 => END
 
@@ -36,7 +36,7 @@ Josh: Woah! That's probably one of the rarest birds i've ever taken a photo of!
 
 ~ sleepy
 
-Josh: Sleepy
+Josh: I think that's enough photos for today. Let's go back to camp and end the day.
 
 => END
 
@@ -54,30 +54,36 @@ Josh: What the heck is going on here? I have to take a closer look!
 
 ~ awoke_from_ritual
 
-Josh: Haah... My head hurts. I must have tripped on a branch and hit my head while taking pictures or something.
+Josh: Haah... My head hurts. I must have tripped on a branch and hit my head while setting up camp or something. Let's just get to photographing.
 
 => END
 
 ~ photo_0_cursed
 
-Josh: Photo0Cursed
+Josh: Jeez! They look horrifying!
 
 => END
 
 ~ photo_1_cursed
 
-Josh: Photo1Cursed
+Josh: Uhh... I dont think that was what my camera was supposed to capture.
 
 => END
 
 ~ photo_2_cursed
 
-Josh: Photo2Cursed
+Josh: Why is the moon so red?? And what is that arm coming out of the water?!
 
 => END
 
 ~ escape
 
-Josh: Escape
+Josh: Im done! This place is giving me the creeps.
+
+=> END
+
+~ driving_away
+
+Josh: I'm never going back to that place again! That was... Wait, what's that thing on the road? Oh crap!
 
 => END

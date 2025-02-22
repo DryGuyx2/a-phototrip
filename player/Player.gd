@@ -56,9 +56,6 @@ func handle_sound():
 
 
 func handle_input():
-	if Input.is_action_just_pressed("test_1"):
-		emit_signal("escaping")
-		photos_taken = 6
 	if immobile:
 		return
 	if dialoguing:
@@ -171,9 +168,6 @@ func _on_camera_finished_flash():
 	animation_component.play("idle_camera")
 	album.add_photo(photo_subject.number, photo_subject.cursed)
 	photos_taken += 1
-	if photos_taken == 6:
-		DialogueManager.show_example_dialogue_balloon(main_dialogue, "escape")
-		emit_signal("escaping")
 	
 	photographing = false
 	capturing = false
@@ -220,6 +214,7 @@ func _on_dialogue_started(_resource):
 	direction = Vector2.ZERO
 	dialoguing = true
 
+var triggered_escape: bool = false
 var triggered_sleepy: bool = false
 func _on_dialogue_ended(_resource):
 	dialoguing = false
@@ -227,6 +222,11 @@ func _on_dialogue_ended(_resource):
 		triggered_sleepy = true
 		DialogueManager.show_example_dialogue_balloon(main_dialogue, "sleepy")
 		emit_signal("sleepy")
+	
+	if photos_taken == 6 and not triggered_escape:
+		DialogueManager.show_example_dialogue_balloon(main_dialogue, "escape")
+		triggered_escape = true
+		emit_signal("escaping")
 
 
 func _on_start_menu_game_started():
