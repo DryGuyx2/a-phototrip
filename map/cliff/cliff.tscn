@@ -1,14 +1,52 @@
-[gd_scene load_steps=5 format=3 uid="uid://dw04mj1dxk5g0"]
+[gd_scene load_steps=12 format=3 uid="uid://dw04mj1dxk5g0"]
 
 [ext_resource type="Texture2D" uid="uid://yqgry8s2ub4p" path="res://map/cliff/cliff.png" id="1_fah2f"]
 [ext_resource type="Script" path="res://map/bird_area.gd" id="1_y3vhy"]
 [ext_resource type="PackedScene" uid="uid://bbfwjx1f5i5os" path="res://objects/photo_subjects/bird/bird.tscn" id="2_13om1"]
+[ext_resource type="Texture2D" uid="uid://bkn88refdpw65" path="res://objects/photo_subjects/bird/bird_eating.png" id="4_227ps"]
+[ext_resource type="Texture2D" uid="uid://cnemusqcpcqwl" path="res://objects/photo_subjects/bird/bird_flying.png" id="5_6fx3i"]
+[ext_resource type="Script" path="res://map/cliff/fake_bird.gd" id="6_ken73"]
 
-[sub_resource type="Curve2D" id="Curve2D_h7pnl"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -410, 252, 0, 0, 0, 0, -396, 219, 0, 0, 0, 0, -371, 207, 0, 0, 0, 0, -345, 199, 0, 0, 0, 0, -295, 198, 0, 0, 0, 0, 306, 225, 0, 0, 0, 0, 364, 227, 0, 0, 0, 0, 389, 249, 0, 0, 0, 0, 383, 272, 0, 0, 0, 0, 369, 290, 0, 0, 0, 0, 347, 296, 0, 0, 0, 0, 310, 310, 0, 0, 0, 0, 283, 323, 0, 0, 0, 0, 235, 332, 0, 0, 0, 0, -262, 323, 0, 0, 0, 0, -303, 314, 0, 0, 0, 0, -344, 300, 0, 0, 0, 0, -377, 280, 0, 0, 0, 0, -398, 261, 0, 0, 0, 0, -410, 252)
-}
-point_count = 20
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2q7w"]
+atlas = ExtResource("4_227ps")
+region = Rect2(0, 15, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk7ef"]
+atlas = ExtResource("5_6fx3i")
+region = Rect2(0, 15, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68q6o"]
+atlas = ExtResource("5_6fx3i")
+region = Rect2(5, 15, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duxpt"]
+atlas = ExtResource("5_6fx3i")
+region = Rect2(10, 15, 5, 5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0p5kc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2q7w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk7ef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68q6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duxpt")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 5.0
+}]
 
 [node name="Cliff" type="Node2D"]
 script = ExtResource("1_y3vhy")
@@ -22,29 +60,22 @@ texture = ExtResource("1_fah2f")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(435, 181, 426, 199, 418, 176, 409, 204, 377, 163, 350, 203, 329, 212, 305, 189, 255, 153, 229, 134, 188, 164, 169, 164, 120, 136, 119, 123, 96, 154, 68, 120, 54, 122, 35, 148, 7, 119, -13, 147, -69, 77, -132, 147, -170, 127, -191, 155, -225, 159, -234, 188, -271, 101, -311, 146, -349, 126, -354, 62, -327, 59, -361, -70, -171, -121, -95, -80, -1, -144, 23, -101, 62, -103, 100, -130, 138, -131, 145, -179, 205, -169, 229, -197, 236, -142, 295, -145, 297, -191, 324, -159, 359, -162, 363, -105, 402, -101, 405, -52, 439, -38, 438, -345, -432, -337, -442, 337, 454, 345)
 
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_h7pnl")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-165.654, 203.811)
-rotation = 0.0448949
-progress = 270.27
-rotates = false
-
-[node name="BlueBird" parent="Path2D/PathFollow2D" node_paths=PackedStringArray("exit_position", "path_follow", "flight_turnpoint") instance=ExtResource("2_13om1")]
-z_index = 2
-position = Vector2(-14.9966, -14.1521)
-scale = Vector2(1.25, 1.25)
-type = "blue"
-exit_position = NodePath("../../../BirdExit")
-exit_time = 2.0
-number = 1
-flying = true
-path_follow = NodePath("..")
-flight_turnpoint = NodePath("../../TurnPoint")
-
-[node name="TurnPoint" type="Node2D" parent="Path2D"]
-position = Vector2(-13, 269)
-
 [node name="BirdExit" type="Node2D" parent="."]
-position = Vector2(-803, 259)
+position = Vector2(-733, -366)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Bird" parent="Node2D" node_paths=PackedStringArray("exit_position") instance=ExtResource("2_13om1")]
+position = Vector2(-73, -94)
+scale = Vector2(1.25, 1.25)
+type = "orange"
+exit_position = NodePath("../../BirdExit")
+exit_time = 2.0
+number = 2
+
+[node name="FakeBird" type="AnimatedSprite2D" parent="Node2D/Bird"]
+z_index = 2
+position = Vector2(27.2, -1.6)
+scale = Vector2(4.25, 4.25)
+sprite_frames = SubResource("SpriteFrames_0p5kc")
+script = ExtResource("6_ken73")

@@ -46,6 +46,7 @@ shape = SubResource("CapsuleShape2D_bj6mk")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="YellowBird" parent="Node2D" node_paths=PackedStringArray("exit_position") instance=ExtResource("1_f51vt")]
+z_index = 0
 position = Vector2(-22, -41)
 scale = Vector2(1.25, 1.25)
 type = "yellow"

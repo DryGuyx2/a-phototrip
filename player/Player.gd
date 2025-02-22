@@ -20,7 +20,7 @@ var photographing: bool = false
 var direction: Vector2 = Vector2.ZERO
 var immobile: bool = false
 var cursed = false
-
+var photos_taken = 0
 
 func _ready() -> void:
 	set_collision_layer_value(GlobalData.layers["player_physics"], true)
@@ -162,6 +162,9 @@ func _on_camera_finished_flash():
 	DialogueManager.show_example_dialogue_balloon(main_dialogue, title)
 	animation_component.play("idle_camera")
 	album.add_photo(photo_subject.number, photo_subject.cursed)
+	photos_taken += 1
+	if photos_taken == 3:
+		DialogueManager.show_example_dialogue_balloon(main_dialogue, "sleepy")
 	photographing = false
 	capturing = false
 

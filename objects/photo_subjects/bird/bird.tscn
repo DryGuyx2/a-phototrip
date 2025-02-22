@@ -1,11 +1,40 @@
-[gd_scene load_steps=20 format=3 uid="uid://bbfwjx1f5i5os"]
+[gd_scene load_steps=35 format=3 uid="uid://bbfwjx1f5i5os"]
 
 [ext_resource type="Script" path="res://objects/photo_subjects/bird/bird.gd" id="1_4ggdc"]
+[ext_resource type="Texture2D" uid="uid://bkn88refdpw65" path="res://objects/photo_subjects/bird/bird_eating.png" id="2_kaouj"]
 [ext_resource type="Texture2D" uid="uid://cnemusqcpcqwl" path="res://objects/photo_subjects/bird/bird_flying.png" id="2_y38xn"]
 [ext_resource type="Texture2D" uid="uid://ciws8h0hn7cyn" path="res://objects/photo_subjects/bird/bird_nest.png" id="3_nuddp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hifl7"]
 size = Vector2(12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8um84"]
+atlas = ExtResource("2_kaouj")
+region = Rect2(0, 15, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ripom"]
+atlas = ExtResource("2_kaouj")
+region = Rect2(5, 15, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_282tl"]
+atlas = ExtResource("2_kaouj")
+region = Rect2(10, 15, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccuxd"]
+atlas = ExtResource("2_kaouj")
+region = Rect2(15, 15, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epod3"]
+atlas = ExtResource("2_kaouj")
+region = Rect2(20, 15, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sspt4"]
+atlas = ExtResource("2_kaouj")
+region = Rect2(25, 15, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c5av"]
+atlas = ExtResource("2_kaouj")
+region = Rect2(30, 15, 5, 5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qdckg"]
 atlas = ExtResource("3_nuddp")
@@ -23,6 +52,10 @@ region = Rect2(10, 5, 5, 5)
 atlas = ExtResource("3_nuddp")
 region = Rect2(15, 5, 5, 5)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pb5m"]
+atlas = ExtResource("2_kaouj")
+region = Rect2(0, 15, 5, 5)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mtjev"]
 atlas = ExtResource("3_nuddp")
 region = Rect2(0, 5, 5, 5)
@@ -38,6 +71,30 @@ region = Rect2(5, 0, 5, 5)
 [sub_resource type="AtlasTexture" id="AtlasTexture_drp01"]
 atlas = ExtResource("2_y38xn")
 region = Rect2(10, 0, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8evl6"]
+atlas = ExtResource("2_y38xn")
+region = Rect2(0, 10, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nn7f"]
+atlas = ExtResource("2_y38xn")
+region = Rect2(5, 10, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkys7"]
+atlas = ExtResource("2_y38xn")
+region = Rect2(10, 10, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvonj"]
+atlas = ExtResource("2_y38xn")
+region = Rect2(0, 15, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0148"]
+atlas = ExtResource("2_y38xn")
+region = Rect2(5, 15, 5, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1657g"]
+atlas = ExtResource("2_y38xn")
+region = Rect2(10, 15, 5, 5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ap3sq"]
 atlas = ExtResource("2_y38xn")
@@ -67,6 +124,32 @@ region = Rect2(10, 5, 5, 5)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8um84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ripom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_282tl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccuxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epod3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sspt4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c5av")
+}],
+"loop": true,
+"name": &"acting_orange",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_qdckg")
 }, {
 "duration": 1.0,
@@ -80,6 +163,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"acting_yellow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pb5m")
+}],
+"loop": true,
+"name": &"default_orange",
 "speed": 5.0
 }, {
 "frames": [{
@@ -102,6 +193,29 @@ animations = [{
 }],
 "loop": true,
 "name": &"flight_blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8evl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nn7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkys7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvonj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0148")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1657g")
+}],
+"loop": true,
+"name": &"flight_orange",
 "speed": 5.0
 }, {
 "frames": [{
@@ -134,6 +248,7 @@ animations = [{
 }]
 
 [node name="Bird" type="Area2D"]
+z_index = 2
 position = Vector2(764, 199)
 collision_layer = 0
 collision_mask = 0
@@ -147,6 +262,6 @@ shape = SubResource("RectangleShape2D_hifl7")
 position = Vector2(13, 13)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_2h3po")
-animation = &"acting_yellow"
+animation = &"acting_orange"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

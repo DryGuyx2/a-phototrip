@@ -22,21 +22,9 @@ Josh: Woah! That's probably one of the rarest birds i've ever taken a photo of!
 
 => END
 
-~ photo_0_cursed
+~ sleepy
 
-Josh: Photo0Cursed
-
-=> END
-
-~ photo_1_cursed
-
-Josh: Photo1Cursed
-
-=> END
-
-~ photo_2_cursed
-
-Josh: Photo2Cursed
+Josh: Sleepy
 
 => END
 
@@ -55,5 +43,23 @@ Josh: What the heck is going on here? I have to take a closer look!
 ~ awoke_from_ritual
 
 Josh: Haah... My head hurts. I must have tripped on a branch and hit my head while taking pictures or something.
+
+=> END
+
+~ photo_0_cursed
+
+Josh: Photo0Cursed
+
+=> END
+
+~ photo_1_cursed
+
+Josh: Photo1Cursed
+
+=> END
+
+~ photo_2_cursed
+
+Josh: Photo2Cursed
 
 => END

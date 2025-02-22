@@ -8,4 +8,4 @@ func _ready():
 	elif get_name() == "Coast":
 		intersection.ritual_finished.connect($Path2D/PathFollow2D/RedBird._on_ritual_finished)
 	elif get_name() == "Cliff":
-		intersection.ritual_finished.connect($Path2D/PathFollow2D/BlueBird._on_ritual_finished)
+		intersection.ritual_finished.connect($Node2D/Bird._on_ritual_finished)
