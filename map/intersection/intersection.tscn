@@ -144,6 +144,7 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_7iy7y")
 
 [node name="Cultists" type="Node2D" parent="."]
+visible = false
 z_index = 1
 scale = Vector2(5, 5)
 

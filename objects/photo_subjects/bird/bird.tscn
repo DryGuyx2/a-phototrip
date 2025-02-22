@@ -1,9 +1,10 @@
-[gd_scene load_steps=35 format=3 uid="uid://bbfwjx1f5i5os"]
+[gd_scene load_steps=37 format=3 uid="uid://bbfwjx1f5i5os"]
 
 [ext_resource type="Script" path="res://objects/photo_subjects/bird/bird.gd" id="1_4ggdc"]
 [ext_resource type="Texture2D" uid="uid://bkn88refdpw65" path="res://objects/photo_subjects/bird/bird_eating.png" id="2_kaouj"]
 [ext_resource type="Texture2D" uid="uid://cnemusqcpcqwl" path="res://objects/photo_subjects/bird/bird_flying.png" id="2_y38xn"]
 [ext_resource type="Texture2D" uid="uid://ciws8h0hn7cyn" path="res://objects/photo_subjects/bird/bird_nest.png" id="3_nuddp"]
+[ext_resource type="AudioStream" uid="uid://dm4f61opct06u" path="res://objects/photo_subjects/bird/bird_chirp.wav" id="5_0f4s7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hifl7"]
 size = Vector2(12, 12)
@@ -247,6 +248,12 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ymgco"]
+random_pitch = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("5_0f4s7")
+stream_0/weight = 1.0
+
 [node name="Bird" type="Area2D"]
 z_index = 2
 position = Vector2(764, 199)
@@ -263,5 +270,9 @@ position = Vector2(13, 13)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_2h3po")
 animation = &"acting_orange"
+
+[node name="Chirp" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_ymgco")
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

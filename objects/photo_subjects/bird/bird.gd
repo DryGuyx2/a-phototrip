@@ -14,6 +14,7 @@ class_name Bird
 
 @onready var animation_component: AnimatedSprite2D = $AnimatedSprite2D
 @onready var initial_position: Vector2 = get_parent().global_position
+@onready var chirp_player: AudioStreamPlayer = $Chirp
 
 var intersection: Node2D
 var idle_time_left: float = randf_range(3.0, 6.0)
@@ -48,6 +49,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 
 func photographed() -> void:
+	chirp_player.play()
 	flown_away = true
 	animation_component.play("flight_%s" % type)
 	var flight_tween = create_tween()

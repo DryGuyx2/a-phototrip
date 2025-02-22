@@ -10,7 +10,7 @@ signal sleepy
 @export var intersection: Node2D
 
 @onready var animation_component: AnimatedSprite2D = $AnimatedSprite2D
-@onready var audio_player: AudioStreamPlayer = $Step
+@onready var step: AudioStreamPlayer = $Step
 @onready var photo_area: Area2D = $PhotoArea
 @onready var interaction_zone = $InteractionZone
 
@@ -49,7 +49,7 @@ func _process(delta: float) -> void:
 func handle_sound():
 	if animation_component.animation == "moving" or animation_component.animation =="moving_camera":
 		if animation_component.frame == 1:
-			audio_player.play()
+			step.play()
 
 
 func handle_input():
@@ -162,9 +162,6 @@ func _on_camera_finished_flash():
 	animation_component.play("idle_camera")
 	album.add_photo(photo_subject.number, photo_subject.cursed)
 	photos_taken += 1
-	if photos_taken == 3:
-		DialogueManager.show_example_dialogue_balloon(main_dialogue, "sleepy")
-		emit_signal("sleepy")
 	
 	photographing = false
 	capturing = false
@@ -211,5 +208,10 @@ func _on_dialogue_started(_resource):
 	direction = Vector2.ZERO
 	dialoguing = true
 
+var triggered_sleepy: bool = false
 func _on_dialogue_ended(_resource):
 	dialoguing = false
+	if photos_taken == 3 and not triggered_sleepy:
+		triggered_sleepy = true
+		DialogueManager.show_example_dialogue_balloon(main_dialogue, "sleepy")
+		emit_signal("sleepy")
