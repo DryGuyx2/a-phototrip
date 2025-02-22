@@ -12,6 +12,10 @@ signal awoke
 @onready var night_sprite = $Night
 @onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
+@onready var normal_photos = [$PhotoDisplay/Normal1, $PhotoDisplay/Normal2, $PhotoDisplay/Normal3]
+@onready var cursed_photos = [$PhotoDisplay/Cursed1, $PhotoDisplay/Cursed2, $PhotoDisplay/Cursed3]
+
+
 func flash() -> void:
 	audio_player.play()
 	var flash_tween = create_tween()
@@ -51,7 +55,25 @@ func emit_wake() -> void:
 	emit_signal("awoke")
 
 
-func _on_player_photographed():
+func remove_photo() -> void:
+	await get_tree().create_timer(1).timeout
+	var photo_slide_tween = create_tween()
+	photo_slide_tween.tween_property(photo, "position:y", 1264, 5).set_trans(Tween.TRANS_LINEAR)
+	photo_slide_tween.play()
+
+var photo: Sprite2D
+func _on_player_photographed(number, cursed):
+	if cursed:
+		photo = cursed_photos[number]
+	else:
+		photo = normal_photos[number]
+	photo.position = Vector2(0, 1264)
+	photo.visible = true
+	var photo_slide_tween = create_tween()
+	photo_slide_tween.tween_property(photo, "global_position", global_position, 5).set_trans(Tween.TRANS_QUAD)
+	photo_slide_tween.tween_callback(remove_photo)
+	photo_slide_tween.play()
+	
 	var night_tween = create_tween()
 	night_tween.tween_property(night_sprite, "modulate:a", night_sprite.modulate.a + 0.2, 10).set_trans(Tween.TRANS_LINEAR)
 

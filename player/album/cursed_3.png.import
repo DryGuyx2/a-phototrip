@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://07x86oh3v54m"
-path="res://.godot/imported/tree_creature.png-f6c37c1a031fb80ddfa586dd53121484.ctex"
+uid="uid://ce42gerl4wvcm"
+path="res://.godot/imported/cursed_3.png-711faabfc779ecd99b8ff5a2f47d581f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/album/tree_creature.png"
-dest_files=["res://.godot/imported/tree_creature.png-f6c37c1a031fb80ddfa586dd53121484.ctex"]
+source_file="res://player/album/cursed_3.png"
+dest_files=["res://.godot/imported/cursed_3.png-711faabfc779ecd99b8ff5a2f47d581f.ctex"]
 
 [params]
 

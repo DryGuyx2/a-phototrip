@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce42gerl4wvcm"
-path="res://.godot/imported/water_creature.png-2d6e20e041962d3b4593d26098c2ffae.ctex"
+uid="uid://07x86oh3v54m"
+path="res://.godot/imported/cursed_2.png-56e43460304776f83a4124c59667b8ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/album/water_creature.png"
-dest_files=["res://.godot/imported/water_creature.png-2d6e20e041962d3b4593d26098c2ffae.ctex"]
+source_file="res://player/album/cursed_2.png"
+dest_files=["res://.godot/imported/cursed_2.png-56e43460304776f83a4124c59667b8ef.ctex"]
 
 [params]
 

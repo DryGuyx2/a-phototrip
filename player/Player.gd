@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-signal photographed
+signal photographed(number, cursed)
 signal sleepy
 
 @export var speed: int = 1000
@@ -154,7 +154,7 @@ func _on_camera_finished_flash():
 	
 	var photo_subject = photo_area.get_overlapping_areas()[0]
 	photo_subject.photographed()
-	emit_signal("photographed")
+	emit_signal("photographed", photo_subject.number, photo_subject.cursed)
 	var title = "photo_%s" % photo_subject.number
 	if photo_subject.cursed:
 		print("Curse")
