@@ -66,12 +66,11 @@ position = Vector2(-733, -366)
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Bird" parent="Node2D" node_paths=PackedStringArray("exit_position") instance=ExtResource("2_13om1")]
-position = Vector2(-73, -94)
+position = Vector2(-320, -5.00002)
 scale = Vector2(1.25, 1.25)
 type = "orange"
 exit_position = NodePath("../../BirdExit")
 exit_time = 2.0
-number = 2
 
 [node name="FakeBird" type="AnimatedSprite2D" parent="Node2D/Bird"]
 z_index = 2

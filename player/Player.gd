@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 signal photographed
+signal sleepy
 
 @export var speed: int = 1000
 @export var camera: Camera2D
@@ -165,6 +166,8 @@ func _on_camera_finished_flash():
 	photos_taken += 1
 	if photos_taken == 3:
 		DialogueManager.show_example_dialogue_balloon(main_dialogue, "sleepy")
+		emit_signal("sleepy")
+	
 	photographing = false
 	capturing = false
 

@@ -19,8 +19,8 @@ func _ready() -> void:
 var performing = false
 
 func _process(delta):
-		if Input.is_action_just_pressed("test_3"):
-			emit_signal("ritual_finished")
+	if Input.is_action_just_pressed("test_3"):
+		emit_signal("ritual_finished")
 
 func _on_camp_sleep():
 	$Cultists.visible = true

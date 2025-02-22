@@ -36,7 +36,7 @@ func _on_camp_sleep() -> void:
 	sleep_tween.tween_property(sleep_sprite, "modulate:a", 1, sleep_speed / 3).set_trans(Tween.TRANS_LINEAR)
 	sleep_tween.play()
 	sleep_tween.tween_callback(wake)
-	night_sprite.modulate += 0.2
+	night_sprite.modulate.a += 0.2
 
 
 func wake() -> void:
@@ -53,4 +53,9 @@ func emit_wake() -> void:
 
 func _on_player_photographed():
 	var night_tween = create_tween()
-	night_tween.tween_property(sleep_sprite, "modulate:a", sleep_sprite.modulate.a + 0.2, 10).set_trans(Tween.TRANS_LINEAR)
+	night_tween.tween_property(night_sprite, "modulate:a", night_sprite.modulate.a + 0.2, 10).set_trans(Tween.TRANS_LINEAR)
+
+
+func _on_intersection_ritual_finished():
+	night_sprite.modulate.a = 0
+	sleep_sprite.modulate.a = 0

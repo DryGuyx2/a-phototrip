@@ -20,8 +20,8 @@ class_name Album
 	$Position6: "empty",
 }
 
-func _ready() -> void:
-	normal_photos[0].position = positions.keys()[0].position
+#func _ready() -> void:
+#	normal_photos[0].position = positions.keys()[0].position
 
 
 func _process(delta: float):
@@ -32,6 +32,7 @@ func _process(delta: float):
 
 
 func add_photo(number, cursed) -> void:
+	print("Adding photo: ", number)
 	var photo_position
 	for position in positions.keys():
 		if positions[position] == "empty":
@@ -42,3 +43,4 @@ func add_photo(number, cursed) -> void:
 		cursed_photos[number].global_position = photo_position.global_position
 	else:
 		normal_photos[number].global_position = photo_position.global_position
+	print("Photo positions: ", positions)

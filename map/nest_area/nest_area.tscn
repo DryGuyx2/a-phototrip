@@ -52,3 +52,4 @@ scale = Vector2(1.25, 1.25)
 type = "yellow"
 exit_position = NodePath("../../ExitPosition")
 exit_time = 2.0
+number = 1
