@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bcx4l8xfq5mek" path="res://camera/white_square.jpg" id="2_r418a"]
 [ext_resource type="AudioStream" uid="uid://brno8k38qu53k" path="res://camera/camera_shot.wav" id="3_qff30"]
 [ext_resource type="Texture2D" uid="uid://dnf2brn8g38vv" path="res://camera/black_square.png" id="4_8bq31"]
-[ext_resource type="Texture2D" uid="uid://dot6qj0wgfv4j" path="res://player/album/photo_3.png" id="4_lydwh"]
+[ext_resource type="Texture2D" uid="uid://b52jiojcuw5bt" path="res://player/album/photo_3.png" id="4_lydwh"]
 [ext_resource type="Texture2D" uid="uid://caou1giy2hng0" path="res://player/album/photo_1.png" id="5_eogoj"]
 [ext_resource type="Texture2D" uid="uid://ce42gerl4wvcm" path="res://player/album/cursed_3.png" id="5_hfku4"]
 [ext_resource type="Texture2D" uid="uid://p54byem1v4ak" path="res://player/album/cursed_1.png" id="5_iqdwr"]
@@ -28,19 +28,16 @@ texture = ExtResource("5_eogoj")
 [node name="Normal2" type="Sprite2D" parent="PhotoDisplay"]
 visible = false
 position = Vector2(0, 155)
-scale = Vector2(1, 1)
 texture = ExtResource("2_3q8pr")
 
 [node name="Normal3" type="Sprite2D" parent="PhotoDisplay"]
 visible = false
 position = Vector2(0, 155)
-scale = Vector2(1, 1)
 texture = ExtResource("4_lydwh")
 
 [node name="Cursed1" type="Sprite2D" parent="PhotoDisplay"]
 visible = false
 position = Vector2(0, 155)
-scale = Vector2(1, 1)
 texture = ExtResource("5_iqdwr")
 
 [node name="Cursed2" type="Sprite2D" parent="PhotoDisplay"]

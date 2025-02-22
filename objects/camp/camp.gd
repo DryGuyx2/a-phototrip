@@ -5,6 +5,7 @@ signal sleep
 var slept: bool = false
 
 func _ready() -> void:
+	$AnimatedSprite2D.play("default")
 	$InteractionPoint.set_collision_layer_value(GlobalData.layers["interaction"], false)
 
 func interact() -> void:

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dnf2brn8g38vv" path="res://camera/black_square.png" id="2_oolpo"]
 [ext_resource type="Texture2D" uid="uid://b6jm11ij2rdco" path="res://player/album/album.png" id="2_upgbt"]
 [ext_resource type="Texture2D" uid="uid://bjglpspuueqt4" path="res://player/album/photo_2.png" id="3_f668a"]
-[ext_resource type="Texture2D" uid="uid://dot6qj0wgfv4j" path="res://player/album/photo_3.png" id="4_sdufi"]
+[ext_resource type="Texture2D" uid="uid://b52jiojcuw5bt" path="res://player/album/photo_3.png" id="4_sdufi"]
 [ext_resource type="Texture2D" uid="uid://ce42gerl4wvcm" path="res://player/album/cursed_3.png" id="5_bpwub"]
 [ext_resource type="Texture2D" uid="uid://07x86oh3v54m" path="res://player/album/cursed_2.png" id="6_00tpk"]
 [ext_resource type="Texture2D" uid="uid://p54byem1v4ak" path="res://player/album/cursed_1.png" id="6_3wjp5"]

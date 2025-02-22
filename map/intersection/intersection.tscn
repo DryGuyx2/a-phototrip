@@ -122,7 +122,7 @@ texture = ExtResource("2_io0fd")
 [node name="Portal" type="AnimatedSprite2D" parent="."]
 z_index = 1
 position = Vector2(-1, 0)
-scale = Vector2(4, 4)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_v1nh7")
 animation = &"active"
 
@@ -144,7 +144,6 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_7iy7y")
 
 [node name="Cultists" type="Node2D" parent="."]
-visible = false
 z_index = 1
 scale = Vector2(5, 5)
 

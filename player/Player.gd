@@ -157,6 +157,7 @@ func _on_camera_finished_flash():
 		print("Curse")
 		title = "%s_cursed" % title
 	print(photo_subject.cursed)
+	await get_tree().create_timer(1).timeout
 	DialogueManager.show_example_dialogue_balloon(main_dialogue, title)
 	animation_component.play("idle_camera")
 	album.add_photo(photo_subject.number, photo_subject.cursed)
