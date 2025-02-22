@@ -95,3 +95,6 @@ func _on_dialogue_ended(_resource: DialogueResource):
 func _on_car_car_exploded():
 	var end_screen_tween = create_tween()
 	end_screen_tween.tween_property($EndScreen, "modulate:a", 1, 3).set_trans(Tween.TRANS_LINEAR)
+
+func change_task(new_task: String) -> void:
+	$Node2D/Label.text = "Current task: %s" % new_task

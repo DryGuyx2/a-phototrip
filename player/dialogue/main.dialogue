@@ -1,12 +1,12 @@
 ~ start
 
-Josh: Aaaah. Finally got off work, and now i can do my favourite hobby, bird photography! I've heard some weird stories about this place, but it seems to have a pretty good amount of wildlife, and what could go wrong anyways?
+Josh: Aaaah. Finally got off work, and now i can do my favourite hobby, bird photography! I've heard some weird rumors about this place, but it seems to have a solid amount of wildlife, and what could go wrong anyways?
 
 => END
 
 ~ portal
 
-Josh: What's that structure? It looks ancient! Like some kind of portal!
+Josh: What's that structure? It looks ancient!
 
 => END
 
@@ -36,13 +36,13 @@ Josh: It just left its eggs? Welp, guess it has to prioritize itself.
 
 ~ photo_2
 
-Josh: Woah! That's probably one of the pretties photos i've taken!
+Josh: Woah! That's probably one of the prettiest photos i've ever taken!
 
 => END
 
 ~ sleepy
 
-Josh: I think that's enough photos for today. Let's go back to camp and end the day.
+Josh: I think that's enough photography for today. Let's go back to camp and end the day.
 
 => END
 
@@ -54,7 +54,7 @@ Josh: Ugh. What's all that noise? It's been keeping me awake all night!
 
 ~ spotted_cult
 
-Josh: What the heck is going on here? I have to take a closer look!
+Josh: What the heck is going on here?!
 
 => END
 
@@ -78,7 +78,7 @@ Josh: Uhh... I dont think that was what my camera was supposed to capture.
 
 ~ photo_2_cursed
 
-Josh: Why is the moon so red?? And what is that arm coming out of the water?!
+Josh: Why is the moon so red?? And what is that thing grabbing the bird?!
 
 => END
 

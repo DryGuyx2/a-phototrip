@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://timxvbh6c5qq"]
+[gd_scene load_steps=27 format=3 uid="uid://timxvbh6c5qq"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_6qjth"]
 [ext_resource type="Texture2D" uid="uid://ba4uvabyo1y5d" path="res://player/player_move.png" id="2_ljrr6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bl1bawfwh1o6" path="res://player/player_move_camera.png" id="3_p8pki"]
 [ext_resource type="Texture2D" uid="uid://r7x6f22gvoao" path="res://player/player_photographing.png" id="4_pcd17"]
 [ext_resource type="AudioStream" uid="uid://xpkm28pj3emy" path="res://player/walk.wav" id="5_r315o"]
+[ext_resource type="AudioStream" uid="uid://ba1jojgrm1wj0" path="res://player/equip_camera.wav" id="7_0sw0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uytmb"]
 size = Vector2(200, 111.2)
@@ -202,5 +203,9 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone"]
 position = Vector2(-0.2, 3.6)
 shape = SubResource("CircleShape2D_e5gnj")
+
+[node name="EquipCamera" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_0sw0r")
+volume_db = -10.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

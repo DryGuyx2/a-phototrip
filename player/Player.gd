@@ -75,6 +75,7 @@ func handle_input():
 		album.visible = not album.visible
 	
 	if Input.is_action_just_pressed("equip"):
+		$EquipCamera.play()
 		equipped_camera = not equipped_camera
 		$PhotoArea/Outline.visible = not $PhotoArea/Outline.visible
 
@@ -180,6 +181,7 @@ func immobilize() -> void:
 
 
 func _on_camp_sleep():
+	slept = true
 	immobilize()
 
 
@@ -207,6 +209,7 @@ func finish_walking() -> void:
 
 
 func _on_intersection_ritual_finished():
+	triggered_cult = true
 	DialogueManager.show_example_dialogue_balloon(main_dialogue, "awoke_from_ritual")
 	immobile = false
 
@@ -214,10 +217,13 @@ func _on_dialogue_started(_resource):
 	direction = Vector2.ZERO
 	dialoguing = true
 
+var slept: bool = false
 var triggered_escape: bool = false
 var triggered_sleepy: bool = false
+var triggered_cult: bool = false
 func _on_dialogue_ended(_resource):
 	dialoguing = false
+	
 	if photos_taken == 3 and not triggered_sleepy:
 		triggered_sleepy = true
 		DialogueManager.show_example_dialogue_balloon(main_dialogue, "sleepy")
@@ -227,6 +233,25 @@ func _on_dialogue_ended(_resource):
 		DialogueManager.show_dialogue_balloon(main_dialogue, "escape")
 		triggered_escape = true
 		emit_signal("escaping")
+	
+	if triggered_escape:
+		camera.change_task("Get to the car and drive away")
+		return
+	
+	if triggered_cult:
+		camera.change_task("Explore the area and photograph birds: %s/3" % (photos_taken - 3))
+		return
+	
+	if not triggered_cult and slept:
+		camera.change_task("Investigate the weird noise")
+		return
+	
+	if triggered_sleepy and photos_taken == 3:
+		camera.change_task("Get back to camp and go to sleep")
+	
+	if not triggered_sleepy:
+		camera.change_task("Explore the area and photograph birds: %s/3" % photos_taken)
+		return
 
 
 func _on_start_menu_game_started():

@@ -13,7 +13,7 @@
 [ext_resource type="FontFile" uid="uid://dawrd0vxhqgh3" path="res://dogica.ttf" id="11_11c25"]
 [ext_resource type="PackedScene" uid="uid://d2dtr0n45af62" path="res://end_screen/end_screen.tscn" id="12_u2g1r"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_n1doi"]
+[sub_resource type="LabelSettings" id="LabelSettings_d24sf"]
 font = ExtResource("11_11c25")
 
 [node name="Camera" type="Camera2D"]
@@ -80,21 +80,18 @@ stream = ExtResource("3_qff30")
 bus = &"SFX"
 
 [node name="Node2D" type="Node2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.486275)
 z_index = 7
 position = Vector2(-432, -356)
 
 [node name="Label" type="Label" parent="Node2D"]
-offset_left = 5.0
-offset_top = 19.0
-offset_right = 357.0
-offset_bottom = 67.0
-text = "WASD/Arrows: Move
-Q: Equip camera
-E: Interact/use camera
-F: Open/close album"
-label_settings = SubResource("LabelSettings_n1doi")
+offset_top = 18.0
+offset_right = 481.0
+offset_bottom = 132.0
+text = "Current task: None"
+label_settings = SubResource("LabelSettings_d24sf")
+autowrap_mode = 2
 
 [node name="EndScreen" parent="." instance=ExtResource("12_u2g1r")]
 modulate = Color(1, 1, 1, 0)
+z_index = 6
 scale = Vector2(0.489422, 0.447799)
