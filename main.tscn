@@ -300,10 +300,11 @@ position = Vector2(377, 34)
 
 [node name="CameraPosition" type="Node2D" parent="ParkingSpot"]
 
-[node name="NestArea" parent="." node_paths=PackedStringArray("intersection", "yellow_bird") instance=ExtResource("8_oeojp")]
+[node name="NestArea" parent="." node_paths=PackedStringArray("intersection", "yellow_bird", "player") instance=ExtResource("8_oeojp")]
 position = Vector2(16196, 363)
 intersection = NodePath("../Intersection")
 yellow_bird = NodePath("../YSorted/Node2D2/YellowBird")
+player = NodePath("../YSorted/Player")
 
 [node name="CameraPostion" type="Node2D" parent="NestArea"]
 

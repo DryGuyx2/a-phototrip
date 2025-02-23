@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsxef6d44rppb"]
+[gd_scene load_steps=4 format=3 uid="uid://dsxef6d44rppb"]
 
 [ext_resource type="Texture2D" uid="uid://coxnoysqdduhc" path="res://map/cliff_path/cliff_path.png" id="1_wm7rv"]
 [ext_resource type="Texture2D" uid="uid://d003tdh3u35l5" path="res://map/cliff_path/cliff_path_trees.png" id="2_ykokt"]
+[ext_resource type="Script" path="res://map/trees.gd" id="3_74vml"]
 
 [node name="CliffPath" type="Node2D"]
 
@@ -18,3 +19,8 @@ polygon = PackedVector2Array(-433, 332, -411, 299, -382, 339, -349, 306, -316, 3
 z_index = 2
 scale = Vector2(7, 7)
 texture = ExtResource("2_ykokt")
+script = ExtResource("3_74vml")
+
+[node name="AbovePoint" type="Node2D" parent="Trees"]
+position = Vector2(2.98023e-08, -15.4286)
+scale = Vector2(0.142857, 0.142857)

@@ -1,16 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyfkhtlrnx55w"]
+[gd_scene load_steps=5 format=3 uid="uid://cyfkhtlrnx55w"]
 
 [ext_resource type="Texture2D" uid="uid://bpe7unfw3wdpe" path="res://map/nest_area/nest_area_bottom_trees.png" id="1_irmuu"]
 [ext_resource type="Script" path="res://map/bird_area.gd" id="1_q8d40"]
 [ext_resource type="Texture2D" uid="uid://g4oxuony0uys" path="res://map/nest_area/nest_area.png" id="2_5e73y"]
+[ext_resource type="Script" path="res://map/trees.gd" id="4_2i45m"]
 
 [node name="NestArea" type="Node2D"]
 script = ExtResource("1_q8d40")
-
-[node name="Trees" type="Sprite2D" parent="."]
-z_index = 2
-scale = Vector2(7, 7)
-texture = ExtResource("1_irmuu")
 
 [node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(7, 7)
@@ -20,3 +16,13 @@ texture = ExtResource("2_5e73y")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-152, -353, -135, -325, -130, -290, -160, -247, -157, -212, -411, -109, -386, 82, -357, 166, -335, 219, -302, 274, -246, 308, -227, 277, -213, 271, -191, 288, -171, 332, -152, 310, -140, 308, -109, 321, -86, 333, -67, 314, -49, 310, -25, 304, 16, 335, 28, 305, 43, 303, 68, 330, 89, 305, 116, 295, 130, 253, 164, 275, 200, 198, 230, 217, 263, 160, 290, 150, 320, 105, 377, 7, 380, -212, 117, -194, 84, -267, 84, -398, 447, -408, 448, 341, -438, 343, -434, -363)
+
+[node name="Trees" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(0, 4.76837e-07)
+scale = Vector2(7, 7)
+texture = ExtResource("1_irmuu")
+script = ExtResource("4_2i45m")
+
+[node name="AbovePoint" type="Node2D" parent="Trees"]
+position = Vector2(0, -22.1429)

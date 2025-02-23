@@ -2,6 +2,7 @@ extends Node2D
 
 @export var intersection: Node2D
 @export var yellow_bird: Area2D
+@export var player: CharacterBody2D
 
 func _ready():
 	if get_name() == "NestArea":
