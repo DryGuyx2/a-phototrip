@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d2dtr0n45af62"]
 
-[ext_resource type="Texture2D" uid="uid://dnf2brn8g38vv" path="res://camera/black_square.png" id="1_n70a6"]
+[ext_resource type="Texture2D" uid="uid://vbjpsw4s0net" path="res://end_screen/end_screen.png" id="1_oushy"]
 [ext_resource type="FontFile" uid="uid://g3q58jarv7nq" path="res://Pixeled.ttf" id="2_ua341"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_su0nw"]
@@ -18,7 +18,7 @@ scale = Vector2(0.5, 0.5)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 66)
 scale = Vector2(12.04, 12.9733)
-texture = ExtResource("1_n70a6")
+texture = ExtResource("1_oushy")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(-335, 123)

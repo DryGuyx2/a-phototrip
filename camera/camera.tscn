@@ -106,7 +106,8 @@ label_settings = SubResource("LabelSettings_xmjxk")
 [node name="EndScreen" parent="." instance=ExtResource("12_u2g1r")]
 modulate = Color(1, 1, 1, 0)
 z_index = 10
-scale = Vector2(0.489422, 0.447799)
+position = Vector2(-6, -30)
+scale = Vector2(0.6, 0.549)
 
 [node name="DeathArticle" parent="." instance=ExtResource("13_mixth")]
 visible = false
