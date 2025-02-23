@@ -13,3 +13,5 @@ Q: Equip camera
 E: Interact/use camera
 
 F: Open/close album
+
+The code is really really bad.
