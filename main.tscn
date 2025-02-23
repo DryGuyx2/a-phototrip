@@ -389,12 +389,11 @@ shape = SubResource("RectangleShape2D_il10t")
 
 [node name="CameraPosition" type="Node2D" parent="Coast"]
 
-[node name="Road" parent="." node_paths=PackedStringArray("car") instance=ExtResource("17_brnwf")]
+[node name="Road" parent="." instance=ExtResource("17_brnwf")]
 position = Vector2(32026, 374)
-car = NodePath("../YSorted/Car")
 
 [node name="CarExplosionPoint" type="Node2D" parent="Road"]
-position = Vector2(-2591, -61)
+position = Vector2(-2878, -44)
 
 [node name="EndCarEntryPoint" type="Node2D" parent="Road"]
 position = Vector2(3136, -59)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://j8784ry2jjss"]
+[gd_scene load_steps=16 format=3 uid="uid://j8784ry2jjss"]
 
 [ext_resource type="Script" path="res://camera/camera.gd" id="1_fxby6"]
 [ext_resource type="Texture2D" uid="uid://qbmcbuqmb0yp" path="res://player/album/photo_2.png" id="2_3q8pr"]
@@ -15,6 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://dh71pr6yw1417" path="res://player/death_article/death_article.tscn" id="13_mixth"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d24sf"]
+font = ExtResource("11_fq40i")
+
+[sub_resource type="LabelSettings" id="LabelSettings_xmjxk"]
 font = ExtResource("11_fq40i")
 
 [node name="Camera" type="Camera2D"]
@@ -86,16 +89,25 @@ position = Vector2(-432, -356)
 
 [node name="Label" type="Label" parent="Node2D"]
 offset_top = 18.0
-offset_right = 481.0
-offset_bottom = 132.0
+offset_right = 848.0
+offset_bottom = 145.0
 text = "Current task: None"
 label_settings = SubResource("LabelSettings_d24sf")
 autowrap_mode = 2
 
+[node name="Label2" type="Label" parent="Node2D"]
+visible = false
+offset_top = 634.0
+offset_right = 545.0
+offset_bottom = 680.0
+text = "E to interact (without camera equipped)"
+label_settings = SubResource("LabelSettings_xmjxk")
+
 [node name="EndScreen" parent="." instance=ExtResource("12_u2g1r")]
 modulate = Color(1, 1, 1, 0)
-z_index = 6
+z_index = 10
 scale = Vector2(0.489422, 0.447799)
 
 [node name="DeathArticle" parent="." instance=ExtResource("13_mixth")]
 visible = false
+z_index = 8

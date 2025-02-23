@@ -34,7 +34,7 @@ func _on_audio_stream_player_finished():
 
 
 func _on_cult_scene_trigger_triggered_scene() -> void:
-	$Cultists/AudioStreamPlayer.volume_db = 20
+	$Cultists/Ritual.volume_db = 20
 	portal.play("active")
 
 

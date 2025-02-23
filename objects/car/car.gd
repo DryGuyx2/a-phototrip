@@ -39,6 +39,7 @@ func exit_parking_spot() -> void:
 	camera.get_parent().remove_child(camera)
 	$CameraPosition.add_child(camera)
 	camera.global_position = global_position
+	camera.global_scale = camera.initial_scale
 	emit_signal("car_exited_parking_spot")
 	exit_road()
 

@@ -15,6 +15,7 @@ signal awoke
 @onready var normal_photos = [$PhotoDisplay/Normal1, $PhotoDisplay/Normal2, $PhotoDisplay/Normal3]
 @onready var cursed_photos = [$PhotoDisplay/Cursed1, $PhotoDisplay/Cursed2, $PhotoDisplay/Cursed3]
 
+@onready var initial_scale = global_scale
 
 func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
@@ -94,9 +95,12 @@ func _on_dialogue_ended(_resource: DialogueResource):
 
 func _on_car_car_exploded():
 	$DeathArticle.play()
-	await get_tree().create_timer(3)
+	await get_tree().create_timer(5).timeout
 	var end_screen_tween = create_tween()
 	end_screen_tween.tween_property($EndScreen, "modulate:a", 1, 3).set_trans(Tween.TRANS_LINEAR)
 
 func change_task(new_task: String) -> void:
 	$Node2D/Label.text = "Current task: %s" % new_task
+
+func toggle_interaction(on: bool) -> void:
+	$Node2D/Label2.visible = on

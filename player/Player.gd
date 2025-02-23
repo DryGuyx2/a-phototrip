@@ -235,7 +235,7 @@ func _on_dialogue_ended(_resource):
 		emit_signal("escaping")
 	
 	if triggered_escape:
-		camera.change_task("Get to the car and drive away")
+		camera.change_task("Get to the car and get away")
 		return
 	
 	if triggered_cult:
@@ -257,3 +257,11 @@ func _on_dialogue_ended(_resource):
 func _on_start_menu_game_started():
 	immobile = false
 	DialogueManager.show_example_dialogue_balloon(main_dialogue, "start_0")
+
+
+func _on_interaction_zone_area_entered(_area):
+	camera.toggle_interaction(true)
+
+
+func _on_interaction_zone_area_exited(_area):
+	camera.toggle_interaction(false)

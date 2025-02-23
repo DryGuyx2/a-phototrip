@@ -1,12 +1,18 @@
 ~ start_0
 
-Josh: Aaaah. Finally got off work. Now i can do my favourite hobby, bird photography!
+Josh: Aaaah. Finally got som time off work. Now i can do my favourite hobby, bird photography!
 
 => start_1
 
 ~ start_1
 
-Josh: I've heard some weird rumors about this place, but it seems to have a solid amount of wildlife, and what could go wrong anyways?
+Josh: I've heard some weird rumors about this place, but it seems to have a solid amount of wildlife.
+
+=> start_2
+
+~ start_2
+
+Josh: Nothing can go wrong, right?
 
 => END
 
@@ -90,12 +96,12 @@ Josh: Why is the moon so red?? And what is that thing grabbing the bird?!
 
 ~ escape
 
-Josh: Im done! This place is giving me the creeps.
+Josh: I'm done! This place is giving me the creeps! Let's get out!
 
 => END
 
 ~ driving_away
 
-Josh: That was weird! Oh crap!
+Josh: Phew! I'm never going back there again!
 
 => END

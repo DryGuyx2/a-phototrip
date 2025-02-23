@@ -113,9 +113,10 @@ flip_h = true
 
 [node name="Ritual" type="AudioStreamPlayer" parent="Cultists"]
 stream = ExtResource("6_edm8f")
-volume_db = -30.0
+volume_db = -10.0
 
 [node name="Explosion" type="AudioStreamPlayer" parent="Cultists"]
 stream = ExtResource("8_hdnqh")
+volume_db = 10.0
 
 [connection signal="finished" from="Cultists/Ritual" to="." method="_on_audio_stream_player_finished"]
